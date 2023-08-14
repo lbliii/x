@@ -24,10 +24,30 @@ Indices
 .. toctree::
    :glob:
 
-   tutorials/**
+   ./tutorials/**
 
 
 
-The ``kind`` parameter should be either ``"meat"``, ``"fish"``,
-or ``"veggies"``. Otherwise, :py:func:`lumache.get_random_ingredients`
-will raise an exception.
+.. Analysis
+.. ==========
+
+.. Observations
+.. -------------
+
+.. 1. The code needed for autodocs mostly lives in ``/harness/determined``.
+
+
+.. Pros 
+.. ----
+.. - Autodoc 
+.. - Crosslinking
+
+.. Cons 
+.. ----
+.. 1. Building docs also requires building Determined
+.. 2. Current preview / deploy process is complicated
+
+
+.. Migration Challenges
+.. ----
+.. 1. There isn't a direct replacement for **crosslinking** or **autodocs**. 

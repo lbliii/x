@@ -1,0 +1,649 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Setup &#8212; project-x 0.0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=362ab14a" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=dc820ae5"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'latest/setup-cluster/index';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Tutorials" href="../tutorials/index.html" />
+    <link rel="prev" title="MMDetection" href="../model-hub-library/mmdetection/overview.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">project-x 0.0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    Welcome to project-x’s documentation!
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../example-solutions/index.html">Examples</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../integrations/index.html">Integrations</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../integrations/ecosystem/index.html">Ecosystem Integration</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../integrations/notification/index.html">Monitoring Experiment Through Webhooks</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../integrations/notification/zapier.html">Through Zapier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../integrations/notification/slack.html">Through Slack</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../model-dev-guide/index.html">Model Developer Guide</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../model-hub-library/index.html">Model Hub Library</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../model-hub-library/transformers/overview.html">Huggingface Trainsformers</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../model-hub-library/transformers/tutorial.html">Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../model-hub-library/transformers/examples.html">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../model-hub-library/mmdetection/overview.html">MMDetection</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Setup</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials/index.html">Tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/pytorch-mnist-local-qs.html">Run Your First Experiment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/pytorch-mnist-tutorial.html">PyTorch MNIST Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/pytorch-porting-tutorial.html">PyTorch Porting Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/tf-mnist-tutorial.html">TensorFlow Keras Fashion MNIST Tutorial</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/latest/setup-cluster/index.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Setup</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> {your-title} </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-set-det-master-environment-variable">Step 1 - Set <code class="docutils literal notranslate"><span class="pre">DET_MASTER</span></code> Environment Variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-install-the-determined-cli">Step 2 - Install the Determined CLI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-set-up-internet-access">Step 3 - Set up Internet Access</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-set-up-firewall-rules">Step 4 - Set up Firewall Rules</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#master">Master</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agents">Agents</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-transfer-the-context-directory">Step 5 - Transfer the Context Directory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-install-the-determined-cluster">Step 6 - Install the Determined Cluster</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-configure-the-cluster">Step 7 - Configure the Cluster</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-configuration">Basic Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-configuration">Advanced Configuration</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="setup">
+<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h1>
+<p>Your training environment can be a local development machine, an on-premise GPU cluster, or cloud
+resources. To set up your training environment, follow the steps below.</p>
+<section id="step-1-set-det-master-environment-variable">
+<h2>Step 1 - Set <code class="docutils literal notranslate"><span class="pre">DET_MASTER</span></code> Environment Variable<a class="headerlink" href="#step-1-set-det-master-environment-variable" title="Permalink to this heading">#</a></h2>
+<p>Set the <code class="docutils literal notranslate"><span class="pre">DET_MASTER</span></code> environment variable, which is the network address of the Determined master.
+You can override the value in the command line using the <code class="docutils literal notranslate"><span class="pre">-m</span></code> option.</p>
+</section>
+<section id="step-2-install-the-determined-cli">
+<h2>Step 2 - Install the Determined CLI<a class="headerlink" href="#step-2-install-the-determined-cli" title="Permalink to this heading">#</a></h2>
+<p>The Determined CLI is a command-line tool that lets you launch new experiments and interact with a
+Determined cluster. The CLI can be installed on any machine you want to use to access Determined. To
+install the CLI, follow the <span class="xref std std-ref">installation</span> instructions.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">-m</span></code> or <code class="docutils literal notranslate"><span class="pre">--master</span></code> flag determines the network address of the Determined master that the CLI
+connects to. If this flag is not specified, the value of the <code class="docutils literal notranslate"><span class="pre">DET_MASTER</span></code> environment variable is
+used; if that environment variable is not set, the default address is <code class="docutils literal notranslate"><span class="pre">localhost</span></code>. The master
+address can be specified in three different formats:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">example.org:port</span></code> (if <code class="docutils literal notranslate"><span class="pre">port</span></code> is omitted, it defaults to <code class="docutils literal notranslate"><span class="pre">8080</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">http://example.org:port</span></code> (if <code class="docutils literal notranslate"><span class="pre">port</span></code> is omitted, it defaults to <code class="docutils literal notranslate"><span class="pre">80</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">https://example.org:port</span></code> (if <code class="docutils literal notranslate"><span class="pre">port</span></code> is omitted, it defaults to <code class="docutils literal notranslate"><span class="pre">443</span></code>)</p></li>
+</ul>
+<p>Examples:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Connect to localhost, port 8080.</span>
+$<span class="w"> </span>det<span class="w"> </span>experiment<span class="w"> </span>list
+
+<span class="c1"># Connect to example.org, port 8888.</span>
+$<span class="w"> </span>det<span class="w"> </span>-m<span class="w"> </span>example.org:8888<span class="w"> </span>e<span class="w"> </span>list
+
+<span class="c1"># Connect to example.org, port 80.</span>
+$<span class="w"> </span>det<span class="w"> </span>-m<span class="w"> </span>http://example.org<span class="w"> </span>e<span class="w"> </span>list
+
+<span class="c1"># Connect to example.org, port 443.</span>
+$<span class="w"> </span>det<span class="w"> </span>-m<span class="w"> </span>https://example.org<span class="w"> </span>e<span class="w"> </span>list
+
+<span class="c1"># Connect to example.org, port 8080.</span>
+$<span class="w"> </span>det<span class="w"> </span>-m<span class="w"> </span>example.org<span class="w"> </span>e<span class="w"> </span>list
+
+<span class="c1"># Set default Determined master address to example.org, port 8888.</span>
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">DET_MASTER</span><span class="o">=</span><span class="s2">&quot;example.org:8888&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="step-3-set-up-internet-access">
+<h2>Step 3 - Set up Internet Access<a class="headerlink" href="#step-3-set-up-internet-access" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The Determined Docker images are hosted on Docker Hub. Determined agents need access to Docker
+Hub for such tasks as building new images for user workloads.</p></li>
+<li><p>If packages, data, or other resources needed by user workloads are hosted on the public Internet,
+Determined agents need to be able to access them. Note that agents can be <span class="xref std std-ref">configured to use
+proxies</span> when accessing network resources.</p></li>
+<li><p>For best performance, it is recommended that the Determined master and agents use the same
+physical network or VPC. When using VPCs on a public cloud provider, additional steps might need
+to be taken to ensure that instances in the VPC can access the Internet:</p>
+<ul>
+<li><p>On GCP, the instances need to have an external IP address, or a <a class="reference external" href="https://cloud.google.com/nat/docs/overview">GCP Cloud NAT</a> should be configured for the VPC.</p></li>
+<li><p>On AWS, the instances need to have a public IP address, and a <a class="reference external" href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html">VPC Internet Gateway</a> should be
+configured for the VPC.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="step-4-set-up-firewall-rules">
+<span id="firewall-rules"></span><h2>Step 4 - Set up Firewall Rules<a class="headerlink" href="#step-4-set-up-firewall-rules" title="Permalink to this heading">#</a></h2>
+<p>The firewall rules must satisfy the following network access requirements for the master and agents.</p>
+<section id="master">
+<h3>Master<a class="headerlink" href="#master" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Inbound TCP to the master’s network port from the Determined agent instances, as well as all
+machines where developers want to use the Determined CLI or WebUI. The default port is <code class="docutils literal notranslate"><span class="pre">8443</span></code>
+if TLS is enabled and <code class="docutils literal notranslate"><span class="pre">8080</span></code> if not.</p></li>
+<li><p>Outbound TCP to all ports on the Determined agents.</p></li>
+</ul>
+</section>
+<section id="agents">
+<h3>Agents<a class="headerlink" href="#agents" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Inbound TCP from all ports on the master to all ports on the agent.</p></li>
+<li><p>Outbound TCP from all ports on the agent to the master’s network port.</p></li>
+<li><p>Outbound TCP to the services that host the Docker images, packages, data, and other resources
+that need to be accessed by user workloads. For example, if your data is stored on Amazon S3,
+ensure the firewall rules allow access to this data.</p></li>
+<li><p>Inbound and outbound TCP on all ports to and from each Determined agent. The details are as
+follows:</p>
+<ul>
+<li><p>Inbound and outbound TCP ports 1734 and 1750 are used for synchronization between trial
+containers.</p></li>
+<li><p>Inbound and outbound TCP port 12350 is used for internal SSH-based communication between trial
+containers.</p></li>
+<li><p>When using <code class="docutils literal notranslate"><span class="pre">DeepSpeedTrial</span></code>, port 29500 is used by for rendezvous between trial containers.</p></li>
+<li><p>When using <code class="docutils literal notranslate"><span class="pre">PyTorchTrial</span></code> with the “torch” distributed training backend, port 29400 is used
+for rendezvous between trial containers</p></li>
+<li><p>For all other distributed training modes, inbound and outbound TCP port 12355 is used for GLOO
+rendezvous between trial containers.</p></li>
+<li><p>Inbound and outbound ephemeral TCP ports in the range 1024-65536 are used for communication
+between trials via GLOO.</p></li>
+<li><p>For every GPU on each agent machine, an inbound and outbound ephemeral TCP port in the range
+1024-65536 is used for communication between trials via NCCL.</p></li>
+<li><p>Two additional ephemeral TCP ports in the range 1024-65536 are used for additional intra-trial
+communication between trial containers.</p></li>
+<li><p>Each TensorBoard uses a port in the range 2600–2899</p></li>
+<li><p>Each notebook uses a port in the range 2900–3199</p></li>
+<li><p>Each shell uses a port in the range 3200–3599</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="step-5-transfer-the-context-directory">
+<h2>Step 5 - Transfer the Context Directory<a class="headerlink" href="#step-5-transfer-the-context-directory" title="Permalink to this heading">#</a></h2>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">-c</span> <span class="pre">&lt;directory&gt;</span></code> option to transfer files from a directory on your local machine, called
+the context directory, to the container. The context directory contents are placed in the container
+working directory before the command or shell run. Files in the context can be accessed using
+relative paths.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir context
+$ echo &#39;print(&quot;hello world&quot;)&#39; &gt; context/run.py
+$ det cmd run -c context python run.py
+</pre></div>
+</div>
+<p>The total size of the files in the context directory must be less than 95 MB. Larger files, such as
+datasets, must be mounted into the container, downloaded after the container starts, or included in
+a <a class="reference internal" href="../model-dev-guide/prepare-container/custom-env.html#custom-docker-images"><span class="std std-ref">custom Docker image</span></a>.</p>
+</section>
+<section id="step-6-install-the-determined-cluster">
+<span id="install-cluster"></span><h2>Step 6 - Install the Determined Cluster<a class="headerlink" href="#step-6-install-the-determined-cluster" title="Permalink to this heading">#</a></h2>
+<p>A Determined cluster comprises a master and one or more agents. The cluster can be installed on
+Amazon Web Services (AWS), Google Cloud Platform (GCP), on-premise, or on a local development
+machine.</p>
+</section>
+<section id="step-7-configure-the-cluster">
+<span id="cluster-configuration"></span><h2>Step 7 - Configure the Cluster<a class="headerlink" href="#step-7-configure-the-cluster" title="Permalink to this heading">#</a></h2>
+<p>Common configuration reference: <span class="xref std std-doc">/reference/deploy/config/common-config-options</span></p>
+<p>Master configuration reference: <span class="xref std std-doc">/reference/deploy/config/master-config-reference</span></p>
+<p>Agent configuration reference: <span class="xref std std-doc">/reference/deploy/config/agent-config-reference</span></p>
+<section id="basic-configuration">
+<h3>Basic Configuration<a class="headerlink" href="#basic-configuration" title="Permalink to this heading">#</a></h3>
+<p>The behavior of the master and agent can be controlled by setting configuration variables; this can
+be done using a configuration file, environment variables, or command-line options. Although values
+from different sources will be merged, we generally recommend sticking to a single source for each
+service to keep things simple.</p>
+<p>The master and the agent both accept an optional <code class="docutils literal notranslate"><span class="pre">--config-file</span></code> command-line option, which
+specifies the path of the configuration file to use. Note that when running the master or agent
+inside a container, you will need to make the configuration file accessible inside the container
+(e.g., via a bind mount). For example, this command starts the agent using a configuration file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run \
+  -v `pwd`/agent-config.yaml:/etc/determined/agent-config.yaml \
+  determinedai/determined-agent
+  --config-file /etc/determined/agent-config.yaml
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">agent-config.yaml</span></code> file might contain</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">master_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">127.0.0.1</span>
+<span class="nt">master_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+</pre></div>
+</div>
+<p>to configure the address of the Determined master that the agent will attempt to connect to.</p>
+<p>Each option in the master or agent configuration file can also be specified as an environment
+variable or a command-line option. To configure the behavior of the master or agent using
+environment variables, specify an environment variable starting with <code class="docutils literal notranslate"><span class="pre">DET_</span></code> followed by the name
+of the configuration variable. Underscores (<code class="docutils literal notranslate"><span class="pre">_</span></code>) should be used to indicate nested options: for
+example, the <code class="docutils literal notranslate"><span class="pre">logging.type</span></code> master configuration option can be specified via an environment
+variable named <code class="docutils literal notranslate"><span class="pre">DET_LOGGING_TYPE</span></code>.</p>
+<p>The equivalent of the agent configuration file shown above can be specified by setting two
+environment variables, <code class="docutils literal notranslate"><span class="pre">DET_MASTER_HOST</span></code> and <code class="docutils literal notranslate"><span class="pre">DET_MASTER_PORT</span></code>. When starting the agent as a
+container, environment variables can be specified as part of <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> \
+  <span class="o">-</span><span class="n">e</span> <span class="n">DET_MASTER_HOST</span><span class="o">=</span><span class="mf">127.0.0.1</span> \
+  <span class="o">-</span><span class="n">e</span> <span class="n">DET_MASTER_PORT</span><span class="o">=</span><span class="mi">8080</span> \
+  <span class="n">determinedai</span><span class="o">/</span><span class="n">determined</span><span class="o">-</span><span class="n">agent</span>
+</pre></div>
+</div>
+<p>The equivalent behavior can be achieved using command-line options:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">determined</span><span class="o">-</span><span class="n">agent</span> <span class="n">run</span> <span class="o">--</span><span class="n">master</span><span class="o">-</span><span class="n">host</span><span class="o">=</span><span class="mf">127.0.0.1</span> <span class="o">--</span><span class="n">master</span><span class="o">-</span><span class="n">port</span><span class="o">=</span><span class="mi">8080</span>
+</pre></div>
+</div>
+<p>The same behavior applies to master configuration settings as well. For example, configuring the
+host where the Postgres database is running can be done via a configuration file containing:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">db</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">the-db-host</span>
+</pre></div>
+</div>
+<p>Equivalent behavior can be achieved by setting the <code class="docutils literal notranslate"><span class="pre">DET_DB_HOST=the-db-host</span></code> environment variable
+or <code class="docutils literal notranslate"><span class="pre">--db-host</span> <span class="pre">the-db-host</span></code> command-line option.</p>
+<p>In the rest of this document, we will refer to options using their names in the configuration file.
+Periods (<code class="docutils literal notranslate"><span class="pre">.</span></code>) will be used to indicate nested options; for example, the option above would be
+indicated by <code class="docutils literal notranslate"><span class="pre">db.host</span></code>.</p>
+</section>
+<section id="advanced-configuration">
+<h3>Advanced Configuration<a class="headerlink" href="#advanced-configuration" title="Permalink to this heading">#</a></h3>
+<p><span class="xref std std-ref">Additional configuration settings</span> for both commands and
+shells can be set using the <code class="docutils literal notranslate"><span class="pre">--config</span></code> and <code class="docutils literal notranslate"><span class="pre">--config-file</span></code> options. Typical settings include:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bind_mounts</span></code>: Specifies directories to be bind-mounted into the container from the host
+machine. (Due to the structured values required for this setting, it needs to be specified in a
+config file.)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">resources.slots</span></code>: Specifies the number of slots the container will have access to.
+(Distributed commands and shells are not supported; all slots will be on one machine and
+attempting to use more slots than are available on one machine will prevent the container from
+being scheduled.)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">environment.image</span></code>: Specifies a custom Docker image to use for the container.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">description</span></code>: Specifies a description for the command or shell to distinguish it from others.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../model-hub-library/mmdetection/overview.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">MMDetection</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../tutorials/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tutorials</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> {your-title}
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-set-det-master-environment-variable">Step 1 - Set <code class="docutils literal notranslate"><span class="pre">DET_MASTER</span></code> Environment Variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-install-the-determined-cli">Step 2 - Install the Determined CLI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-set-up-internet-access">Step 3 - Set up Internet Access</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-set-up-firewall-rules">Step 4 - Set up Firewall Rules</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#master">Master</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agents">Agents</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-transfer-the-context-directory">Step 5 - Transfer the Context Directory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-install-the-determined-cluster">Step 6 - Install the Determined Cluster</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-configure-the-cluster">Step 7 - Configure the Cluster</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-configuration">Basic Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-configuration">Advanced Configuration</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By lb
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, lb.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

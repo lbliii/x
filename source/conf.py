@@ -12,7 +12,10 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('.'))
+
+# if computer is mac
+if sys.platform == 'darwin':
+    sys.path.insert(0, '/Users/*/Documents/github/determined')
 
 
 # -- Project information -----------------------------------------------------
@@ -48,6 +51,13 @@ exclude_patterns = []
 # a list of builtin themes.
 #
 html_theme = 'sphinx_book_theme'
+html_theme_options= {
+    "home_page_in_toc": True,
+    "toc_title": "{your-title}",
+    "show_toc_level": 4,
+    "show_navbar_depth": 1,
+}
+
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

@@ -1,0 +1,855 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Set up and Manage an AWS Kubernetes (EKS) Cluster &#8212; project-x 0.0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=362ab14a" />
+    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=dc820ae5"></script>
+    <script src="../../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'latest/setup-cluster/deploy-cluster/k8s/setup-eks-cluster';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Set up and Manage a Google Kubernetes Engine (GKE) Cluster" href="setup-gke-cluster.html" />
+    <link rel="prev" title="Set up and Manage an Azure Kubernetes Service (AKS) Cluster" href="setup-aks-cluster.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">project-x 0.0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../index.html">
+                    Welcome to project-x’s documentation!
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../example-solutions/_index.html">Examples</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../integrations/_index.html">Integrations</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../integrations/ecosystem/_index.html">Ecosystem Integration</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../integrations/notification/_index.html">Monitoring Experiment Through Webhooks</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../integrations/notification/zapier.html">Through Zapier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../integrations/notification/slack.html">Through Slack</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../integrations/prometheus/_index.html">Configure Determined with Prometheus and Grafana</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../model-dev-guide/_index.html">Model Developer Guide</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../model-dev-guide/apis-howto/_index.html">Training APIs</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-dev-guide/apis-howto/api-core-ug.html">Core API User Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-dev-guide/apis-howto/api-pytorch-ug.html">PyTorch API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-dev-guide/apis-howto/api-keras-ug.html">Keras API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-dev-guide/apis-howto/api-estimator-ug.html">Estimator API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-dev-guide/batch-processing/_index.html">Torch Batch Processing API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-dev-guide/best-practices/_index.html">Best Practices</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../model-dev-guide/dtrain/_index.html">Distributed Training with Determined</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-dev-guide/dtrain/dtrain-introduction.html">Distributed Training Concepts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-dev-guide/dtrain/dtrain-implement.html">Implementing Distributed Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-dev-guide/dtrain/config-templates.html">Configuration Templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-dev-guide/dtrain/reproducibility.html">Reproducibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-dev-guide/dtrain/optimize-training.html">Optimizing Training</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../model-hub-library/_index.html">Model Hub Library</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../_index.html">Setup</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../_index.html">Set Up Determined</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../aws/_index.html">Deploy on AWS</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../gcp/_index.html">Deploy on GCP</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../gcp/install-gcp.html">Install Determined</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../gcp/dynamic-agents-gcp.html">Deploy Determined with Dynamic Agents</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="_index.html">Deploy on Kubernetes</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="install-on-kubernetes.html">Install Determined on Kubernetes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="setup-aks-cluster.html">Set up and Manage an Azure Kubernetes Service (AKS) Cluster</a></li>
+<li class="toctree-l4 current active"><a class="current reference internal" href="#">Set up and Manage an AWS Kubernetes (EKS) Cluster</a></li>
+<li class="toctree-l4"><a class="reference internal" href="setup-gke-cluster.html">Set up and Manage a Google Kubernetes Engine (GKE) Cluster</a></li>
+<li class="toctree-l4"><a class="reference internal" href="k8s-dev-guide.html">Development Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="custom-pod-specs.html">Customize a Pod</a></li>
+<li class="toctree-l4"><a class="reference internal" href="helm-commands.html">Helm and Kubectl Command Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../on-prem/_index.html">Deploy on Prem</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../on-prem/requirements.html">Installation Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../on-prem/docker.html">Install Determined Using Docker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../on-prem/deploy.html">Install Determined Using <code class="docutils literal notranslate"><span class="pre">det</span> <span class="pre">deploy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../on-prem/linux-packages.html">Install Determined Using Linux Packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../on-prem/homebrew.html">Install Determined Using Homebrew (macOS)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../on-prem/wsl.html">Install Determined Using Windows Subsystem for Linux (Windows)</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../slurm/_index.html">Deploy on Slurm/PBS</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../slurm/slurm-requirements.html">Installation Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../slurm/hpc-launching-architecture.html">HPC Launching Architecture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../slurm/hpc-security-considerations.html">HPC Launcher Security Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../slurm/install-on-slurm.html">Install Determined on Slurm/PBS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../slurm/singularity.html">Provide a Container Image Cache</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../slurm/slurm-known-issues.html">Known Issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../security/_index.html">Security</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../security/oauth.html">OAuth 2.0 Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../security/oidc.html">OpenID Connect Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../security/rbac.html">RBAC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../security/saml.html">SAML Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../security/scim.html">SCIM Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../security/tls.html">Transport Layer Security</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../tutorials/_index.html">Tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/pytorch-mnist-local-qs.html">Run Your First Experiment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/pytorch-mnist-tutorial.html">PyTorch MNIST Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/pytorch-porting-tutorial.html">PyTorch Porting Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/tf-mnist-tutorial.html">TensorFlow Keras Fashion MNIST Tutorial</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../_sources/latest/setup-cluster/deploy-cluster/k8s/setup-eks-cluster.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Set up and Manage an AWS Kubernetes (EKS) Cluster</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> {your-title} </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-s3-bucket">Create an S3 Bucket</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-cluster">Create the Cluster</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-kubeconfig-for-eks">Create a kubeconfig for EKS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-gpu-support">Enable GPU support</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-autoscaler">Enable Autoscaler</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-the-experiment-configuration">Change the Experiment Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-changes-to-determined">Make Changes to Determined</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-an-aws-load-balancer-optional">Use an AWS Load Balancer (optional)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manage-an-eks-cluster">Manage an EKS Cluster</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next Steps</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="set-up-and-manage-an-aws-kubernetes-eks-cluster">
+<span id="setup-eks-cluster"></span><h1>Set up and Manage an AWS Kubernetes (EKS) Cluster<a class="headerlink" href="#set-up-and-manage-an-aws-kubernetes-eks-cluster" title="Permalink to this heading">#</a></h1>
+<p>Determined can be installed on a cluster that is hosted on a managed Kubernetes service such as
+<a class="reference external" href="https://aws.amazon.com/eks/">Amazon EKS</a>. This document describes how to set up an EKS cluster
+with GPU-enabled nodes. The recommended setup includes deploying a cluster with a single non-GPU
+node that will host the Determined master and database, and an autoscaling group of GPU nodes. After
+creating a suitable EKS cluster, you can then proceed with the standard <a class="reference internal" href="install-on-kubernetes.html#install-on-kubernetes"><span class="std std-ref">instructions for
+installing Determined on Kubernetes</span></a>.</p>
+<p>Determined requires GPU-enabled nodes and the Kubernetes cluster to be running version &gt;= 1.19 and
+&lt;= 1.21, though later versions may work.</p>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">#</a></h2>
+<p>Before setting up an EKS cluster, the user should have the latest versions of <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html">AWS CLI</a>, <a class="reference external" href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">kubectl</a>, and <a class="reference external" href="https://eksctl.io/introduction/#installation">eksctl</a> installed on their local machine.</p>
+<p>Additionally, make sure to be subscribed to the <a class="reference external" href="https://aws.amazon.com/marketplace/pp/B07GRHFXGM">EKS-optimized AMI with GPU support</a>. Continuing without subscribing will cause node
+creation to fail.</p>
+</section>
+<section id="create-an-s3-bucket">
+<h2>Create an S3 Bucket<a class="headerlink" href="#create-an-s3-bucket" title="Permalink to this heading">#</a></h2>
+<p>One resource that <code class="docutils literal notranslate"><span class="pre">eksctl</span></code> does not automatically create is an S3 bucket, which is necessary for
+Determined to store checkpoints. To quickly create an S3 bucket, use the command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>aws<span class="w"> </span>s3<span class="w"> </span>mb<span class="w"> </span>s3://&lt;bucket-name&gt;
+</pre></div>
+</div>
+<p>The bucket name needs to be specified in both the <code class="docutils literal notranslate"><span class="pre">eksctl</span></code> cluster config as well as the
+Determined Helm chart.</p>
+</section>
+<section id="create-the-cluster">
+<span id="cluster-creation"></span><h2>Create the Cluster<a class="headerlink" href="#create-the-cluster" title="Permalink to this heading">#</a></h2>
+<p>The quickest and easiest way to deploy an EKS cluster is with <code class="docutils literal notranslate"><span class="pre">eksctl</span></code>. <code class="docutils literal notranslate"><span class="pre">eksctl</span></code> supports
+cluster creation with either command-line arguments or a cluster config file. Below is a template
+config that deploys a managed node group for Determined’s master instance, as well as an autoscaling
+GPU node group for workers. To fill in the template, insert the cluster name and S3 bucket name.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eksctl.io/v1alpha5</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterConfig</span>
+
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;cluster-name&gt;</span><span class="w"> </span><span class="c1"># Specify your cluster name here</span>
+<span class="w">  </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">us-west-2</span><span class="w"> </span><span class="c1"># The default region is us-west-2</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.19&quot;</span><span class="w"> </span><span class="c1"># 1.20 and 1.21 are also supported</span>
+
+<span class="c1"># Cluster availability zones must be explicitly named in order for single availability zone node groups to work.</span>
+<span class="nt">availabilityZones</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;us-west-2b&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;us-west-2c&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;us-west-2d&quot;</span>
+
+<span class="nt">iam</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">withOIDC</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># Enables IAM IODC provider</span>
+<span class="w">  </span><span class="nt">serviceAccounts</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">checkpoint-storage-s3-bucket</span>
+<span class="w">      </span><span class="c1"># If no namespace is set, &quot;default&quot; will be used.</span>
+<span class="w">      </span><span class="c1"># Namespace will be created if it does not already exist.</span>
+<span class="w">      </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">aws-usage</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;determined-checkpoint-storage&quot;</span>
+<span class="w">    </span><span class="nt">attachPolicy</span><span class="p">:</span><span class="w"> </span><span class="c1"># Inline policy can be defined along with `attachPolicyARNs`</span>
+<span class="w">      </span><span class="nt">Version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span>
+<span class="w">      </span><span class="nt">Statement</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Effect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow</span>
+<span class="w">        </span><span class="nt">Action</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;s3:ListBucket&quot;</span>
+<span class="w">        </span><span class="nt">Resource</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;arn:aws:s3:::&lt;bucket-name&gt;&#39;</span><span class="w"> </span><span class="c1"># Name of the previously created bucket</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Effect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow</span>
+<span class="w">        </span><span class="nt">Action</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;s3:GetObject&quot;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;s3:PutObject&quot;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;s3:DeleteObject&quot;</span>
+<span class="w">        </span><span class="nt">Resource</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;arn:aws:s3:::&lt;bucket-name&gt;/*&#39;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster-autoscaler</span>
+<span class="w">      </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-system</span>
+<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">aws-usage</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;determined-cluster-autoscaler&quot;</span>
+<span class="w">    </span><span class="nt">attachPolicy</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">Version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span>
+<span class="w">      </span><span class="nt">Statement</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Effect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow</span>
+<span class="w">        </span><span class="nt">Action</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;autoscaling:DescribeAutoScalingGroups&quot;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;autoscaling:DescribeAutoScalingInstances&quot;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;autoscaling:DescribeLaunchConfigurations&quot;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;autoscaling:DescribeTags&quot;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;autoscaling:SetDesiredCapacity&quot;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;autoscaling:TerminateInstanceInAutoScalingGroup&quot;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;ec2:DescribeLaunchTemplateVersions&quot;</span>
+<span class="w">        </span><span class="nt">Resource</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;*&#39;</span>
+
+<span class="nt">managedNodeGroups</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">managed-m5-2xlarge</span>
+<span class="w">    </span><span class="nt">instanceType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">m5.2xlarge</span>
+<span class="w">    </span><span class="nt">availabilityZones</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">us-west-2b</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">us-west-2c</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">us-west-2d</span>
+<span class="w">    </span><span class="nt">minSize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="nt">maxSize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">    </span><span class="nt">volumeSize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200</span>
+<span class="w">    </span><span class="nt">iam</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">withAddonPolicies</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">autoScaler</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">cloudWatch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">ssh</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">allow</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># will use ~/.ssh/id_rsa.pub as the default ssh key</span>
+<span class="w">    </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">nodegroup-type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">m5.2xlarge</span>
+<span class="w">      </span><span class="nt">nodegroup-role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cpu-worker</span>
+<span class="w">    </span><span class="nt">tags</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">k8s.io/cluster-autoscaler/enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">      </span><span class="nt">k8s.io/cluster-autoscaler/user-eks</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;owned&quot;</span>
+<span class="w">      </span><span class="nt">k8s.io/cluster-autoscaler/node-template/label/nodegroup-type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">m5.2xlarge</span>
+<span class="w">      </span><span class="nt">k8s.io/cluster-autoscaler/node-template/label/nodegroup-role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cpu-worker</span>
+
+<span class="nt">nodeGroups</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">g4dn-metal-us-west-2b</span>
+<span class="w">    </span><span class="nt">instanceType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">g4dn.metal</span><span class="w"> </span><span class="c1"># 8 GPUs per machine</span>
+<span class="w">    </span><span class="c1"># Restrict to a single AZ to optimize data transfer between instances</span>
+<span class="w">    </span><span class="nt">availabilityZones</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">us-west-2b</span>
+<span class="w">    </span><span class="nt">minSize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">    </span><span class="nt">maxSize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">    </span><span class="nt">volumeSize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200</span>
+<span class="w">    </span><span class="nt">volumeType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gp2</span>
+<span class="w">    </span><span class="nt">iam</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">withAddonPolicies</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">autoScaler</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">cloudWatch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">ssh</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">allow</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># This will use ~/.ssh/id_rsa.pub as the default ssh key.</span>
+<span class="w">    </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">nodegroup-type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">g4dn.metal-us-west-2b</span>
+<span class="w">      </span><span class="nt">nodegroup-role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpu-worker</span>
+<span class="w">      </span><span class="c1"># https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler/cloudprovider/aws#special-note-on-gpu-instances</span>
+<span class="w">      </span><span class="nt">k8s.amazonaws.com/accelerator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvidia-tesla-t4</span>
+<span class="w">    </span><span class="nt">tags</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">k8s.io/cluster-autoscaler/enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">      </span><span class="nt">k8s.io/cluster-autoscaler/user-eks</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;owned&quot;</span>
+<span class="w">      </span><span class="nt">k8s.io/cluster-autoscaler/node-template/label/nodegroup-type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">g4dn.metal-us-west-2b</span>
+<span class="w">      </span><span class="nt">k8s.io/cluster-autoscaler/node-template/label/nodegroup-role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpu-worker</span>
+</pre></div>
+</div>
+<p>The cluster specified above allows users to run experiments on an untainted g4dn.metal instances
+with minor additions to their experiment configs. To create a cluster with tainted instances, see
+the <cite>Tainting Nodes</cite> section below.</p>
+<p>To launch the cluster with <code class="docutils literal notranslate"><span class="pre">eksctl</span></code>, run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>eksctl<span class="w"> </span>create<span class="w"> </span>cluster<span class="w"> </span>--config-file<span class="w"> </span>&lt;cluster<span class="w"> </span>config<span class="w"> </span>yaml&gt;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For an experiment to run, its config must be modified to specify a service account for S3 access
+. An example of this is provided in the Configuring Per-Task Pod Specs section of the
+<a class="reference internal" href="custom-pod-specs.html#custom-pod-specs"><span class="std std-ref">Customize a Pod</span></a> guide.</p>
+</div>
+</section>
+<section id="create-a-kubeconfig-for-eks">
+<h2>Create a kubeconfig for EKS<a class="headerlink" href="#create-a-kubeconfig-for-eks" title="Permalink to this heading">#</a></h2>
+<p>After creating the cluster, <code class="docutils literal notranslate"><span class="pre">kubectl</span></code> should be used to deploy apps. In order for <code class="docutils literal notranslate"><span class="pre">kubectl</span></code> to
+be used with EKS, users need to create or update the cluster kubeconfig. This can be done with the
+command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>aws<span class="w"> </span>eks<span class="w"> </span>--region<span class="w"> </span>&lt;region-code&gt;<span class="w"> </span>update-kubeconfig<span class="w"> </span>--name<span class="w"> </span>&lt;cluster_name&gt;
+</pre></div>
+</div>
+</section>
+<section id="enable-gpu-support">
+<h2>Enable GPU support<a class="headerlink" href="#enable-gpu-support" title="Permalink to this heading">#</a></h2>
+<p>To use GPU instances, the NVIDIA Kubernetes device plugin needs to be installed. Use the following
+command to install the plugin:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Deploy a DaemonSet that enables the GPUs.</span>
+kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/master/nvidia-device-plugin.yml
+</pre></div>
+</div>
+</section>
+<section id="enable-autoscaler">
+<h2>Enable Autoscaler<a class="headerlink" href="#enable-autoscaler" title="Permalink to this heading">#</a></h2>
+<p>Lastly, EKS requires manual deployment of an autoscaler. Save the following configuration in a new
+file such as <code class="docutils literal notranslate"><span class="pre">determined-autoscaler.yaml</span></code>:</p>
+<p>You will need to update the <code class="docutils literal notranslate"><span class="pre">&lt;cluster-autoscaler-image&gt;</span></code> to match the major and minor numbers of
+your Kubernetes version. For example, if you are using Kubernetes 1.20, use the cluster-autoscaler
+version 1.20 image found here: k8s.gcr.io/autoscaling/cluster-autoscaler:v1.20.0</p>
+<p>For a full list of cluster-autoscaler releases see here:
+<a class="github reference external" href="https://github.com/kubernetes/autoscaler/releases">kubernetes/autoscaler</a></p>
+<p>After finding the particular release you want, click on the release and scroll to the bottom to see
+a list of image URLs. Example:
+<a class="github reference external" href="https://github.com/kubernetes/autoscaler/releases/tag/cluster-autoscaler-1.20.0">kubernetes/autoscaler</a></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster-autoscaler</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-system</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster-autoscaler</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster-autoscaler</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster-autoscaler</span>
+<span class="w">      </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">prometheus.io/scrape</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;true&#39;</span>
+<span class="w">        </span><span class="nt">prometheus.io/port</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;8085&#39;</span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">serviceAccountName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster-autoscaler</span>
+<span class="w">      </span><span class="nt">tolerations</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node-role.kubernetes.io/master</span>
+<span class="w">          </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Equal&quot;</span>
+<span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">          </span><span class="nt">effect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NoSchedule</span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;cluster-autoscaler-image&gt;</span><span class="w">  </span><span class="c1"># See, https://github.com/kubernetes/autoscaler/releases</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster-autoscaler</span>
+<span class="w">          </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100m</span>
+<span class="w">              </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">300Mi</span>
+<span class="w">            </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100m</span>
+<span class="w">              </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">300Mi</span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./cluster-autoscaler</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--v=4</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--stderrthreshold=info</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--cloud-provider=aws</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--skip-nodes-with-local-storage=false</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--expander=least-waste</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--scale-down-delay-after-add=5m</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--node-group-auto-discovery=asg:tag=k8s.io/cluster-autoscaler/enabled,k8s.io/cluster-autoscaler/&lt;cluster-name&gt;</span>
+<span class="w">          </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ssl-certs</span>
+<span class="w">              </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/ssl/certs/ca-certificates.crt</span>
+<span class="w">              </span><span class="nt">readOnly</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">          </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Always&quot;</span>
+<span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ssl-certs</span>
+<span class="w">          </span><span class="nt">hostPath</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/etc/ssl/certs/ca-bundle.crt&quot;</span>
+</pre></div>
+</div>
+<p>To deploy an autoscaler that works with Determined, apply the official autoscaler <a class="reference external" href="https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/aws/examples/cluster-autoscaler-run-on-control-plane.yaml">configuration</a>
+first, then apply the custom <code class="docutils literal notranslate"><span class="pre">determined-autoscaler.yaml</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Apply the official autoscaler configuration</span>
+kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://raw.githubusercontent.com/kubernetes/autoscaler/master/cluster-autoscaler/cloudprovider/aws/examples/cluster-autoscaler-run-on-control-plane.yaml
+
+<span class="c1"># Apply the custom deployment</span>
+kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>&lt;cluster-autoscaler<span class="w"> </span>yaml,<span class="w"> </span>e.g.<span class="w"> </span><span class="sb">`</span>determined-autoscaler.yaml<span class="sb">`</span>&gt;
+</pre></div>
+</div>
+</section>
+<section id="change-the-experiment-configuration">
+<span id="changes-to-experiment-config"></span><h2>Change the Experiment Configuration<a class="headerlink" href="#change-the-experiment-configuration" title="Permalink to this heading">#</a></h2>
+<p>To run an experiment with EKS, two additions must be made to the experiment config. A service
+account must be specified in order to allow Determined to save checkpoints to S3 and tolerances, if
+there are tainted nodes, must be listed for the experiment to be scheduled. An example of the
+necessary changes is shown here:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">pod_spec</span><span class="p">:</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">spec</span><span class="p p-Indicator">:</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">serviceAccountName</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">checkpoint-storage-s3-bucket</span>
+<span class="w">      </span><span class="c1"># Tolerations should only be included if nodes are tainted</span>
+<span class="w">      </span><span class="nt">tolerations</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;tainted-group-key, e.g g4dn.metal-us-west-2b&gt;</span>
+<span class="w">          </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Equal&quot;</span>
+<span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">          </span><span class="nt">effect</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;NoSchedule&quot;</span>
+</pre></div>
+</div>
+<p>Details about pod configuration can be found in <a class="reference internal" href="custom-pod-specs.html#per-task-pod-specs"><span class="std std-ref">Per-task Pod Specs</span></a>.</p>
+</section>
+<section id="make-changes-to-determined">
+<h2>Make Changes to Determined<a class="headerlink" href="#make-changes-to-determined" title="Permalink to this heading">#</a></h2>
+<p>Following the deployment of EKS, make sure that the necessary changes to Determined have been
+applied in order to successfully run experiments. These changes include adding the created S3 bucket
+to Determined’s Helm chart and specifying a service account in the default pod specs. When modifying
+the Helm chart to include S3, no keys or endpoint urls are needed. Additionally, if running on
+tainted nodes, be sure to add pod tolerations to the experiment spec to ensure they will get
+scheduled.</p>
+</section>
+<section id="use-an-aws-load-balancer-optional">
+<span id="aws-lb"></span><h2>Use an AWS Load Balancer (optional)<a class="headerlink" href="#use-an-aws-load-balancer-optional" title="Permalink to this heading">#</a></h2>
+<p>It is possible to use <a class="reference external" href="https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/">ALB</a>
+with the Determined EKS cluster instead of <a class="reference internal" href="install-on-kubernetes.html#tls-on-kubernetes"><span class="std std-ref">nginx</span></a>. Determined expects the
+health check to be on <code class="docutils literal notranslate"><span class="pre">/det/</span></code>, so the <a class="reference external" href="https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/guide/ingress/annotations/#health-check">config</a>
+of <code class="docutils literal notranslate"><span class="pre">alb.ingress.kubernetes.io/healthcheck-path</span></code> must be set to <code class="docutils literal notranslate"><span class="pre">/det/</span></code> in the master ingress
+yaml. An example of a master ingress yaml is shown here:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extensions/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">alb.ingress.kubernetes.io/inbound-cidrs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0/0</span>
+<span class="w">    </span><span class="nt">alb.ingress.kubernetes.io/listen-ports</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;[{&quot;HTTP&quot;:</span><span class="nv"> </span><span class="s">80}]&#39;</span>
+<span class="w">    </span><span class="nt">alb.ingress.kubernetes.io/scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">internal</span>
+<span class="w">    </span><span class="nt">alb.ingress.kubernetes.io/healthcheck-path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/det/&quot;</span>
+<span class="w">    </span><span class="nt">kubernetes.io/ingress.class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alb</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">determined-master-ingress</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yourhost.com</span>
+<span class="w">     </span><span class="nt">http</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">paths</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">backend</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">serviceName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">determined-master-service-determined</span>
+<span class="w">          </span><span class="nt">servicePort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/*</span>
+<span class="w">        </span><span class="nt">pathType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ImplementationSpecific</span>
+</pre></div>
+</div>
+<p>In order for this ingress to work as expected the Helm parameter of <code class="docutils literal notranslate"><span class="pre">useNodePortForMaster</span></code> must be
+set to <code class="docutils literal notranslate"><span class="pre">true</span></code> and the AWS Load Balancer Controller must be <a class="reference external" href="https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html">installed in the cluster</a>.</p>
+</section>
+<section id="manage-an-eks-cluster">
+<h2>Manage an EKS Cluster<a class="headerlink" href="#manage-an-eks-cluster" title="Permalink to this heading">#</a></h2>
+<p>For general instructions on adding taints and tolerations to nodes, see the <a class="reference internal" href="install-on-kubernetes.html#taints-on-kubernetes"><span class="std std-ref">Taints and
+Tolerations</span></a> section in our <a class="reference internal" href="install-on-kubernetes.html#install-on-kubernetes"><span class="std std-ref">Guide to Kubernetes</span></a>. There, you can find an explanation of taints and tolerations, as well as
+instructions for using <code class="docutils literal notranslate"><span class="pre">kubectl</span></code> to add them to existing clusters.</p>
+<p>It is important to note that if you use EKS to create nodes with taints, you must also add
+tolerations using <code class="docutils literal notranslate"><span class="pre">kubectl</span></code>; otherwise, Kubernetes will be unable to schedule pods on the tainted
+node.</p>
+<p>To taint nodes, users will need to add a taint type and a tag to the node group specified in the
+cluster config from <a class="reference internal" href="#cluster-creation"><span class="std std-ref">Create the Cluster</span></a>. An example of the modifications is shown for a
+g4dn.metal node group:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">g4dn-metal-us-west-2b</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">  </span><span class="nt">taints</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">g4dn.metal-us-west-2b</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true:NoSchedule&quot;</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">  </span><span class="nt">tags</span><span class="p">:</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">k8s.io/cluster-autoscaler/node-template/taint/g4dn.metal-us-west-2b</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;true:NoSchedule&quot;</span>
+</pre></div>
+</div>
+<p>Furthermore, tainting requires changes to be made to the GPU enabling DaemonSet and more additions
+to the experiment config. First, to change the DaemonSet, save a copy of the <a class="reference external" href="https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/master/nvidia-device-plugin.yml">official version</a> and
+make the following additions to its tolerations:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">tolerations</span><span class="p">:</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">g4dn.metal-us-west-2b</span>
+<span class="w">    </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Exists</span>
+<span class="w">    </span><span class="nt">effect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NoSchedule</span>
+</pre></div>
+</div>
+<p>To modify the experiment config to run on tainted nodes, refer to the
+<a class="reference internal" href="#changes-to-experiment-config"><span class="std std-ref">Change the Experiment Configuration</span></a> section.</p>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="install-on-kubernetes.html#install-on-kubernetes"><span class="std std-ref">Install Determined on Kubernetes</span></a></p></li>
+<li><p><a class="reference internal" href="k8s-dev-guide.html#k8s-dev-guide"><span class="std std-ref">Development Guide</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="setup-aks-cluster.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Set up and Manage an Azure Kubernetes Service (AKS) Cluster</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="setup-gke-cluster.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Set up and Manage a Google Kubernetes Engine (GKE) Cluster</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> {your-title}
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-s3-bucket">Create an S3 Bucket</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-cluster">Create the Cluster</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-kubeconfig-for-eks">Create a kubeconfig for EKS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-gpu-support">Enable GPU support</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-autoscaler">Enable Autoscaler</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-the-experiment-configuration">Change the Experiment Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-changes-to-determined">Make Changes to Determined</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-an-aws-load-balancer-optional">Use an AWS Load Balancer (optional)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manage-an-eks-cluster">Manage an EKS Cluster</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next Steps</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By lb
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, lb.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

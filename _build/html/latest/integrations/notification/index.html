@@ -1,0 +1,583 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Monitoring Experiment Through Webhooks &#8212; project-x 0.0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=362ab14a" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=dc820ae5"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'latest/integrations/notification/index';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Through Zapier" href="zapier.html" />
+    <link rel="prev" title="Integrations" href="../_index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">project-x 0.0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../index.html">
+                    Welcome to project-x’s documentation!
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../example-solutions/_index.html">Examples</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../_index.html">Integrations</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">Monitoring Experiment Through Webhooks</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="zapier.html">Through Zapier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slack.html">Through Slack</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../model-dev-guide/_index.html">Model Developer Guide</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../model-hub-library/_index.html">Model Hub Library</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../model-hub-library/transformers/overview.html">Huggingface Trainsformers</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../model-hub-library/transformers/tutorial.html">Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../model-hub-library/transformers/examples.html">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../model-hub-library/mmdetection/overview.html">MMDetection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../setup-cluster/_index.html">Setup</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/latest/integrations/notification/index.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Monitoring Experiment Through Webhooks</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> {your-title} </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#security-and-signed-payload">Security and Signed Payload</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-the-key">Setting the Key</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-the-key">Retrieving the Key</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#event-payload">Event Payload</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#signed-payload">Signed Payload</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-webhooks">Creating Webhooks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-webhooks">Testing Webhooks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-webhooks">Deleting Webhooks</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="monitoring-experiment-through-webhooks">
+<h1>Monitoring Experiment Through Webhooks<a class="headerlink" href="#monitoring-experiment-through-webhooks" title="Permalink to this heading">#</a></h1>
+<p>Monitoring experiment status is a vital part of working with Determined. In order to integrate
+Determined into your existing workflows, you can make use of webhooks to update other systems,
+receive emails, slack messages, and more when an experiment is updated.</p>
+<section id="security-and-signed-payload">
+<span id="webhook-security"></span><h2>Security and Signed Payload<a class="headerlink" href="#security-and-signed-payload" title="Permalink to this heading">#</a></h2>
+<p>Each webhook request will include a signed payload that users can use to verify that webhook calls
+from Determined are genuine. This will require that users define a <code class="docutils literal notranslate"><span class="pre">webhook_signing_key</span></code> for
+signing. If a webhook signing key is not provided then one will be generated for the user.</p>
+<section id="setting-the-key">
+<h3>Setting the Key<a class="headerlink" href="#setting-the-key" title="Permalink to this heading">#</a></h3>
+<p>The signing key can be set in the following ways:</p>
+<ol class="arabic simple">
+<li><p>In the master yaml configuration file by adding:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">webhooks</span><span class="p">:</span>
+   <span class="n">signing_key</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">signing_key</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>By setting a <code class="docutils literal notranslate"><span class="pre">DET_WEBHOOKS_SIGNING_KEY</span></code> environment variable.</p></li>
+<li><p>By specifying a <code class="docutils literal notranslate"><span class="pre">---security-webhooks-signing-key</span></code> flag.</p></li>
+</ol>
+</section>
+<section id="retrieving-the-key">
+<h3>Retrieving the Key<a class="headerlink" href="#retrieving-the-key" title="Permalink to this heading">#</a></h3>
+<p>The key can be found in the cluster configuration. For example it will be returned in
+<code class="docutils literal notranslate"><span class="pre">api/v1/master/config</span></code>.</p>
+</section>
+<section id="event-payload">
+<h3>Event Payload<a class="headerlink" href="#event-payload" title="Permalink to this heading">#</a></h3>
+<p>Currently we support two types of webhooks: <code class="docutils literal notranslate"><span class="pre">Slack</span></code> and <code class="docutils literal notranslate"><span class="pre">Default</span></code>. A payload for a <code class="docutils literal notranslate"><span class="pre">Default</span></code>
+webhook will contain information about the event itself, the trigger for the event, and the entity
+that triggered the event. The shape of <code class="docutils literal notranslate"><span class="pre">event_data</span></code> is determined by <code class="docutils literal notranslate"><span class="pre">event_type</span></code>. Below is an
+example payload for <code class="docutils literal notranslate"><span class="pre">EXPERIMENT_STATE_CHANGE</span></code>; other types may be structured differently.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;event_id&quot;</span><span class="p">:</span> <span class="s2">&quot;4cd26e62-60c6-4a8b-8d03-7629091a4ef5&quot;</span><span class="p">,</span>   <span class="o">//</span> <span class="n">unique</span> <span class="n">event</span> <span class="n">UUID</span>
+  <span class="s2">&quot;event_type&quot;</span><span class="p">:</span> <span class="s2">&quot;EXPERIMENT_STATE_CHANGE&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">the</span> <span class="n">trigger</span> <span class="nb">type</span> <span class="k">for</span> <span class="n">the</span> <span class="n">event</span>
+  <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1665689991</span><span class="p">,</span> <span class="o">//</span> <span class="n">the</span> <span class="n">timestamp</span> <span class="n">of</span> <span class="n">the</span> <span class="n">event</span> <span class="n">occurrence</span>
+  <span class="s2">&quot;condition&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;COMPLETED&quot;</span> <span class="o">//</span> <span class="n">the</span> <span class="n">condition</span> <span class="n">that</span> <span class="n">triggered</span> <span class="n">the</span> <span class="n">event</span><span class="p">;</span> <span class="k">for</span> <span class="n">now</span> <span class="n">the</span> <span class="n">condition</span> <span class="n">will</span> <span class="n">always</span> <span class="n">be</span> <span class="n">of</span> <span class="n">this</span> <span class="nb">format</span> <span class="ow">and</span> <span class="n">contain</span> <span class="n">either</span> <span class="s2">&quot;COMPLETED&quot;</span> <span class="ow">or</span> <span class="s2">&quot;ERRORED&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;event_data&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;experiment&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">41</span><span class="p">,</span>
+      <span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;COMPLETED&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;cifar10_pytorch_const&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;slots_per_trial&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="s2">&quot;duration&quot;</span><span class="p">:</span> <span class="mi">41</span><span class="p">,</span> <span class="o">//</span> <span class="n">experiment</span> <span class="n">duration</span> <span class="n">measured</span> <span class="ow">in</span> <span class="n">seconds</span>
+      <span class="s2">&quot;resource_pool&quot;</span><span class="p">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;workspace&quot;</span><span class="p">:</span> <span class="s2">&quot;test workspace&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">experiment</span> <span class="n">workspace</span> <span class="n">name</span>
+      <span class="s2">&quot;project&quot;</span><span class="p">:</span> <span class="s2">&quot;test project&quot;</span> <span class="o">//</span> <span class="n">experiment</span> <span class="n">project</span> <span class="n">name</span>
+   <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="signed-payload">
+<h3>Signed Payload<a class="headerlink" href="#signed-payload" title="Permalink to this heading">#</a></h3>
+<p>For every webhook request Determined will generate two headers, <code class="docutils literal notranslate"><span class="pre">X-Determined-AI-Signature</span></code> and
+<code class="docutils literal notranslate"><span class="pre">X-Determined-AI-Signature-Timestamp</span></code>, which can be used to verify each request to a webhook
+endpoint.</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">X-Determined-AI-Signature-Timestamp</span></code> will represent the time at which the request was
+generated and sent. You can choose to inspect this timestamp and decide whether to discard any
+requests with a timestamp that is too distant from the current time.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">X-Determined-AI-Signature</span></code> will be a representation of a “signed” request payload. The
+signed request payload will be generated in the following way:</p>
+<ul>
+<li><p>Combine the timestamp in <code class="docutils literal notranslate"><span class="pre">X-Determined-AI-Signature-Timestamp</span></code>, the comma character “,” and
+the request body, which will be the entire event payload.</p></li>
+<li><p>Create an HMAC using SHA256 hashing, with the <code class="docutils literal notranslate"><span class="pre">webhook_signing_key</span></code> and the event payload
+from previous step.</p></li>
+</ul>
+</li>
+<li><p>You can then check to make sure the <code class="docutils literal notranslate"><span class="pre">X-Determined-AI-Signature</span></code> header value and the generated
+signed payload match.</p></li>
+</ul>
+<p>Below is an example of handling a signed payload in Python.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">hashlib</span><span class="o">,</span> <span class="nn">hmac</span><span class="o">,</span> <span class="nn">json</span>
+
+<span class="c1"># User-defined function to authenticate webhook requests</span>
+<span class="k">def</span> <span class="nf">authenticate_webhook_request</span><span class="p">(</span><span class="n">request_body</span><span class="p">,</span> <span class="n">request_headers</span><span class="p">,</span> <span class="n">webhook_signing_key</span><span class="p">):</span>
+    <span class="n">timestamp</span> <span class="o">=</span> <span class="n">request_headers</span><span class="p">[</span><span class="s2">&quot;X-Determined-AI-Signature-Timestamp&quot;</span><span class="p">]</span>
+    <span class="n">signed_payload</span> <span class="o">=</span> <span class="n">request_headers</span><span class="p">[</span><span class="s2">&quot;X-Determined-AI-Signature&quot;</span><span class="p">]</span>
+    <span class="n">request_body</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">separators</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">),</span> <span class="n">obj</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">request_body</span><span class="p">))</span>
+    <span class="n">calculated_signed_payload</span> <span class="o">=</span> <span class="n">hmac</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+        <span class="n">webhook_signing_key</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span>
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">timestamp</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">request_body</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span>
+        <span class="n">digestmod</span><span class="o">=</span><span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">,</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">calculated_signed_payload</span> <span class="o">==</span> <span class="n">signed_payload</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The request body in the function shown above will be the JSON payload from the request. Ensure
+that the JSON payload does not contain spaces between keys and their values when creating the
+signed payload. For example “{“key_one”: “value_one”}” will fail authentication, while
+“{“key_one”:”value_one”}” will yield the correct signed payload value.</p>
+</div>
+</section>
+</section>
+<section id="creating-webhooks">
+<h2>Creating Webhooks<a class="headerlink" href="#creating-webhooks" title="Permalink to this heading">#</a></h2>
+<p>To create a webhook, navigate to <code class="docutils literal notranslate"><span class="pre">/det/webhooks</span></code> or click on the “Webhooks” item in navigation
+side menu, and click on the top right corner button “New Webhook”.</p>
+<a class="reference internal image-reference" href="assets/images/webhook.png"><img alt="Webhooks interface showing New Webhook button." src="assets/images/webhook.png" style="width: 100%;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must have the relevant permission to be able to view this page. Consult a system admin if you
+are unsure about your permissions.</p>
+</div>
+<p>At the modal input:</p>
+<ul class="simple">
+<li><p>URL: webhook URL.</p></li>
+<li><p>Type: <code class="docutils literal notranslate"><span class="pre">Default</span></code> or <code class="docutils literal notranslate"><span class="pre">Slack</span></code>. The <code class="docutils literal notranslate"><span class="pre">Slack</span></code> type can automatically format message content for
+better readability on Slack.</p></li>
+<li><p>Trigger: the experiment state change you want to monitor, either <code class="docutils literal notranslate"><span class="pre">Completed</span></code> or <code class="docutils literal notranslate"><span class="pre">Error</span></code>.</p></li>
+</ul>
+<a class="reference internal image-reference" href="assets/images/webhook_modal.png"><img alt="Webhook user interface showing the fields you will interact with." src="assets/images/webhook_modal.png" style="width: 100%;" /></a>
+<p>Once created, your webhook will begin executing for the chosen events.</p>
+</section>
+<section id="testing-webhooks">
+<h2>Testing Webhooks<a class="headerlink" href="#testing-webhooks" title="Permalink to this heading">#</a></h2>
+<p>To test a webhook, click on the triple dots on the right of webhook record to expand available
+actions.</p>
+<a class="reference internal image-reference" href="assets/images/webhook_action.png"><img alt="Webhooks interface showing where to find the actions menu" src="assets/images/webhook_action.png" style="width: 100%;" /></a>
+<p>Clicking on “Test Webhook” will trigger a test event to be sent to the defined webhook URL with a
+mock payload as stated below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="s2">&quot;event_id&quot;</span><span class="p">:</span> <span class="s2">&quot;b8667b8a-e14d-40e5-83ee-a64e31bdc5f4&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;event_type&quot;</span><span class="p">:</span> <span class="s2">&quot;EXPERIMENT_STATE_CHANGE&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1665695871</span><span class="p">,</span>
+   <span class="s2">&quot;condition&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;COMPLETED&quot;</span>
+   <span class="p">},</span>
+   <span class="s2">&quot;event_data&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;test&quot;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="deleting-webhooks">
+<h2>Deleting Webhooks<a class="headerlink" href="#deleting-webhooks" title="Permalink to this heading">#</a></h2>
+<p>To delete a webhook, click on the triple dots on the right of webhook record to expand available
+actions.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We do not support editing webhooks. You can delete and recreate webhooks if needed.</p>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../_index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Integrations</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="zapier.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Through Zapier</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> {your-title}
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#security-and-signed-payload">Security and Signed Payload</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-the-key">Setting the Key</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-the-key">Retrieving the Key</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#event-payload">Event Payload</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#signed-payload">Signed Payload</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-webhooks">Creating Webhooks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-webhooks">Testing Webhooks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-webhooks">Deleting Webhooks</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By lb
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, lb.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

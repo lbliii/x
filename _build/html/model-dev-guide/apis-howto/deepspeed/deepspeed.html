@@ -1,0 +1,936 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<meta content="This comprehensive guide explains the DeepSpeed API and provides step-by-step instructions for getting started. Learn how to use the DeepSpeed API by training a PyTorch model with the DeepSpeed engine." name="description" />
+
+    <title>Usage Guide &#8212; project-x 0.0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=362ab14a" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=dc820ae5"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'model-dev-guide/apis-howto/deepspeed/deepspeed';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="DeepSpeed API" href="overview.html" />
+    <link rel="prev" title="DeepSpeed Autotune: User Guide" href="autotuning.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">project-x 0.0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../index.html">
+                    Welcome to project-x’s documentation!
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../api-core-ug.html">Core API User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api-estimator-ug.html">Estimator API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api-keras-ug.html">Keras API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api-pytorch-ug.html">PyTorch API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced.html">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autotuning.html">DeepSpeed Autotune: User Guide</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Usage Guide</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="overview.html">DeepSpeed API</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">API Usage Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autotuning.html">Autotuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced.html">Advanced Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pytorch2deepspeed.html"><code class="docutils literal notranslate"><span class="pre">PyTorchTrial</span></code> to <code class="docutils literal notranslate"><span class="pre">DeepSpeedTrial</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pytorch2deepspeed.html"><code class="docutils literal notranslate"><span class="pre">PyTorchTrial</span></code> to <code class="docutils literal notranslate"><span class="pre">DeepSpeedTrial</span></code></a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../overview.html">Training APIs</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api-core-ug.html">Core API User Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api-pytorch-ug.html">PyTorch API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api-keras-ug.html">Keras API</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="overview.html">DeepSpeed API</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">API Usage Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autotuning.html">Autotuning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced.html">Advanced Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pytorch2deepspeed.html"><code class="docutils literal notranslate"><span class="pre">PyTorchTrial</span></code> to <code class="docutils literal notranslate"><span class="pre">DeepSpeedTrial</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api-estimator-ug.html">Estimator API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../batch-processing/batch-process-api-ug.html">Torch Batch Processing API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../best-practices/overview.html">Best Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../debug-models.html">How to Debug Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dtrain/config-templates.html">Configuration Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dtrain/dtrain-implement.html">Implementing Distributed Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dtrain/dtrain-introduction.html">Distributed Training Concepts</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dtrain/index.html">Distributed Training with Determined</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../dtrain/dtrain-introduction.html">Distributed Training Concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dtrain/dtrain-implement.html">Implementing Distributed Training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dtrain/config-templates.html">Configuration Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dtrain/reproducibility.html">Reproducibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dtrain/optimize-training.html">Optimizing Training</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../dtrain/optimize-training.html">Optimizing Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dtrain/reproducibility.html">Reproducibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hyperparameter/configure-hp-ranges.html">Configure Hyperparameter Ranges</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hyperparameter/handle-trial-errors.html">Handle Trial Errors and Early Stopping Requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hyperparameter/hp-constraints-det.html">Hyperparameter Search Constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hyperparameter/instrument-model-code.html">Instrument Model Code</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../hyperparameter/overview.html">Hyperparameter Tuning</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../hyperparameter/configure-hp-ranges.html">Configure Hyperparameter Ranges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hyperparameter/hp-constraints-det.html">Hyperparameter Search Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hyperparameter/instrument-model-code.html">Instrument Model Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hyperparameter/handle-trial-errors.html">Handle Trial Errors and Early Stopping Requests</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../hyperparameter/search-methods/overview.html">Search Methods</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../hyperparameter/search-methods/hp-adaptive-asha.html">Adaptive (Asynchronous) Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../hyperparameter/search-methods/hp-grid.html">Grid Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../hyperparameter/search-methods/hp-random.html">Random Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../hyperparameter/search-methods/hp-single.html">Single Search Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../hyperparameter/search-methods/hp-custom.html">Custom Search Methods</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../hyperparameter/search-methods/hp-adaptive-asha.html">Adaptive (Asynchronous) Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hyperparameter/search-methods/hp-custom.html">Custom Search Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hyperparameter/search-methods/hp-grid.html">Grid Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hyperparameter/search-methods/hp-random.html">Random Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hyperparameter/search-methods/hp-single.html">Single Search Method</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../hyperparameter/search-methods/overview.html">Search Methods</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../hyperparameter/search-methods/hp-adaptive-asha.html">Adaptive (Asynchronous) Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hyperparameter/search-methods/hp-grid.html">Grid Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hyperparameter/search-methods/hp-random.html">Random Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hyperparameter/search-methods/hp-single.html">Single Search Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hyperparameter/search-methods/hp-custom.html">Custom Search Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Model Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../load-model-data.html">Prepare Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../model-management/checkpoints.html">Checkpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../model-management/model-registry-org.html">Organize Models in the Model Registry</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../model-management/overview.html">Model Management</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../model-management/checkpoints.html">Checkpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../model-management/model-registry-org.html">Organize Models in the Model Registry</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../prepare-container/custom-env.html">Customizing Your Environment</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../prepare-container/overview.html">Prepare Your Container Environment</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../prepare-container/set-environment-images.html">Set Environment Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../prepare-container/custom-env.html">Customizing Your Environment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../prepare-container/set-environment-images.html">Set Environment Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../submit-experiment.html">Submit Experiment</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../model-hub-library/index.html">Model Hub Library</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../model-hub-library/transformers/overview.html">Huggingface Trainsformers</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-hub-library/transformers/tutorial.html">Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-hub-library/transformers/examples.html">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-hub-library/mmdetection/overview.html">MMDetection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-hub-library/mmdetection/overview.html">MMDetection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-hub-library/transformers/examples.html">Examples</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../model-hub-library/transformers/overview.html">Transformers</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-hub-library/transformers/tutorial.html">Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-hub-library/transformers/examples.html">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-hub-library/transformers/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/basic.html">Basic Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/aws/aws-spot.html">Use Spot Instances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/aws/dynamic-agents-aws.html">Deploy Determined with Dynamic Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/aws/install-on-aws.html">Install Determined</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/aws/overview.html">Deploy on AWS</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/aws/install-on-aws.html">Install Determined</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/aws/dynamic-agents-aws.html">Deploy Determined with Dynamic Agents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/aws/aws-spot.html">Use Spot Instances</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/gcp/dynamic-agents-gcp.html">Deploy Determined with Dynamic Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/gcp/install-gcp.html">Install Determined</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/gcp/overview.html">Deploy on GCP</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/gcp/install-gcp.html">Install Determined</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/gcp/dynamic-agents-gcp.html">Deploy Determined with Dynamic Agents</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/index.html">Set Up Determined</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/on-prem/overview.html">Deploy on Prem</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/on-prem/requirements.html">Installation Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/on-prem/docker.html">Install Determined Using Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/on-prem/deploy.html">Install Determined Using <code class="docutils literal notranslate"><span class="pre">det</span> <span class="pre">deploy</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/on-prem/linux-packages.html">Install Determined Using Linux Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/on-prem/homebrew.html">Install Determined Using Homebrew (macOS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/on-prem/wsl.html">Install Determined Using Windows Subsystem for Linux (Windows)</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/aws/overview.html">Deploy on AWS</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/aws/install-on-aws.html">Install Determined</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/aws/dynamic-agents-aws.html">Deploy Determined with Dynamic Agents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/aws/aws-spot.html">Use Spot Instances</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/gcp/overview.html">Deploy on GCP</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/gcp/install-gcp.html">Install Determined</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/gcp/dynamic-agents-gcp.html">Deploy Determined with Dynamic Agents</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/overview.html">Deploy on Kubernetes</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/install-on-kubernetes.html">Install Determined on Kubernetes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/setup-aks-cluster.html">Set up and Manage an Azure Kubernetes Service (AKS) Cluster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/setup-eks-cluster.html">Set up and Manage an AWS Kubernetes (EKS) Cluster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/setup-gke-cluster.html">Set up and Manage a Google Kubernetes Engine (GKE) Cluster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/k8s-dev-guide.html">Development Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/custom-pod-specs.html">Customize a Pod</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/helm-commands.html">Helm and Kubectl Command Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/slurm/overview.html">Deploy on Slurm/PBS</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/slurm/slurm-requirements.html">Installation Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/slurm/hpc-launching-architecture.html">HPC Launching Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/slurm/hpc-security-considerations.html">HPC Launcher Security Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/slurm/install-on-slurm.html">Install Determined on Slurm/PBS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/slurm/singularity.html">Provide a Container Image Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/slurm/slurm-known-issues.html">Known Issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/custom-pod-specs.html">Customize a Pod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/helm-commands.html">Helm and Kubectl Command Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/install-on-kubernetes.html">Install Determined on Kubernetes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/k8s-dev-guide.html">Development Guide</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/overview.html">Deploy on Kubernetes</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/install-on-kubernetes.html">Install Determined on Kubernetes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/setup-aks-cluster.html">Set up and Manage an Azure Kubernetes Service (AKS) Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/setup-eks-cluster.html">Set up and Manage an AWS Kubernetes (EKS) Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/setup-gke-cluster.html">Set up and Manage a Google Kubernetes Engine (GKE) Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/k8s-dev-guide.html">Development Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/custom-pod-specs.html">Customize a Pod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/helm-commands.html">Helm and Kubectl Command Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/setup-aks-cluster.html">Set up and Manage an Azure Kubernetes Service (AKS) Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/setup-eks-cluster.html">Set up and Manage an AWS Kubernetes (EKS) Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/setup-gke-cluster.html">Set up and Manage a Google Kubernetes Engine (GKE) Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/on-prem/deploy.html">Install Determined Using <code class="docutils literal notranslate"><span class="pre">det</span> <span class="pre">deploy</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/on-prem/docker.html">Install Determined Using Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/on-prem/homebrew.html">Install Determined Using Homebrew (macOS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/on-prem/linux-packages.html">Install Determined Using Linux Packages</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/on-prem/overview.html">Deploy on Prem</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/on-prem/requirements.html">Installation Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/on-prem/docker.html">Install Determined Using Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/on-prem/deploy.html">Install Determined Using <code class="docutils literal notranslate"><span class="pre">det</span> <span class="pre">deploy</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/on-prem/linux-packages.html">Install Determined Using Linux Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/on-prem/homebrew.html">Install Determined Using Homebrew (macOS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/on-prem/wsl.html">Install Determined Using Windows Subsystem for Linux (Windows)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/on-prem/requirements.html">Installation Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/on-prem/wsl.html">Install Determined Using Windows Subsystem for Linux (Windows)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/slurm/hpc-launching-architecture.html">HPC Launching Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/slurm/hpc-security-considerations.html">HPC Launcher Security Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/slurm/install-on-slurm.html">Install Determined on Slurm/PBS</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/slurm/overview.html">Deploy on Slurm/PBS</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/slurm/slurm-requirements.html">Installation Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/slurm/hpc-launching-architecture.html">HPC Launching Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/slurm/hpc-security-considerations.html">HPC Launcher Security Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/slurm/install-on-slurm.html">Install Determined on Slurm/PBS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/slurm/singularity.html">Provide a Container Image Cache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/slurm/slurm-known-issues.html">Known Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/slurm/singularity.html">Provide a Container Image Cache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/slurm/slurm-known-issues.html">Known Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/slurm/slurm-requirements.html">Installation Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/elasticsearch-logging-backend.html">Elasticsearch-backed logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/historical-cluster-usage-data.html">Historical Cluster Usage Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/security/oauth.html">OAuth 2.0 Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/security/oidc.html">OpenID Connect Integration</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../setup-cluster/security/overview.html">Security</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-24"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup-cluster/security/oauth.html">OAuth 2.0 Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup-cluster/security/tls.html">Transport Layer Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup-cluster/security/oidc.html">OpenID Connect Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup-cluster/security/saml.html">SAML Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup-cluster/security/scim.html">SCIM Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup-cluster/security/rbac.html">RBAC</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/security/rbac.html">RBAC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/security/saml.html">SAML Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/security/scim.html">SCIM Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/security/tls.html">Transport Layer Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/upgrade.html">Upgrade</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/users.html">User Accounts</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../setup-cluster/workspaces.html">Workspaces and Projects</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../setup-cluster/workspaces-rpools.html">Binding Resource Pools to Workspaces</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup-cluster/workspaces-rpools.html">Binding Resource Pools to Workspaces</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../tutorials/index.html">Tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/pytorch-mnist-local-qs.html">Run Your First Experiment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/pytorch-mnist-tutorial.html">PyTorch MNIST Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/pytorch-porting-tutorial.html">PyTorch Porting Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/tf-mnist-tutorial.html">TensorFlow Keras Fashion MNIST Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/pytorch-mnist-local-qs.html">Run Your First Experiment in Determined</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/pytorch-mnist-tutorial.html">PyTorch MNIST Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/pytorch-porting-tutorial.html">PyTorch Porting Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/quickstart-mdldev.html">Quickstart for Model Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/tf-mnist-tutorial.html">TensorFlow Keras Fashion MNIST Tutorial</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/model-dev-guide/apis-howto/deepspeed/deepspeed.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Usage Guide</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> {your-title} </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-configure-and-initialize-training-objects">Step 1- Configure and Initialize Training Objects</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialization">Initialization</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-load-data">Step 2 - Load Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-training-and-evaluation">Step 3 - Training and Evaluation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-parallel-training">Data Parallel Training</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline-parallel-training">Pipeline Parallel Training</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#known-deepspeed-constraints">Known DeepSpeed Constraints</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="usage-guide">
+<span id="deepspeed-api"></span><h1>Usage Guide<a class="headerlink" href="#usage-guide" title="Permalink to this heading">#</a></h1>
+<p>This usage guide introduces DeepSpeed and guides you through how to train a PyTorch model with the
+DeepSpeed engine. To implement <code class="xref py py-class docutils literal notranslate"><span class="pre">DeepSpeedTrial</span></code>, you need to
+overwrite specific functions corresponding to common training aspects. It is helpful to work from a
+skeleton trial to keep track of what is required, as the following example template shows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span>  <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">attrdict</span> <span class="kn">import</span> <span class="n">AttrDict</span>
+
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">deepspeed</span>
+
+<span class="kn">import</span> <span class="nn">determined.pytorch</span> <span class="kn">import</span> <span class="nn">DataLoader</span><span class="o">,</span> <span class="nn">TorchData</span>
+<span class="kn">from</span> <span class="nn">determined.pytorch.deepspeed</span> <span class="kn">import</span> <span class="n">DeepSpeedTrial</span><span class="p">,</span> <span class="n">DeepSpeedTrialContext</span>
+
+<span class="k">class</span> <span class="nc">MyTrial</span><span class="p">(</span><span class="n">DeepSpeedTrial</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">DeepSpeedTrialContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">context</span> <span class="o">=</span> <span class="n">context</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="n">AttrDict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">get_hparams</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="nf">build_training_data_loader</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataLoader</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">DataLoader</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">build_validation_data_loader</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataLoader</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">DataLoader</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">train_batch</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">dataloader_iter</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterator</span><span class="p">[</span><span class="n">TorchData</span><span class="p">]],</span>
+        <span class="n">epoch_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">batch_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
+        <span class="k">return</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">evaluate_batch</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">dataloader_iter</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterator</span><span class="p">[</span><span class="n">TorchData</span><span class="p">]],</span> <span class="n">batch_idx</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="p">{}</span>
+</pre></div>
+</div>
+<p>The DeepSpeed API organizes training routines into common steps like creating the data loaders and
+training and evaluating the model. The provided template shows the function signatures, including
+the expected return types, for these methods.</p>
+<p>Because DeepSpeed is built on top of PyTorch, there are many similarities between the API for
+<code class="xref py py-class docutils literal notranslate"><span class="pre">PyTorchTrial</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">DeepSpeedTrial</span></code>.
+The following steps show you how to implement each of the
+<code class="xref py py-class docutils literal notranslate"><span class="pre">DeepSpeedTrial</span></code> methods beginning with training objects
+initialization.</p>
+<section id="step-1-configure-and-initialize-training-objects">
+<h2>Step 1- Configure and Initialize Training Objects<a class="headerlink" href="#step-1-configure-and-initialize-training-objects" title="Permalink to this heading">#</a></h2>
+<p>DeepSpeed training initialization consists of two steps:</p>
+<ol class="arabic simple">
+<li><p>Initialize the distributed backend.</p></li>
+<li><p>Create the DeepSpeed model engine.</p></li>
+</ol>
+<p>Refer to the <a class="reference external" href="https://www.deepspeed.ai/getting-started/#writing-deepspeed-models/">DeepSpeed Getting Started guide</a> for more information.</p>
+<p>Outside of Determined, this is typically done in the following way:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">deepspeed</span><span class="o">.</span><span class="n">init_distributed</span><span class="p">(</span><span class="n">dist_backend</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">backend</span><span class="p">)</span>
+<span class="n">net</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">model_engine</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">lr_scheduler</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">deepspeed</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">,</span> <span class="n">net</span><span class="o">=</span><span class="n">net</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">DeepSpeedTrial</span></code> automatically initializes the distributed
+training backend so all you need to do is initialize the model engine and other training objects in
+the <code class="xref py py-class docutils literal notranslate"><span class="pre">DeepSpeedTrial</span></code>
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__()</span></code> method.</p>
+<section id="configuration">
+<h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h3>
+<p>DeepSpeed behavior during training is configured by passing arguments when initializing the model
+engine. This can be done in two ways:</p>
+<ul class="simple">
+<li><p>Using a configuration file specified as an argument with a field named <code class="docutils literal notranslate"><span class="pre">deepspeed_config</span></code>.</p></li>
+<li><p>Using a dictionary, which is passed in directly when initializing a model engine.</p></li>
+</ul>
+<p>Both approaches can be used in combination with the Determined experiment configuration. See the
+<a class="reference external" href="https://www.deepspeed.ai/docs/config-json/">DeepSpeed documentation</a> for more information on what
+can be specified in the configuration.</p>
+<p>If you want to use a DeepSpeed configuration file, the hyperparameters section can be used as
+arguments to pass to <code class="docutils literal notranslate"><span class="pre">deepspeed.initialize</span></code>. For example, if the DeepSpeed configuration file is
+named <code class="docutils literal notranslate"><span class="pre">ds_config.json</span></code>, the hyperparameter section of the Determined experiment configuration is:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">hyperparameters</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">deepspeed_config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ds_config.json</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</pre></div>
+</div>
+<p>If you want to overwrite some values in an existing DeepSpeed configuration file, use
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">overwrite_deepspeed_config()</span></code> and an experiment configuration
+similar to:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">hyperparameters</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">deepspeed_config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ds_config.json</span>
+<span class="w">  </span><span class="nt">overwrite_deepspeed_args</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">train_batch_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16</span>
+<span class="w">      </span><span class="nt">optimizer</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">params</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">lr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.005</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</pre></div>
+</div>
+<p>If you want to use a dictionary directly, specify a DeepSpeed configuration dictionary in the
+hyperparameters section:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">hyperparameters</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">optimizer</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Adam</span>
+<span class="w">    </span><span class="nt">params</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">betas</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.8</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.999</span>
+<span class="w">      </span><span class="nt">eps</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0e-08</span>
+<span class="w">      </span><span class="nt">lr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.001</span>
+<span class="w">      </span><span class="nt">weight_decay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0e-07</span>
+<span class="w">  </span><span class="nt">train_batch_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16</span>
+<span class="w">  </span><span class="nt">zero_optimization</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">    </span><span class="nt">allgather_bucket_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50000000</span>
+<span class="w">    </span><span class="nt">allgather_partitions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">contiguous_gradients</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">cpu_offload</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">overlap_comm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">reduce_bucket_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50000000</span>
+<span class="w">    </span><span class="nt">reduce_scatter</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+</section>
+<section id="initialization">
+<h3>Initialization<a class="headerlink" href="#initialization" title="Permalink to this heading">#</a></h3>
+<p>After configuration, you can initialize the model engine in the
+<code class="xref py py-class docutils literal notranslate"><span class="pre">DeepSpeedTrial</span></code>. The following example corresponds to the
+experiment configuration above, with a field in the <code class="docutils literal notranslate"><span class="pre">hyperparameters</span></code> section named
+<code class="docutils literal notranslate"><span class="pre">overwrite_deepspeed_args</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyTrial</span><span class="p">(</span><span class="n">DeepSpeedTrial</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">DeepSpeedTrialContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">context</span> <span class="o">=</span> <span class="n">context</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="n">AttrDict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">get_hparams</span><span class="p">())</span>
+
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Net</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">)</span>
+        <span class="n">ds_config</span> <span class="o">=</span> <span class="n">overwrite_deepspeed_config</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">deepspeed_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;overwrite_deepspeed_args&quot;</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="p">)</span>
+        <span class="n">parameters</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">p</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
+        <span class="n">model_engine</span><span class="p">,</span> <span class="n">__</span><span class="p">,</span> <span class="n">__</span><span class="p">,</span> <span class="n">__</span> <span class="o">=</span> <span class="n">deepspeed</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span>
+            <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">model_parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">ds_config</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">wrap_model_engine</span><span class="p">(</span><span class="n">model_engine</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>After the model engine is initialized, you need to register it with Determined by calling
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">wrap_model_engine()</span></code>. Differing from
+PyTorchTrial, you do not need to register the optimizer or learning rate scheduler with Determined
+because both are attributes of the model engine.</p>
+<p>If you want to use pipeline parallelism with a given model, pass layers of the model for
+partitioning to the DeepSpeed PipelineModule before creating the pipeline model engine:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">net</span> <span class="o">=</span> <span class="n">deepspeed</span><span class="o">.</span><span class="n">PipelineModule</span><span class="p">(</span>
+    <span class="n">layers</span><span class="o">=</span><span class="n">get_layers</span><span class="p">(</span><span class="n">net</span><span class="p">),</span>
+    <span class="n">loss_fn</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">(),</span>
+    <span class="n">num_stages</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">pipeline_parallel_size</span><span class="p">,</span>
+    <span class="o">...</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="step-2-load-data">
+<h2>Step 2 - Load Data<a class="headerlink" href="#step-2-load-data" title="Permalink to this heading">#</a></h2>
+<p>The next step is to build the data loader used for training and validation. The same process is used
+to download the data <a class="reference internal" href="../api-pytorch-ug.html#pytorch-downloading-data"><span class="std std-ref">for PyTorchTrial</span></a>. <a class="reference internal" href="../api-pytorch-ug.html#pytorch-data-loading"><span class="std std-ref">Building the data
+loaders</span></a> is also similar, except for the batch size specification for the
+returned data loaders, which differs because the DeepSpeed model engines automatically handle
+gradient aggregation.</p>
+<p>Automatic gradient aggregation in DeepSpeed is specified in <a class="reference external" href="https://www.deepspeed.ai/docs/config-json/#batch-size-related-parameters/">configuration fields</a>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">train_batch_size</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">train_micro_batch_size</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gradient_accumulation_steps</span></code></p></li>
+</ul>
+<p>which are related as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">train_batch_size</span> <span class="o">=</span> <span class="n">train_micro_batch_size</span> <span class="o">*</span> <span class="n">gradient_accumulation_steps</span> <span class="o">*</span> <span class="n">data_parallel_size</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">data_parallel_size</span></code> is the number of model replicas across all GPUs used during training.
+Therefore, a single train batch consists of multiple micro batches, specified by the
+<code class="docutils literal notranslate"><span class="pre">gradient_accumulation_steps</span></code> argument. Given a model parallelization scheme, you can specify two
+fields and the third can be inferred.</p>
+<p>The DeepSpeed model engines assume the model is processing micro batches and automatically handle
+stepping the optimizer and learning rate scheduler every <code class="docutils literal notranslate"><span class="pre">gradient_accumulation_steps</span></code> micro
+batches. This means that the <code class="docutils literal notranslate"><span class="pre">build_training_data_loader</span></code> should return batches of size
+<code class="docutils literal notranslate"><span class="pre">train_micro_batch_size_per_gpu</span></code>. In most cases, <code class="docutils literal notranslate"><span class="pre">build_validation_data_loader</span></code> also returns
+batches of size <code class="docutils literal notranslate"><span class="pre">train_micro_batch_size_per_gpu</span></code>.</p>
+<p>If you want exact epoch boundaries to be respected, the number of micro batches in the training data
+loader should be divisible by <code class="docutils literal notranslate"><span class="pre">gradient_accumulation_steps</span></code>.</p>
+<p>If you are using pipeline parallelism, the validation data loader needs to have at least
+<code class="docutils literal notranslate"><span class="pre">gradient_accumulation_steps</span></code> worth of batches.</p>
+</section>
+<section id="step-3-training-and-evaluation">
+<h2>Step 3 - Training and Evaluation<a class="headerlink" href="#step-3-training-and-evaluation" title="Permalink to this heading">#</a></h2>
+<p>This step covers the training and evaluation routine for the standard data parallel model engine and
+the pipeline parallel engine available in DeepSpeed.</p>
+<p>After you create the DeepSpeed model engine and data loaders, define the training and evaluation
+routines for the <code class="xref py py-class docutils literal notranslate"><span class="pre">DeepSpeedTrial</span></code>. Differing from
+<code class="xref py py-class docutils literal notranslate"><span class="pre">PyTorchTrial</span></code>,
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">train_batch()</span></code> and
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">evaluate_batch()</span></code> take an iterator over the
+corresponding data loader built from
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">build_training_data_loader()</span></code> and
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">build_validation_dataloader()</span></code> instead of a batch.</p>
+<section id="data-parallel-training">
+<h3>Data Parallel Training<a class="headerlink" href="#data-parallel-training" title="Permalink to this heading">#</a></h3>
+<p>For data parallel training, only, the training and evaluation routines are:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">train_batch</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">dataloader_iter</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterator</span><span class="p">[</span><span class="n">TorchData</span><span class="p">]],</span>
+    <span class="n">epoch_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">batch_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">to_device</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">dataloader_iter</span><span class="p">))</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_engine</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">model_engine</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">model_engine</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;loss&quot;</span><span class="p">:</span> <span class="n">loss</span><span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">evaluate_batch</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span> <span class="n">dataloader_iter</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterator</span><span class="p">[</span><span class="n">TorchData</span><span class="p">]],</span> <span class="n">batch_idx</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">to_device</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">dataloader_iter</span><span class="p">))</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_engine</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;loss&quot;</span><span class="p">:</span> <span class="n">loss</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>You need to manually get a batch from the iterator and move it to the GPU using the provided
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">to_device()</span></code> helper function, which knows
+the GPU assigned to a given distributed training process.</p>
+</section>
+<section id="pipeline-parallel-training">
+<h3>Pipeline Parallel Training<a class="headerlink" href="#pipeline-parallel-training" title="Permalink to this heading">#</a></h3>
+<p>When using pipeline parallelism, the forward and backward steps during training are combined into a
+single function call because DeepSpeed automatically interleaves multiple micro batches for
+processing in a single training step. In this case, there is no need to manually get a batch from
+the <code class="docutils literal notranslate"><span class="pre">dataloader_iter</span></code> iterator because the pipeline model engine requests it as needed while
+interleaving micro batches:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">train_batch</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">dataloader_iter</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterator</span><span class="p">[</span><span class="n">TorchData</span><span class="p">]],</span>
+    <span class="n">epoch_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">batch_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_engine</span><span class="o">.</span><span class="n">train_batch</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;loss&quot;</span><span class="p">:</span> <span class="n">loss</span><span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">evaluate_batch</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span> <span class="n">dataloader_iter</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterator</span><span class="p">[</span><span class="n">TorchData</span><span class="p">]],</span> <span class="n">batch_idx</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_engine</span><span class="o">.</span><span class="n">eval_batch</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;loss&quot;</span><span class="p">:</span> <span class="n">loss</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="known-deepspeed-constraints">
+<h2>Known DeepSpeed Constraints<a class="headerlink" href="#known-deepspeed-constraints" title="Permalink to this heading">#</a></h2>
+<p>Some DeepSpeed constraints are inherited concerning supported feature compatibility:</p>
+<ul class="simple">
+<li><p>Pipeline parallelism can only be combined with Zero Redundancy Optimizer (ZeRO) stage 1.</p></li>
+<li><p>Parameter offloading is only supported with ZeRO stage 3.</p></li>
+<li><p>Optimizer offloading is only supported with ZeRO stage 2 and 3.</p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="autotuning.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">DeepSpeed Autotune: User Guide</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="overview.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">DeepSpeed API</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> {your-title}
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-configure-and-initialize-training-objects">Step 1- Configure and Initialize Training Objects</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialization">Initialization</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-load-data">Step 2 - Load Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-training-and-evaluation">Step 3 - Training and Evaluation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-parallel-training">Data Parallel Training</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline-parallel-training">Pipeline Parallel Training</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#known-deepspeed-constraints">Known DeepSpeed Constraints</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By lb
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, lb.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

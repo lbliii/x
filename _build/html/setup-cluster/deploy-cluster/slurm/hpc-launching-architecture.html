@@ -1,0 +1,1116 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>HPC Launching Architecture &#8212; project-x 0.0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=362ab14a" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=dc820ae5"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'setup-cluster/deploy-cluster/slurm/hpc-launching-architecture';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="HPC Launcher Security Considerations" href="hpc-security-considerations.html" />
+    <link rel="prev" title="Installation Requirements" href="slurm-requirements.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">project-x 0.0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../index.html">
+                    Welcome to project-x’s documentation!
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../model-dev-guide/apis-howto/api-core-ug.html">Core API User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-dev-guide/apis-howto/api-estimator-ug.html">Estimator API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-dev-guide/apis-howto/api-keras-ug.html">Keras API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-dev-guide/apis-howto/api-pytorch-ug.html">PyTorch API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-dev-guide/apis-howto/deepspeed/advanced.html">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-dev-guide/apis-howto/deepspeed/autotuning.html">DeepSpeed Autotune: User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-dev-guide/apis-howto/deepspeed/deepspeed.html">Usage Guide</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../model-dev-guide/apis-howto/deepspeed/overview.html">DeepSpeed API</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-dev-guide/apis-howto/deepspeed/deepspeed.html">API Usage Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-dev-guide/apis-howto/deepspeed/autotuning.html">Autotuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-dev-guide/apis-howto/deepspeed/advanced.html">Advanced Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-dev-guide/apis-howto/deepspeed/pytorch2deepspeed.html"><code class="docutils literal notranslate"><span class="pre">PyTorchTrial</span></code> to <code class="docutils literal notranslate"><span class="pre">DeepSpeedTrial</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-dev-guide/apis-howto/deepspeed/pytorch2deepspeed.html"><code class="docutils literal notranslate"><span class="pre">PyTorchTrial</span></code> to <code class="docutils literal notranslate"><span class="pre">DeepSpeedTrial</span></code></a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../model-dev-guide/apis-howto/overview.html">Training APIs</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-dev-guide/apis-howto/api-core-ug.html">Core API User Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-dev-guide/apis-howto/api-pytorch-ug.html">PyTorch API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-dev-guide/apis-howto/api-keras-ug.html">Keras API</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../model-dev-guide/apis-howto/deepspeed/overview.html">DeepSpeed API</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-dev-guide/apis-howto/deepspeed/deepspeed.html">API Usage Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-dev-guide/apis-howto/deepspeed/autotuning.html">Autotuning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-dev-guide/apis-howto/deepspeed/advanced.html">Advanced Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-dev-guide/apis-howto/deepspeed/pytorch2deepspeed.html"><code class="docutils literal notranslate"><span class="pre">PyTorchTrial</span></code> to <code class="docutils literal notranslate"><span class="pre">DeepSpeedTrial</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-dev-guide/apis-howto/api-estimator-ug.html">Estimator API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-dev-guide/batch-processing/batch-process-api-ug.html">Torch Batch Processing API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-dev-guide/best-practices/overview.html">Best Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-dev-guide/debug-models.html">How to Debug Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-dev-guide/dtrain/config-templates.html">Configuration Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-dev-guide/dtrain/dtrain-implement.html">Implementing Distributed Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-dev-guide/dtrain/dtrain-introduction.html">Distributed Training Concepts</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../model-dev-guide/dtrain/index.html">Distributed Training with Determined</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-dev-guide/dtrain/dtrain-introduction.html">Distributed Training Concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-dev-guide/dtrain/dtrain-implement.html">Implementing Distributed Training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-dev-guide/dtrain/config-templates.html">Configuration Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-dev-guide/dtrain/reproducibility.html">Reproducibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-dev-guide/dtrain/optimize-training.html">Optimizing Training</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-dev-guide/dtrain/optimize-training.html">Optimizing Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-dev-guide/dtrain/reproducibility.html">Reproducibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-dev-guide/hyperparameter/configure-hp-ranges.html">Configure Hyperparameter Ranges</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-dev-guide/hyperparameter/handle-trial-errors.html">Handle Trial Errors and Early Stopping Requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-dev-guide/hyperparameter/hp-constraints-det.html">Hyperparameter Search Constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-dev-guide/hyperparameter/instrument-model-code.html">Instrument Model Code</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../model-dev-guide/hyperparameter/overview.html">Hyperparameter Tuning</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-dev-guide/hyperparameter/configure-hp-ranges.html">Configure Hyperparameter Ranges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-dev-guide/hyperparameter/hp-constraints-det.html">Hyperparameter Search Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-dev-guide/hyperparameter/instrument-model-code.html">Instrument Model Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-dev-guide/hyperparameter/handle-trial-errors.html">Handle Trial Errors and Early Stopping Requests</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../model-dev-guide/hyperparameter/search-methods/overview.html">Search Methods</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-dev-guide/hyperparameter/search-methods/hp-adaptive-asha.html">Adaptive (Asynchronous) Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-dev-guide/hyperparameter/search-methods/hp-grid.html">Grid Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-dev-guide/hyperparameter/search-methods/hp-random.html">Random Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-dev-guide/hyperparameter/search-methods/hp-single.html">Single Search Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-dev-guide/hyperparameter/search-methods/hp-custom.html">Custom Search Methods</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-dev-guide/hyperparameter/search-methods/hp-adaptive-asha.html">Adaptive (Asynchronous) Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-dev-guide/hyperparameter/search-methods/hp-custom.html">Custom Search Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-dev-guide/hyperparameter/search-methods/hp-grid.html">Grid Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-dev-guide/hyperparameter/search-methods/hp-random.html">Random Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-dev-guide/hyperparameter/search-methods/hp-single.html">Single Search Method</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../model-dev-guide/hyperparameter/search-methods/overview.html">Search Methods</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-dev-guide/hyperparameter/search-methods/hp-adaptive-asha.html">Adaptive (Asynchronous) Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-dev-guide/hyperparameter/search-methods/hp-grid.html">Grid Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-dev-guide/hyperparameter/search-methods/hp-random.html">Random Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-dev-guide/hyperparameter/search-methods/hp-single.html">Single Search Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-dev-guide/hyperparameter/search-methods/hp-custom.html">Custom Search Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-dev-guide/index.html">Model Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-dev-guide/load-model-data.html">Prepare Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-dev-guide/model-management/checkpoints.html">Checkpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-dev-guide/model-management/model-registry-org.html">Organize Models in the Model Registry</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../model-dev-guide/model-management/overview.html">Model Management</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-dev-guide/model-management/checkpoints.html">Checkpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-dev-guide/model-management/model-registry-org.html">Organize Models in the Model Registry</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-dev-guide/prepare-container/custom-env.html">Customizing Your Environment</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../model-dev-guide/prepare-container/overview.html">Prepare Your Container Environment</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-dev-guide/prepare-container/set-environment-images.html">Set Environment Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-dev-guide/prepare-container/custom-env.html">Customizing Your Environment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-dev-guide/prepare-container/set-environment-images.html">Set Environment Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-dev-guide/submit-experiment.html">Submit Experiment</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../model-hub-library/index.html">Model Hub Library</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../model-hub-library/transformers/overview.html">Huggingface Trainsformers</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-hub-library/transformers/tutorial.html">Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-hub-library/transformers/examples.html">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-hub-library/mmdetection/overview.html">MMDetection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-hub-library/mmdetection/overview.html">MMDetection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-hub-library/transformers/examples.html">Examples</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../model-hub-library/transformers/overview.html">Transformers</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-hub-library/transformers/tutorial.html">Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-hub-library/transformers/examples.html">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model-hub-library/transformers/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basic.html">Basic Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/aws-spot.html">Use Spot Instances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/dynamic-agents-aws.html">Deploy Determined with Dynamic Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aws/install-on-aws.html">Install Determined</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../aws/overview.html">Deploy on AWS</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../aws/install-on-aws.html">Install Determined</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../aws/dynamic-agents-aws.html">Deploy Determined with Dynamic Agents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../aws/aws-spot.html">Use Spot Instances</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gcp/dynamic-agents-gcp.html">Deploy Determined with Dynamic Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gcp/install-gcp.html">Install Determined</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../gcp/overview.html">Deploy on GCP</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../gcp/install-gcp.html">Install Determined</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gcp/dynamic-agents-gcp.html">Deploy Determined with Dynamic Agents</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Set Up Determined</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../on-prem/overview.html">Deploy on Prem</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../on-prem/requirements.html">Installation Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../on-prem/docker.html">Install Determined Using Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../on-prem/deploy.html">Install Determined Using <code class="docutils literal notranslate"><span class="pre">det</span> <span class="pre">deploy</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../on-prem/linux-packages.html">Install Determined Using Linux Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../on-prem/homebrew.html">Install Determined Using Homebrew (macOS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../on-prem/wsl.html">Install Determined Using Windows Subsystem for Linux (Windows)</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../aws/overview.html">Deploy on AWS</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../aws/install-on-aws.html">Install Determined</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../aws/dynamic-agents-aws.html">Deploy Determined with Dynamic Agents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../aws/aws-spot.html">Use Spot Instances</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../gcp/overview.html">Deploy on GCP</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../gcp/install-gcp.html">Install Determined</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gcp/dynamic-agents-gcp.html">Deploy Determined with Dynamic Agents</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../k8s/overview.html">Deploy on Kubernetes</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../k8s/install-on-kubernetes.html">Install Determined on Kubernetes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../k8s/setup-aks-cluster.html">Set up and Manage an Azure Kubernetes Service (AKS) Cluster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../k8s/setup-eks-cluster.html">Set up and Manage an AWS Kubernetes (EKS) Cluster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../k8s/setup-gke-cluster.html">Set up and Manage a Google Kubernetes Engine (GKE) Cluster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../k8s/k8s-dev-guide.html">Development Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../k8s/custom-pod-specs.html">Customize a Pod</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../k8s/helm-commands.html">Helm and Kubectl Command Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../k8s/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="overview.html">Deploy on Slurm/PBS</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="slurm-requirements.html">Installation Requirements</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">HPC Launching Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hpc-security-considerations.html">HPC Launcher Security Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install-on-slurm.html">Install Determined on Slurm/PBS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="singularity.html">Provide a Container Image Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slurm-known-issues.html">Known Issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../k8s/custom-pod-specs.html">Customize a Pod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../k8s/helm-commands.html">Helm and Kubectl Command Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../k8s/install-on-kubernetes.html">Install Determined on Kubernetes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../k8s/k8s-dev-guide.html">Development Guide</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../k8s/overview.html">Deploy on Kubernetes</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../k8s/install-on-kubernetes.html">Install Determined on Kubernetes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../k8s/setup-aks-cluster.html">Set up and Manage an Azure Kubernetes Service (AKS) Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../k8s/setup-eks-cluster.html">Set up and Manage an AWS Kubernetes (EKS) Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../k8s/setup-gke-cluster.html">Set up and Manage a Google Kubernetes Engine (GKE) Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../k8s/k8s-dev-guide.html">Development Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../k8s/custom-pod-specs.html">Customize a Pod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../k8s/helm-commands.html">Helm and Kubectl Command Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../k8s/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../k8s/setup-aks-cluster.html">Set up and Manage an Azure Kubernetes Service (AKS) Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../k8s/setup-eks-cluster.html">Set up and Manage an AWS Kubernetes (EKS) Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../k8s/setup-gke-cluster.html">Set up and Manage a Google Kubernetes Engine (GKE) Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../k8s/troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../on-prem/deploy.html">Install Determined Using <code class="docutils literal notranslate"><span class="pre">det</span> <span class="pre">deploy</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../on-prem/docker.html">Install Determined Using Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../on-prem/homebrew.html">Install Determined Using Homebrew (macOS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../on-prem/linux-packages.html">Install Determined Using Linux Packages</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../on-prem/overview.html">Deploy on Prem</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../on-prem/requirements.html">Installation Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../on-prem/docker.html">Install Determined Using Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../on-prem/deploy.html">Install Determined Using <code class="docutils literal notranslate"><span class="pre">det</span> <span class="pre">deploy</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../on-prem/linux-packages.html">Install Determined Using Linux Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../on-prem/homebrew.html">Install Determined Using Homebrew (macOS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../on-prem/wsl.html">Install Determined Using Windows Subsystem for Linux (Windows)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../on-prem/requirements.html">Installation Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../on-prem/wsl.html">Install Determined Using Windows Subsystem for Linux (Windows)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">HPC Launching Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hpc-security-considerations.html">HPC Launcher Security Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install-on-slurm.html">Install Determined on Slurm/PBS</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="overview.html">Deploy on Slurm/PBS</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="slurm-requirements.html">Installation Requirements</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">HPC Launching Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpc-security-considerations.html">HPC Launcher Security Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install-on-slurm.html">Install Determined on Slurm/PBS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singularity.html">Provide a Container Image Cache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slurm-known-issues.html">Known Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="singularity.html">Provide a Container Image Cache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slurm-known-issues.html">Known Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slurm-requirements.html">Installation Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../elasticsearch-logging-backend.html">Elasticsearch-backed logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../historical-cluster-usage-data.html">Historical Cluster Usage Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security/oauth.html">OAuth 2.0 Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security/oidc.html">OpenID Connect Integration</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../security/overview.html">Security</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-24"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../security/oauth.html">OAuth 2.0 Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../security/tls.html">Transport Layer Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../security/oidc.html">OpenID Connect Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../security/saml.html">SAML Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../security/scim.html">SCIM Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../security/rbac.html">RBAC</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../security/rbac.html">RBAC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security/saml.html">SAML Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security/scim.html">SCIM Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security/tls.html">Transport Layer Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../upgrade.html">Upgrade</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../users.html">User Accounts</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../workspaces.html">Workspaces and Projects</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../workspaces-rpools.html">Binding Resource Pools to Workspaces</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../workspaces-rpools.html">Binding Resource Pools to Workspaces</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../tutorials/index.html">Tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/pytorch-mnist-local-qs.html">Run Your First Experiment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/pytorch-mnist-tutorial.html">PyTorch MNIST Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/pytorch-porting-tutorial.html">PyTorch Porting Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/tf-mnist-tutorial.html">TensorFlow Keras Fashion MNIST Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/pytorch-mnist-local-qs.html">Run Your First Experiment in Determined</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/pytorch-mnist-tutorial.html">PyTorch MNIST Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/pytorch-porting-tutorial.html">PyTorch Porting Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/quickstart-mdldev.html">Quickstart for Model Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/tf-mnist-tutorial.html">TensorFlow Keras Fashion MNIST Tutorial</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/setup-cluster/deploy-cluster/slurm/hpc-launching-architecture.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>HPC Launching Architecture</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> {your-title} </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hpc-launcher">HPC Launcher</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hpc-launcher-feature-summary">HPC Launcher Feature Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#job-management-overview">Job Management Overview</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#job-resource-scheduling">Job Resource Scheduling</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster-configuration">Cluster Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#experiment-configuration">Experiment Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slurm-scheduling">Slurm Scheduling</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#common-slurm-options">Common Slurm Options</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#slurm-resource-calculations">Slurm Resource Calculations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#slurm-task-distribution">Slurm Task Distribution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pbs-scheduling">PBS Scheduling</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#common-pbs-options">Common PBS Options</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pbs-resource-calculations">PBS Resource Calculations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pbs-task-distribution">PBS Task Distribution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="hpc-launching-architecture">
+<span id="id1"></span><h1>HPC Launching Architecture<a class="headerlink" href="#hpc-launching-architecture" title="Permalink to this heading">#</a></h1>
+<p>When configured to perform training on an HPC cluster (cluster configuration
+<span class="xref std std-ref">resource_manager.type: slurm/pbs</span>), Determined delegates all job
+scheduling and prioritization to the HPC workload manager (either Slurm or PBS) and does not utilize
+any Determined agents. Instead, Determined interfaces with the workload managers through the
+Determined HPC launcher component.</p>
+<img alt="Diagram showing how Determined interfaces with the workload managers" src="../../../_images/hpc-launching-arch-diagram.png" />
+<section id="hpc-launcher">
+<h2>HPC Launcher<a class="headerlink" href="#hpc-launcher" title="Permalink to this heading">#</a></h2>
+<p>The launcher is a passive server component that translates and forwards Determined master requests
+<img alt="co1" src="../../../_images/callout-1.png" /> to an HPC cluster with a Slurm or PBS workload manager. While it is generally co-located with
+the Determined master and hosted on an HPC cluster login or admin node, that is not a hard
+requirement. The launcher interacts with the HPC cluster solely via the Slurm/PBS command line
+interface <img alt="co2" src="../../../_images/callout-2.png" /> and by generated batch scripts <img alt="co3" src="../../../_images/callout-3.png" /> and jobs logs on the shared file system.
+Therefore, it can be hosted on any system that meets these requirements.</p>
+<section id="hpc-launcher-feature-summary">
+<h3>HPC Launcher Feature Summary<a class="headerlink" href="#hpc-launcher-feature-summary" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Secure, private internal REST interface for use by Determined master.</p>
+<ul>
+<li><p>High-level abstraction to enable Determined to manage Slurm/PBS jobs.</p></li>
+<li><p>Generates the batch script and ancillary files to enable job submission (<code class="docutils literal notranslate"><span class="pre">sbatch</span></code>,
+<code class="docutils literal notranslate"><span class="pre">qsub</span></code>).</p></li>
+<li><p>User impersonation via a setuid program to enable the configured Determined user agent to
+submit jobs to the cluster. Existing OS and workload manager permissions and resource
+enforcement are maintained. Launcher need not be configured to run as the root user.</p></li>
+<li><p>Job submission and launch failure logs.</p></li>
+<li><p>On-demand job status query (<code class="docutils literal notranslate"><span class="pre">sinfo</span></code>, <code class="docutils literal notranslate"><span class="pre">squery</span></code>, <code class="docutils literal notranslate"><span class="pre">pbsnodes</span></code>, <code class="docutils literal notranslate"><span class="pre">qstat</span></code>).</p></li>
+<li><p>Job cancellation (<code class="docutils literal notranslate"><span class="pre">scancel</span></code>, <code class="docutils literal notranslate"><span class="pre">qdel</span></code>).</p></li>
+</ul>
+</li>
+<li><p>Support for various workload managers (Slurm/PBS) and container runtimes
+(Apptainer/Singularity/Podman/Enroot).</p></li>
+<li><p>Image caching model for Apptainer/Singularity.</p></li>
+<li><p>Minimal state stored solely on the file system.</p></li>
+</ul>
+</section>
+<section id="job-management-overview">
+<h3>Job Management Overview<a class="headerlink" href="#job-management-overview" title="Permalink to this heading">#</a></h3>
+<p>Temporary files (generated batch files, model Python code, <code class="docutils literal notranslate"><span class="pre">startup-hook.sh</span></code>, etc.), per-rank
+local directories in each container (<code class="docutils literal notranslate"><span class="pre">/tmp</span></code>, <code class="docutils literal notranslate"><span class="pre">/run/determined/workdir</span></code>, etc.), and job log files
+are all stored under the cluster-wide directory specified via <code class="docutils literal notranslate"><span class="pre">resource_manager.job_storage_root</span></code>.
+The lifetime of these files is limited to that of the submitted job, and are removed when job
+failure or completion is detected by Determined.</p>
+<ol class="arabic simple">
+<li><p>Determined submits a job to the launcher.</p></li>
+<li><p>A directory tree is created by the launcher for the job.</p></li>
+<li><p>Files provided by Determined are staged.</p></li>
+<li><p>A batch script is generated to describe the required resource request (see Job Resource
+Scheduling) from the workload manager and context (environment variables, and container launch
+commands).</p></li>
+<li><p>The ownership of the files is transferred to the launching user (<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">chown</span></code>).</p></li>
+<li><p>The batch script is submitted for execution on behalf of the user (<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">sbatch</span></code>, <code class="docutils literal notranslate"><span class="pre">sudo</span>
+<span class="pre">qsub</span></code>). See <a class="reference internal" href="hpc-security-considerations.html#hpc-security-considerations"><span class="std std-ref">HPC Launcher Security Considerations</span></a> for the details of how <code class="docutils literal notranslate"><span class="pre">sudo</span></code> is configured and
+used with the launcher.</p></li>
+<li><dl class="simple">
+<dt>Upon being scheduled by the workload manager, the batch script is executed and tasks are launched on the allocated compute nodes.</dt><dd><ol class="arabic simple">
+<li><p>One Determined environment image is started per node (<code class="docutils literal notranslate"><span class="pre">srun</span></code>, <code class="docutils literal notranslate"><span class="pre">pbs_tmrsh</span></code>) using the
+specified container runtime (Apptainer, Singularity, Podman, Enroot).</p></li>
+<li><p>During container initialization, per-rank local directories are configured using soft links
+(<code class="docutils literal notranslate"><span class="pre">/tmp</span></code>, <code class="docutils literal notranslate"><span class="pre">/run/determined</span></code>), and the container stdout/stderr starts streaming output
+directly to the Determined master.</p></li>
+<li><p>For distributed training, horovodrun is invoked within the container to distribute work
+within multiple processes across the containers.</p></li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><p>Once started, the job ID from the workload manager is displayed in the experiment log.</p></li>
+<li><p>Determined polls the launcher for job status waiting for completion.</p></li>
+<li><p>Determined sends a request to the launcher to clean up the job. File ownership is transferred
+back to the launcher (<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">chown</span></code>) which then deletes all temporary files and logs associated
+with the job.</p></li>
+</ol>
+</section>
+</section>
+<section id="job-resource-scheduling">
+<h2>Job Resource Scheduling<a class="headerlink" href="#job-resource-scheduling" title="Permalink to this heading">#</a></h2>
+<p>As mentioned previously, when using the HPC launcher, Determined delegates all job scheduling and
+prioritization to the HPC workload manager (Slurm/PBS). Resource requests are generated into the
+submitted batch file derived from the following configuration attributes described in the following
+sections.</p>
+<section id="cluster-configuration">
+<h3>Cluster Configuration<a class="headerlink" href="#cluster-configuration" title="Permalink to this heading">#</a></h3>
+<p>The <span class="xref std std-ref">resource_manager</span> section of the cluster configuration
+contributes the following resource scheduling configuration. See the <span class="xref std std-ref">slurm/pbs section</span> of the cluster configuration reference for the full list of
+configuration options.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">slot_type</span></code>: The default slot type (<code class="docutils literal notranslate"><span class="pre">cuda</span></code>, <code class="docutils literal notranslate"><span class="pre">rocm</span></code>, <code class="docutils literal notranslate"><span class="pre">cpu</span></code>) when users request resources
+from Determined in terms of <code class="docutils literal notranslate"><span class="pre">slots_per_trial</span></code>. May be overridden per partition/resource pool.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tres_supported</span></code>: Indicates if <code class="docutils literal notranslate"><span class="pre">SelectType=select/cons_tres</span></code> is set in the Slurm
+configuration.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gres_supported</span></code>:</p>
+<ul>
+<li><p>For Slurm, it indicates that <code class="docutils literal notranslate"><span class="pre">GresTypes=gpu</span></code> is set in the Slurm configuration, and nodes
+with GPUs have properly configured GRES indicating the presence of any GPUs. T</p></li>
+<li><p>For PBS, the ngpus resource can be used to identify the number of GPUs available on a node.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">default_aux_resource_pool</span></code>: The default resource pool to use for tasks that do not need
+dedicated compute resources, auxiliary, or systems tasks. Defaults to the Slurm/PBS default
+partition if no resource pool is specified.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">default_compute_resource_pool</span></code>: The default resource pool to use for tasks that require
+compute resources, e.g. GPUs or dedicated CPUs. Defaults to the Slurm/PBS default partition if it
+has GPU resources and if no resource pool is specified.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">job_project_source</span></code>: Identifies the source to be used when generating a Slurm Workload
+Characterization Key (WCKey), or PBS project name.</p></li>
+</ul>
+</section>
+<section id="experiment-configuration">
+<h3>Experiment Configuration<a class="headerlink" href="#experiment-configuration" title="Permalink to this heading">#</a></h3>
+<p>The experiment contributes the following resource scheduling configuration. See the
+<span class="xref std std-ref">experiment-config-reference</span> for the full details for these configuration options.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">resource_pool</span></code>: Identifies the queue/partition to be used.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">slots_per_trial</span></code>: The number of slots to use for each trial of this experiment.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">slurm</span></code>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">sbatch_args</span></code>: Array of Slurm options added as <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code> options in the generated batch
+script.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">slots_per_node</span></code>: The minimum number of slots required for a node to be scheduled during a
+trial.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gpu_type</span></code>: The Slurm gres type of the GPU to be injected into any generated
+<code class="docutils literal notranslate"><span class="pre">--gpus</span></code>/<code class="docutils literal notranslate"><span class="pre">–gres</span></code> expressions. By default, no type is specified.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pbs</span></code>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pbsbatch_args</span></code>: Array of PBS options added as <code class="docutils literal notranslate"><span class="pre">#PBS</span></code> options in the generated batch
+script.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">slots_per_node</span></code>: The minimum number of slots required for a node to be scheduled during a
+trial.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="slurm-scheduling">
+<h3>Slurm Scheduling<a class="headerlink" href="#slurm-scheduling" title="Permalink to this heading">#</a></h3>
+<p>All information is passed to Slurm through options in the generated sbatch file. You may identify
+the location of the generated sbatch file and logs using the Slurm command scontrol show job, and
+then inspect the content any time prior to job completion. These temporary files are removed upon
+job termination. On job startup failures a portion of the error log is added to the experiment log
+to assist in diagnosing the problem.</p>
+<section id="common-slurm-options">
+<h4>Common Slurm Options<a class="headerlink" href="#common-slurm-options" title="Permalink to this heading">#</a></h4>
+<p>The following options are generated by Determined and cannot be directly specified by the user.
+Additional options specified by <code class="docutils literal notranslate"><span class="pre">slurm.sbatch_args</span></code> will be added to the generated batch file
+provided that they do not conflict with Determined-controlled settings.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--error</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">--output</span></code></p>
+</td>
+<td><p>Captures error/output logs. On job startup failure, a portion of the error log is added
+to the experiment log to assist in diagnosing the problem. During normal operation, logs
+are piped directly to the Determined master and these files are not used.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--job-name</span></code></p></td>
+<td><p>Generated job name of the form <code class="docutils literal notranslate"><span class="pre">det-ai_</span></code> followed by the Determined job type (<code class="docutils literal notranslate"><span class="pre">exp</span></code>,
+<code class="docutils literal notranslate"><span class="pre">cmd</span></code>, <code class="docutils literal notranslate"><span class="pre">gc</span></code>) then an internal HPC launcher unique job id.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--partition</span></code></p></td>
+<td><p>Partition name as determined by the selected resource pool.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--wckey</span></code></p></td>
+<td><p>A value identified by the <code class="docutils literal notranslate"><span class="pre">resource_manager.job_project_source</span></code> configuration.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--no-requeue</span></code></p></td>
+<td><p>Disable any potential automatic requeue of the job by SLURM. Determined will handle the
+checkpoint and restart for its experiments.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="slurm-resource-calculations">
+<h4>Slurm Resource Calculations<a class="headerlink" href="#slurm-resource-calculations" title="Permalink to this heading">#</a></h4>
+<p>Resource requirements for Slurm jobs submitted by Determined are generated according to the table
+below. You can specify a <code class="docutils literal notranslate"><span class="pre">--gres</span></code> expression via <code class="docutils literal notranslate"><span class="pre">slurm.sbatch_args</span></code> as long as it does not
+reference a GPU resource. All other <code class="docutils literal notranslate"><span class="pre">--gres</span></code> options from the <code class="docutils literal notranslate"><span class="pre">slurm.sbatch_args</span></code> will be
+generated into the generated batch script.</p>
+<table class="table" style="width: 1000px">
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 39%" />
+<col style="width: 44%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Slot
+Type</p></th>
+<th class="head"><p>Tres <a class="footnote-reference brackets" href="#tres" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></th>
+<th class="head"><p>Gres <a class="footnote-reference brackets" href="#gres" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p></th>
+<th class="head"><p>Resulting Slurm Options</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cuda</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">rocm</span></code></p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--gpus=</span></code> [<em>gpu_type</em>:] <em>slots_per_trial</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">--nodes=</span></code> 1 - <em>slots_per_trial</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">--tasks-per-node=</span></code> 1</p>
+<p><code class="docutils literal notranslate"><span class="pre">--gpus-per-task=</span></code> [<em>gpu_type</em>:] <em>slots_per_node</em></p>
+</td>
+<td><p>Slurm determines the number of nodes necessary to
+allocate the requested GPUs. One container is started
+per node. Multiple GPUs will be allocated per node
+when available. If <code class="docutils literal notranslate"><span class="pre">slots_per_node</span></code> is specified, it is
+added as <code class="docutils literal notranslate"><span class="pre">--gpus_per_task</span></code> to ensure each node
+has at least the specified number of GPUs.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cuda</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">rocm</span></code></p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--nodes=</span></code> <em>slots_per_trial</em>/<em>slots_per_node</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">--ntasks=</span></code> <em>slots_per_trial</em>/<em>slots_per_node</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">--gres=gpu</span></code> [:<em>gpu_type</em>]:<em>slots_per_node</em></p>
+</td>
+<td><p>Allocates the
+calculated <code class="docutils literal notranslate"><span class="pre">slots_per_trial</span></code> / <code class="docutils literal notranslate"><span class="pre">slots_per_node</span></code> nodes,
+and <code class="docutils literal notranslate"><span class="pre">slots_per_node</span></code> GPUs per node and starts one
+container per node.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cpu</span></code></p></td>
+<td><p><em>n/a</em></p></td>
+<td><p><em>n/a</em></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--nodes=</span></code> <em>slots_per_trial</em>/<em>slots_per_node</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">--ntasks=</span></code> <em>slots_per_trial</em>/<em>slots_per_node</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">--cpus-per-task=</span></code> <em>slots_per_node</em></p>
+</td>
+<td><p>Allocates the calculated
+<code class="docutils literal notranslate"><span class="pre">slots_per_trial</span></code> / <code class="docutils literal notranslate"><span class="pre">slots_per_node</span></code> nodes,
+and <code class="docutils literal notranslate"><span class="pre">slots_per_node</span></code> CPUs per node and starts one
+container per node. If specified, <code class="docutils literal notranslate"><span class="pre">slots_per_node</span></code> is
+add as <code class="docutils literal notranslate"><span class="pre">--cpus_per_task</span></code> to ensure we get nodes
+with the desired number of CPUs per node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cuda</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">rocm</span></code></p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--nodes=</span></code> <em>slots_per_trial</em>/<em>slots_per_node</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">--ntasks=</span></code> <em>slots_per_trial</em>/<em>slots_per_node</em></p>
+</td>
+<td><p>Allocates the calculated
+<code class="docutils literal notranslate"><span class="pre">slots_per_trial</span></code> / <code class="docutils literal notranslate"><span class="pre">slots_per_node</span></code> nodes,
+and <code class="docutils literal notranslate"><span class="pre">slots_per_node</span></code> GPUs per node and starts one
+container per node. It is the user’s responsibility to
+ensure that <code class="docutils literal notranslate"><span class="pre">slots_per_node</span></code> GPUs will be available on
+the nodes selected for the job using other
+configurations such as targeting a specific resource
+pool with only <code class="docutils literal notranslate"><span class="pre">slots_per_node</span></code> GPU nodes or
+specifying a Slurm constraint in the experiment
+configuration.</p></td>
+</tr>
+</tbody>
+</table>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="tres" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>The <code class="docutils literal notranslate"><span class="pre">tres_supported</span></code> option of the cluster configuration <span class="xref std std-ref">resource_manager.type: slurm</span>.</p>
+</aside>
+<aside class="footnote brackets" id="gres" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
+<p>The <code class="docutils literal notranslate"><span class="pre">gres_supported</span></code> option of the cluster configuration <span class="xref std std-ref">resource_manager.type: slurm</span>.</p>
+</aside>
+</aside>
+</section>
+<section id="slurm-task-distribution">
+<h4>Slurm Task Distribution<a class="headerlink" href="#slurm-task-distribution" title="Permalink to this heading">#</a></h4>
+<p>Distribution of tasks among the nodes allocated by Slurm is accomplished using the Slurm <code class="docutils literal notranslate"><span class="pre">srun</span></code>
+command within the generated sbatch file (no special options are required). Environment variables
+from the experiment configuration and all variables needed by Determined are exported from the
+generated sbatch file. For those container platforms that do not inherit environment variables by
+default, each variable is explicitly passed to the container via command line arguments.</p>
+</section>
+</section>
+<section id="pbs-scheduling">
+<h3>PBS Scheduling<a class="headerlink" href="#pbs-scheduling" title="Permalink to this heading">#</a></h3>
+<p>All information is passed to PBS through options in the generated PBS batch file. You may identify
+the location of the generated PBS batch file and logs using the command <code class="docutils literal notranslate"><span class="pre">qstat</span> <span class="pre">-f</span></code>, and then
+inspect the content any time prior to job completion. These temporary files are removed upon job
+termination. On job startup failure, a portion of the error log is added to the experiment log to
+assist in diagnosing the problem.</p>
+<section id="common-pbs-options">
+<h4>Common PBS Options<a class="headerlink" href="#common-pbs-options" title="Permalink to this heading">#</a></h4>
+<p>The following options are generated by Determined and cannot be directly specified by the user.
+Additional options specified by <code class="docutils literal notranslate"><span class="pre">pbs.pbsbatch_args</span></code> will be added to the generated batch file
+provided that they do not conflict with Determined-controlled settings.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">-N</span></code></p></td>
+<td><p>Generated job name of the form <code class="docutils literal notranslate"><span class="pre">det-ai_</span></code> followed by the Determined job type
+(<code class="docutils literal notranslate"><span class="pre">exp_#_trial</span></code>, <code class="docutils literal notranslate"><span class="pre">cmd</span></code>, or <code class="docutils literal notranslate"><span class="pre">gc</span></code>) then an internal HPC launcher unique job
+identifier. Example: <code class="docutils literal notranslate"><span class="pre">det-ai_exp-2-trial-2-f53889084a0b4510-b19cc33ba8a50203</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">-q</span></code></p></td>
+<td><p>Queue name as determined by the selected resource pool.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">-e</span></code> <code class="docutils literal notranslate"><span class="pre">-o</span></code></p></td>
+<td><p>Captures error/output logs. On job startup failures a portion of the error log is added
+to the experiment log to assist in diagnosing the problem. During normal operation, logs
+are piped directly to the Determined master and these files are not used.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--V</span></code></p></td>
+<td><p>Inherit environment variables.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">-r</span> <span class="pre">n</span></code></p></td>
+<td><p>No automatic restart of the job. Allow Determined to handle restarts.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">-W</span> <span class="pre">umask=0022</span></code></p></td>
+<td><p>Allows the HPC launcher to read the error/output logs.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">-P</span></code></p></td>
+<td><p>A value identified by the <code class="docutils literal notranslate"><span class="pre">resource_manager.job_project_source</span></code> configuration.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="pbs-resource-calculations">
+<h4>PBS Resource Calculations<a class="headerlink" href="#pbs-resource-calculations" title="Permalink to this heading">#</a></h4>
+<p>Resource requirements for PBS jobs submitted by Determined are generated according to the table
+below. You can specify a <code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">select</span></code> expression via <code class="docutils literal notranslate"><span class="pre">pbs.pbsbatch_args</span></code>, however chunk count,
+chunk arrangement, and GPU or CPU counts per chunk (depending on the value of <code class="docutils literal notranslate"><span class="pre">slot_type</span></code>) are
+controlled by Determined; any values specified for these quantities will be ignored. All other
+resource requests from the <code class="docutils literal notranslate"><span class="pre">pbs.pbsbatch_args</span></code> will be appended to the select expression generated
+into the generated batch script.</p>
+<table class="table">
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 56%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Slot
+Type</p></th>
+<th class="head"><p>Gres <a class="footnote-reference brackets" href="#pgres" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p></th>
+<th class="head"><p>Resulting PBS Options</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cuda</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">rocm</span></code></p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><dl>
+<dt><code class="docutils literal notranslate"><span class="pre">#PBS</span> <span class="pre">-l</span> <span class="pre">select=</span></code></dt><dd><p><em>slots_per_trial</em> / <em>slots_per_node</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">:ngpus=</span></code> <em>slots_per_node</em></p>
+</dd>
+</dl>
+</td>
+<td><p>The calculated <code class="docutils literal notranslate"><span class="pre">slots_per_trial</span></code>/<code class="docutils literal notranslate"><span class="pre">slots_per_node</span></code> GPUs are allocated,
+One container is started per node (manually implemented via the generated
+PBS batch script). Multiple nodes are used when needed.
+If <code class="docutils literal notranslate"><span class="pre">slots_per_node</span></code> is not specified, 1 is used in the calculation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cuda</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">rocm</span></code></p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">#PBS</span> <span class="pre">-l</span> <span class="pre">select=</span></code></dt><dd><p><em>slots_per_trial</em> / <em>slots_per_node</em></p>
+</dd>
+</dl>
+</td>
+<td><p>The calculated <code class="docutils literal notranslate"><span class="pre">slots_per_trial</span></code>/<code class="docutils literal notranslate"><span class="pre">slots_per_node</span></code> GPUs are allocated.
+It is the user’s responsibility to ensure that``slots_per_node`` GPUs
+will be available on nodes selected for the job using other configurations
+such as targeting a specific resource pool with only
+<code class="docutils literal notranslate"><span class="pre">slots_per_node</span></code> GPU nodes, or specifying a PBS
+PBS resource request in the experiment configuration.</p>
+<p>It is up to the user to set the <code class="docutils literal notranslate"><span class="pre">CUDA_VISIBLE_DEVICES</span></code> environment
+variable in their experiment.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cpu</span></code></p></td>
+<td><p><em>n/a</em></p></td>
+<td><dl>
+<dt><code class="docutils literal notranslate"><span class="pre">#PBS</span> <span class="pre">-l</span> <span class="pre">select=</span></code></dt><dd><p><em>slots_per_trial</em> /  <em>slots_per_node</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">:ncpus=</span></code> <em>slots_per_node</em></p>
+</dd>
+</dl>
+</td>
+<td><p>Allocates the calculated <code class="docutils literal notranslate"><span class="pre">slots_per_trial</span></code>/<code class="docutils literal notranslate"><span class="pre">slots_per_node</span></code> nodes,
+and <code class="docutils literal notranslate"><span class="pre">slots_per_node</span></code> CPUs per node.
+If <code class="docutils literal notranslate"><span class="pre">slots_per_node</span></code> is not specified, 1 is used in the calculation.</p></td>
+</tr>
+</tbody>
+</table>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="pgres" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">3</a><span class="fn-bracket">]</span></span>
+<p>The <code class="docutils literal notranslate"><span class="pre">gres_supported</span></code> option of the cluster configuration <span class="xref std std-ref">resource_manager.type: pbs</span>.</p>
+</aside>
+</aside>
+</section>
+<section id="pbs-task-distribution">
+<h4>PBS Task Distribution<a class="headerlink" href="#pbs-task-distribution" title="Permalink to this heading">#</a></h4>
+<p>The distribution of tasks among the nodes allocated by PBS is accomplished by custom support in the
+generated batch file. For each unique host in the <code class="docutils literal notranslate"><span class="pre">$PBS_NODEFILE</span></code>, an asynchronous <code class="docutils literal notranslate"><span class="pre">pbs_tmrsh</span></code>
+command invocation is generated to launch the task on the node to launch the specified container and
+arguments. The batch script waits for the completion of those processes before exiting. A non-zero
+status return from any of those invocations causes the entire job to be terminated.</p>
+<p>Environment variables from the experiment configuration and all variables needed by Determined are
+explicitly passed to the container as arguments as there is no environment variable inheritance from
+the PBS batch script to the containers on the nodes.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="slurm-requirements.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Installation Requirements</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="hpc-security-considerations.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">HPC Launcher Security Considerations</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> {your-title}
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hpc-launcher">HPC Launcher</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hpc-launcher-feature-summary">HPC Launcher Feature Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#job-management-overview">Job Management Overview</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#job-resource-scheduling">Job Resource Scheduling</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster-configuration">Cluster Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#experiment-configuration">Experiment Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slurm-scheduling">Slurm Scheduling</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#common-slurm-options">Common Slurm Options</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#slurm-resource-calculations">Slurm Resource Calculations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#slurm-task-distribution">Slurm Task Distribution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pbs-scheduling">PBS Scheduling</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#common-pbs-options">Common PBS Options</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pbs-resource-calculations">PBS Resource Calculations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pbs-task-distribution">PBS Task Distribution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By lb
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, lb.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

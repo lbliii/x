@@ -1,0 +1,664 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>User Accounts &#8212; project-x 0.0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=362ab14a" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=dc820ae5"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'latest/setup-cluster/users';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">project-x 0.0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    Welcome to project-x’s documentation!
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../example-solutions/_index.html">Examples</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../integrations/_index.html">Integrations</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../integrations/ecosystem/_index.html">Ecosystem Integration</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../integrations/notification/_index.html">Monitoring Experiment Through Webhooks</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../integrations/notification/zapier.html">Through Zapier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../integrations/notification/slack.html">Through Slack</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../integrations/prometheus/_index.html">Configure Determined with Prometheus and Grafana</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../model-dev-guide/_index.html">Model Developer Guide</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../model-dev-guide/apis-howto/_index.html">Training APIs</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../model-dev-guide/apis-howto/api-core-ug.html">Core API User Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../model-dev-guide/apis-howto/api-pytorch-ug.html">PyTorch API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../model-dev-guide/apis-howto/api-keras-ug.html">Keras API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../model-dev-guide/apis-howto/api-estimator-ug.html">Estimator API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../model-dev-guide/batch-processing/_index.html">Torch Batch Processing API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model-dev-guide/best-practices/_index.html">Best Practices</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../model-dev-guide/dtrain/_index.html">Distributed Training with Determined</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../model-dev-guide/dtrain/dtrain-introduction.html">Distributed Training Concepts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../model-dev-guide/dtrain/dtrain-implement.html">Implementing Distributed Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../model-dev-guide/dtrain/config-templates.html">Configuration Templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../model-dev-guide/dtrain/reproducibility.html">Reproducibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../model-dev-guide/dtrain/optimize-training.html">Optimizing Training</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../model-hub-library/_index.html">Model Hub Library</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="_index.html">Setup</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="deploy-cluster/_index.html">Set Up Determined</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="deploy-cluster/aws/_index.html">Deploy on AWS</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="deploy-cluster/gcp/_index.html">Deploy on GCP</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="deploy-cluster/gcp/install-gcp.html">Install Determined</a></li>
+<li class="toctree-l4"><a class="reference internal" href="deploy-cluster/gcp/dynamic-agents-gcp.html">Deploy Determined with Dynamic Agents</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="deploy-cluster/k8s/_index.html">Deploy on Kubernetes</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="deploy-cluster/k8s/install-on-kubernetes.html">Install Determined on Kubernetes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="deploy-cluster/k8s/setup-aks-cluster.html">Set up and Manage an Azure Kubernetes Service (AKS) Cluster</a></li>
+<li class="toctree-l4"><a class="reference internal" href="deploy-cluster/k8s/setup-eks-cluster.html">Set up and Manage an AWS Kubernetes (EKS) Cluster</a></li>
+<li class="toctree-l4"><a class="reference internal" href="deploy-cluster/k8s/setup-gke-cluster.html">Set up and Manage a Google Kubernetes Engine (GKE) Cluster</a></li>
+<li class="toctree-l4"><a class="reference internal" href="deploy-cluster/k8s/k8s-dev-guide.html">Development Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="deploy-cluster/k8s/custom-pod-specs.html">Customize a Pod</a></li>
+<li class="toctree-l4"><a class="reference internal" href="deploy-cluster/k8s/helm-commands.html">Helm and Kubectl Command Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="deploy-cluster/k8s/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="deploy-cluster/on-prem/_index.html">Deploy on Prem</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="deploy-cluster/on-prem/requirements.html">Installation Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="deploy-cluster/on-prem/docker.html">Install Determined Using Docker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="deploy-cluster/on-prem/deploy.html">Install Determined Using <code class="docutils literal notranslate"><span class="pre">det</span> <span class="pre">deploy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="deploy-cluster/on-prem/linux-packages.html">Install Determined Using Linux Packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="deploy-cluster/on-prem/homebrew.html">Install Determined Using Homebrew (macOS)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="deploy-cluster/on-prem/wsl.html">Install Determined Using Windows Subsystem for Linux (Windows)</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="deploy-cluster/slurm/_index.html">Deploy on Slurm/PBS</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="deploy-cluster/slurm/slurm-requirements.html">Installation Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="deploy-cluster/slurm/hpc-launching-architecture.html">HPC Launching Architecture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="deploy-cluster/slurm/hpc-security-considerations.html">HPC Launcher Security Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="deploy-cluster/slurm/install-on-slurm.html">Install Determined on Slurm/PBS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="deploy-cluster/slurm/singularity.html">Provide a Container Image Cache</a></li>
+<li class="toctree-l4"><a class="reference internal" href="deploy-cluster/slurm/slurm-known-issues.html">Known Issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="security/_index.html">Security</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="security/oauth.html">OAuth 2.0 Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="security/oidc.html">OpenID Connect Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="security/rbac.html">RBAC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="security/saml.html">SAML Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="security/scim.html">SCIM Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="security/tls.html">Transport Layer Security</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials/_index.html">Tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/pytorch-mnist-local-qs.html">Run Your First Experiment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/pytorch-mnist-tutorial.html">PyTorch MNIST Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/pytorch-porting-tutorial.html">PyTorch Porting Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/tf-mnist-tutorial.html">TensorFlow Keras Fashion MNIST Tutorial</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/latest/setup-cluster/users.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>User Accounts</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> {your-title} </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication">Authentication</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#webui">WebUI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cli">CLI</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temporary-authentication">Temporary authentication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-passwords">Change Passwords</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-assets">List Assets</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">WebUI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cli-1">CLI</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activate-and-deactivate-users">Activate and Deactivate Users</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-tasks-as-specific-agent-users">Run Tasks as Specific Agent Users</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-unprivileged-tasks-by-default">Run Unprivileged Tasks by Default</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="user-accounts">
+<span id="users"></span><h1>User Accounts<a class="headerlink" href="#user-accounts" title="Permalink to this heading">#</a></h1>
+<p>Initially, a Determined installation has two user accounts: <code class="docutils literal notranslate"><span class="pre">admin</span></code> and <code class="docutils literal notranslate"><span class="pre">determined</span></code>. Both of
+these accounts have blank passwords by default.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">admin</span></code> user has the sole privilege to create users, change other users’ passwords, and
+activate/deactivate users.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">det</span> <span class="pre">user</span> <span class="pre">change-password</span></code> via the CLI to set a password for the <code class="docutils literal notranslate"><span class="pre">admin</span></code> user. This is
+highly encouraged for new installs.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">det</span> <span class="o">-</span><span class="n">u</span> <span class="n">admin</span> <span class="n">user</span> <span class="n">change</span><span class="o">-</span><span class="n">password</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">determined</span></code> user is designed for ease of use on a single-user installation. However, teams
+will benefit from creating a Determined user account for each individual. Namely, having individual
+user accounts provides clearer authorship and improved filtering of entities. To create users in a
+Determined installation, use the <code class="docutils literal notranslate"><span class="pre">admin</span></code> user to create user accounts for each individual that
+would like to use Determined:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">det</span> <span class="o">-</span><span class="n">u</span> <span class="n">admin</span> <span class="n">user</span> <span class="n">create</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Then, the <code class="docutils literal notranslate"><span class="pre">determined</span></code> user can be deactivated:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">det</span> <span class="o">-</span><span class="n">u</span> <span class="n">admin</span> <span class="n">user</span> <span class="n">deactivate</span> <span class="n">determined</span>
+</pre></div>
+</div>
+<p>This ensures that no one can access the Determined cluster as the <code class="docutils literal notranslate"><span class="pre">determined</span></code> user (any objects
+that were created by this user will remain).</p>
+<section id="authentication">
+<h2>Authentication<a class="headerlink" href="#authentication" title="Permalink to this heading">#</a></h2>
+<section id="webui">
+<h3>WebUI<a class="headerlink" href="#webui" title="Permalink to this heading">#</a></h3>
+<p>The WebUI will automatically redirect users to a sign-in page if there is no valid Determined
+session established on that browser. After signing in, the user will be redirected to the URL they
+initially attempted to access.</p>
+<p>Users can end their Determined session by selecting their profile name in the upper left corner and
+choosing <strong>Sign Out</strong>.</p>
+</section>
+<section id="cli">
+<h3>CLI<a class="headerlink" href="#cli" title="Permalink to this heading">#</a></h3>
+<p>In the CLI, the <code class="docutils literal notranslate"><span class="pre">user</span> <span class="pre">login</span></code> subcommand can be used to authenticate a user:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">det</span> <span class="n">user</span> <span class="n">login</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Logging in results in a persistent session, which lasts for 30 days. The session can be terminated
+using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">det</span> <span class="n">user</span> <span class="n">logout</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="temporary-authentication">
+<h2>Temporary authentication<a class="headerlink" href="#temporary-authentication" title="Permalink to this heading">#</a></h2>
+<p>In some cases, it may be useful to execute a single command as a specific user without starting a
+persistent session for that user (think of the <code class="docutils literal notranslate"><span class="pre">sudo</span></code> command on a Unix-like system). In
+Determined, this can be achieved with the <code class="docutils literal notranslate"><span class="pre">-u</span></code> flag:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">det</span> <span class="o">-</span><span class="n">u</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>This will execute the command as the given user without creating a permanent session for that user.
+Although no persistent session is created, an authentication token is stored for that user so that
+future attempts to execute commands as that user will not require re-authenticating. This token can
+be discarded using the <code class="docutils literal notranslate"><span class="pre">user</span> <span class="pre">logout</span></code> subcommand:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">det</span> <span class="o">-</span><span class="n">u</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span> <span class="n">user</span> <span class="n">logout</span>
+</pre></div>
+</div>
+</section>
+<section id="change-passwords">
+<h2>Change Passwords<a class="headerlink" href="#change-passwords" title="Permalink to this heading">#</a></h2>
+<p>Users have blank passwords by default. This might be sufficient for low-security or experimental
+clusters, and it still provides the organizational benefits of associating each Determined object
+with the user that created it. If desired, a user can change their own password using the <code class="docutils literal notranslate"><span class="pre">user</span>
+<span class="pre">change-password</span></code> subcommand:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">det</span> <span class="n">user</span> <span class="n">change</span><span class="o">-</span><span class="n">password</span>
+</pre></div>
+</div>
+<p>An admin can also change another user’s password:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">det</span> <span class="o">-</span><span class="n">u</span> <span class="n">admin</span> <span class="n">user</span> <span class="n">change</span><span class="o">-</span><span class="n">password</span> <span class="o">&lt;</span><span class="n">target</span><span class="o">-</span><span class="n">user</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Although Determined supports password-based authentication, communication between the CLI, WebUI,
+and master does <em>not</em> take place over an encrypted channel by default. See <span class="xref std std-ref">security</span> for
+information on configuring secure connections over HTTPS. Users should not be assigned “valuable”
+passwords, and passwords used with Determined should not be reused for other purposes.</p>
+</div>
+</section>
+<section id="list-assets">
+<h2>List Assets<a class="headerlink" href="#list-assets" title="Permalink to this heading">#</a></h2>
+<section id="id1">
+<h3>WebUI<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>Just as in the CLI, by default the WebUI will only show assets created by the current user. To see
+assets belonging to all users, uncheck the “Show only mine” checkbox in the filter panel found in
+the tab for each asset type.</p>
+</section>
+<section id="cli-1">
+<span id="id2"></span><h3>CLI<a class="headerlink" href="#cli-1" title="Permalink to this heading">#</a></h3>
+<p>When using the CLI to list experiments, commands, etc., the default behavior is to only show assets
+belonging to the current user. It is possible to show assets owned by all users by passing the
+<code class="docutils literal notranslate"><span class="pre">-a</span></code> flag to the respective commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">det</span> <span class="n">experiment</span> <span class="nb">list</span> <span class="o">-</span><span class="n">a</span>   <span class="c1"># List all experiments.</span>
+<span class="n">det</span> <span class="n">command</span> <span class="nb">list</span> <span class="o">-</span><span class="n">a</span>      <span class="c1"># List all commands.</span>
+<span class="n">det</span> <span class="n">notebook</span> <span class="nb">list</span> <span class="o">-</span><span class="n">a</span>     <span class="c1"># List all notebooks.</span>
+<span class="n">det</span> <span class="n">tensorboard</span> <span class="nb">list</span> <span class="o">-</span><span class="n">a</span>  <span class="c1"># List all TensorBoards.</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="activate-and-deactivate-users">
+<span id="webui-1"></span><h2>Activate and Deactivate Users<a class="headerlink" href="#activate-and-deactivate-users" title="Permalink to this heading">#</a></h2>
+<p>When a user is created, they are designated as active by default. Only active users can interact
+with Determined. The <code class="docutils literal notranslate"><span class="pre">admin</span></code> user can deactivate a user with the <code class="docutils literal notranslate"><span class="pre">user</span> <span class="pre">deactivate</span></code> subcommand:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">det</span> <span class="o">-</span><span class="n">u</span> <span class="n">admin</span> <span class="n">user</span> <span class="n">deactivate</span> <span class="o">&lt;</span><span class="n">target</span><span class="o">-</span><span class="n">user</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>All assets created by a deactivated user will remain available through both the WebUI and the CLI.</p>
+<p>To reactivate a user, <code class="docutils literal notranslate"><span class="pre">user</span> <span class="pre">activate</span></code> can be used:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">det</span> <span class="o">-</span><span class="n">u</span> <span class="n">admin</span> <span class="n">user</span> <span class="n">activate</span> <span class="o">&lt;</span><span class="n">target</span><span class="o">-</span><span class="n">user</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="run-tasks-as-specific-agent-users">
+<span id="run-as-user"></span><h2>Run Tasks as Specific Agent Users<a class="headerlink" href="#run-tasks-as-specific-agent-users" title="Permalink to this heading">#</a></h2>
+<p>If an experiment, notebook, or command task uses the <code class="docutils literal notranslate"><span class="pre">bind_mount</span></code> option in its
+<span class="xref std std-ref">experiment-config-reference</span>, it is often useful to set the Unix user and group on the agent
+that the task runs as. This allows the file permissions on the agent to be reflected in the task and
+vice versa.</p>
+<p>This can be configured by linking a Determined user with the user and group configuration on an
+agent:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">det</span> <span class="n">user</span> <span class="n">link</span><span class="o">-</span><span class="k">with</span><span class="o">-</span><span class="n">agent</span><span class="o">-</span><span class="n">user</span> <span class="o">&lt;</span><span class="n">target</span><span class="o">-</span><span class="n">user</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">agent</span><span class="o">-</span><span class="n">uid</span> <span class="o">&lt;</span><span class="n">uid</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">agent</span><span class="o">-</span><span class="n">user</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">agent</span><span class="o">-</span><span class="n">gid</span> <span class="o">&lt;</span><span class="n">gid</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">agent</span><span class="o">-</span><span class="n">group</span> <span class="o">&lt;</span><span class="n">group</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>All arguments are required. This command can only be run by a system administrator.</p>
+<p>Once set, any tasks created by the target user will be run as the specified user and group.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default, if a user is not linked with a user and group on an agent, tasks created by that user
+will run as the root user on the agent. If deploying on a Slurm/PBS cluster, running as the root
+user is only permitted if the launcher <code class="docutils literal notranslate"><span class="pre">user_name</span></code> is also set to the root user, as described
+in <a class="reference internal" href="deploy-cluster/slurm/install-on-slurm.html#using-slurm"><span class="std std-ref">Configure and Verify Determined Master on HPC Cluster</span></a>. This behavior may change in the future.</p>
+<p>If the task does not use <code class="docutils literal notranslate"><span class="pre">bind_mount</span></code> option, the effect of running as root will be limited to
+the task container and not intrude on the agent itself.</p>
+</div>
+<p>The default user and group that will be used when a Determined user is not explicitly linked to a
+user and group on an agent can be configured in the <code class="docutils literal notranslate"><span class="pre">master.yaml</span></code> file located at
+<code class="docutils literal notranslate"><span class="pre">/usr/local/determined/etc</span></code> on the Determined master instance:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">security</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">default_task</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
+<span class="w">    </span><span class="nt">uid</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">    </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
+<span class="w">    </span><span class="nt">gid</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+</pre></div>
+</div>
+</section>
+<section id="run-unprivileged-tasks-by-default">
+<h2>Run Unprivileged Tasks by Default<a class="headerlink" href="#run-unprivileged-tasks-by-default" title="Permalink to this heading">#</a></h2>
+<p>Some administrators of Determined may wish to run tasks as unprivileged users by default. In Linux,
+unprivileged processes are sometimes run under the <a class="reference external" href="https://en.wikipedia.org/wiki/Nobody_(username)">nobody</a> user, which has very few privileges. However,
+the <code class="docutils literal notranslate"><span class="pre">nobody</span></code> user does not have a writable <code class="docutils literal notranslate"><span class="pre">HOME</span></code> directory, which causes problems for some
+common tools like <code class="docutils literal notranslate"><span class="pre">gsutil</span></code>.</p>
+<p>For convenience, the default Determined environments contain an unprivileged user named
+<code class="docutils literal notranslate"><span class="pre">det-nobody</span></code>, which does have a writable <code class="docutils literal notranslate"><span class="pre">HOME</span></code> directory. The <code class="docutils literal notranslate"><span class="pre">det-nobody</span></code> user is a suitable
+default user when using the default Determined environment images and when running containers as
+root is not desired. To use <code class="docutils literal notranslate"><span class="pre">det-nobody</span></code> by default, add the following configuration to
+<code class="docutils literal notranslate"><span class="pre">master.yaml</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">security</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">default_task</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">det-nobody</span>
+<span class="w">    </span><span class="nt">uid</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">65533</span>
+<span class="w">    </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">det-nobody</span>
+<span class="w">    </span><span class="nt">gid</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">65533</span>
+</pre></div>
+</div>
+<p>When combining the <code class="docutils literal notranslate"><span class="pre">det-nobody</span></code> user with custom Docker images, administrators should either build
+the custom image as layers on top of the default Determined Environments as illustrated in
+<a class="reference internal" href="../model-dev-guide/prepare-container/custom-env.html#custom-docker-images"><span class="std std-ref">Custom Images</span></a>, or they should create the <code class="docutils literal notranslate"><span class="pre">det-nobody</span></code> user themselves in their
+custom images using <code class="docutils literal notranslate"><span class="pre">groupadd</span></code> and <code class="docutils literal notranslate"><span class="pre">useradd</span></code>.</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> {your-title}
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication">Authentication</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#webui">WebUI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cli">CLI</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temporary-authentication">Temporary authentication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-passwords">Change Passwords</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-assets">List Assets</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">WebUI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cli-1">CLI</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activate-and-deactivate-users">Activate and Deactivate Users</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-tasks-as-specific-agent-users">Run Tasks as Specific Agent Users</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-unprivileged-tasks-by-default">Run Unprivileged Tasks by Default</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By lb
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, lb.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
