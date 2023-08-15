@@ -22,4 +22,4 @@ Deloyment Reference includes reference documentation for configuring Determined 
    :hidden:
    :glob:
 
-   ./*
+   ./*/_index
