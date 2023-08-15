@@ -22,7 +22,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
       - name: Install dependencies from another repository
-        run: git clone https://github.com/determined-ai/determined.git
+        run: |
+          git clone https://github.com/determined-ai/determined.git
+          echo "::add-path::/home/runner/work/x/x/determined"  # Add the path to Python's sys.path
       - name: Print current directory
         run: |
           pwd
