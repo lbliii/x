@@ -21,6 +21,9 @@ print("hiiiii!!!")
 # print the directory that the conf.py file is in
 print(os.path.abspath(os.path.dirname(__file__)))
 
+# print the directory above the conf.py file
+print(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 print("~~~~~~~~~~~~")
 # -- Project information -----------------------------------------------------
 
