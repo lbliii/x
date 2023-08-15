@@ -1,0 +1,1199 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>det.keras API Reference &#8212; project-x 0.0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=362ab14a" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=dc820ae5"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'latest/reference/training/api-keras-reference';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">project-x 0.0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../index.html">
+                    Welcome to project-x’s documentation!
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../example-solutions/_index.html">Examples</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../integrations/_index.html">Integrations</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../integrations/ecosystem/_index.html">Ecosystem Integration</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../integrations/notification/_index.html">Monitoring Experiment Through Webhooks</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../integrations/notification/zapier.html">Through Zapier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../integrations/notification/slack.html">Through Slack</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../integrations/prometheus/_index.html">Configure Determined with Prometheus and Grafana</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../model-dev-guide/_index.html">Model Developer Guide</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../model-dev-guide/apis-howto/_index.html">Training APIs</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../model-dev-guide/apis-howto/api-core-ug.html">Core API User Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../model-dev-guide/apis-howto/api-pytorch-ug.html">PyTorch API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../model-dev-guide/apis-howto/api-keras-ug.html">Keras API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../model-dev-guide/apis-howto/api-estimator-ug.html">Estimator API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../model-dev-guide/batch-processing/_index.html">Torch Batch Processing API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../model-dev-guide/best-practices/_index.html">Best Practices</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../model-dev-guide/dtrain/_index.html">Distributed Training with Determined</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../model-dev-guide/dtrain/dtrain-introduction.html">Distributed Training Concepts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../model-dev-guide/dtrain/dtrain-implement.html">Implementing Distributed Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../model-dev-guide/dtrain/config-templates.html">Configuration Templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../model-dev-guide/dtrain/reproducibility.html">Reproducibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../model-dev-guide/dtrain/optimize-training.html">Optimizing Training</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../model-hub-library/_index.html">Model Hub Library</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../_index.html">Reference</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../release-notes/_index.html">Release Notes</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../setup-cluster/_index.html">Setup</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../setup-cluster/deploy-cluster/_index.html">Set Up Determined</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../setup-cluster/deploy-cluster/aws/_index.html">Deploy on AWS</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/aws/aws-spot.html">Use Spot Instances</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/aws/dynamic-agents-aws.html">Deploy Determined with Dynamic Agents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/aws/install-on-aws.html">Install Determined</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../setup-cluster/deploy-cluster/gcp/_index.html">Deploy on GCP</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/gcp/dynamic-agents-gcp.html">Deploy Determined with Dynamic Agents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/gcp/install-gcp.html">Install Determined</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../setup-cluster/deploy-cluster/k8s/_index.html">Deploy on Kubernetes</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/k8s/custom-pod-specs.html">Customize a Pod</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/k8s/helm-commands.html">Helm and Kubectl Command Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/k8s/install-on-kubernetes.html">Install Determined on Kubernetes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/k8s/k8s-dev-guide.html">Development Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/k8s/setup-aks-cluster.html">Set up and Manage an Azure Kubernetes Service (AKS) Cluster</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/k8s/setup-eks-cluster.html">Set up and Manage an AWS Kubernetes (EKS) Cluster</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/k8s/setup-gke-cluster.html">Set up and Manage a Google Kubernetes Engine (GKE) Cluster</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/k8s/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../setup-cluster/deploy-cluster/on-prem/_index.html">Deploy on Prem</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/on-prem/deploy.html">Install Determined Using <code class="docutils literal notranslate"><span class="pre">det</span> <span class="pre">deploy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/on-prem/docker.html">Install Determined Using Docker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/on-prem/homebrew.html">Install Determined Using Homebrew (macOS)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/on-prem/linux-packages.html">Install Determined Using Linux Packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/on-prem/requirements.html">Installation Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/on-prem/wsl.html">Install Determined Using Windows Subsystem for Linux (Windows)</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../setup-cluster/deploy-cluster/slurm/_index.html">Deploy on Slurm/PBS</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/slurm/hpc-launching-architecture.html">HPC Launching Architecture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/slurm/hpc-security-considerations.html">HPC Launcher Security Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/slurm/install-on-slurm.html">Install Determined on Slurm/PBS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/slurm/singularity.html">Provide a Container Image Cache</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/slurm/slurm-known-issues.html">Known Issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/slurm/slurm-requirements.html">Installation Requirements</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../setup-cluster/security/_index.html">Security</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../setup-cluster/security/oauth.html">OAuth 2.0 Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../setup-cluster/security/oidc.html">OpenID Connect Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../setup-cluster/security/rbac.html">RBAC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../setup-cluster/security/saml.html">SAML Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../setup-cluster/security/scim.html">SCIM Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../setup-cluster/security/tls.html">Transport Layer Security</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../tutorials/_index.html">Tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/pytorch-mnist-local-qs.html">Run Your First Experiment in Determined</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/pytorch-mnist-tutorial.html">PyTorch MNIST Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/pytorch-porting-tutorial.html">PyTorch Porting Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/quickstart-mdldev.html">Quickstart for Model Developers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/tf-mnist-tutorial.html">TensorFlow Keras Fashion MNIST Tutorial</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/latest/reference/training/api-keras-reference.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>det.keras API Reference</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> {your-title} </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-keras-tfkerastrial"><code class="docutils literal notranslate"><span class="pre">determined.keras.TFKerasTrial</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrial"><code class="docutils literal notranslate"><span class="pre">TFKerasTrial</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrial.__init__"><code class="docutils literal notranslate"><span class="pre">TFKerasTrial.__init__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrial.build_model"><code class="docutils literal notranslate"><span class="pre">TFKerasTrial.build_model()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrial.build_training_data_loader"><code class="docutils literal notranslate"><span class="pre">TFKerasTrial.build_training_data_loader()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrial.build_validation_data_loader"><code class="docutils literal notranslate"><span class="pre">TFKerasTrial.build_validation_data_loader()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrial.session_config"><code class="docutils literal notranslate"><span class="pre">TFKerasTrial.session_config()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrial.keras_callbacks"><code class="docutils literal notranslate"><span class="pre">TFKerasTrial.keras_callbacks()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-keras-tfkerastrialcontext"><code class="docutils literal notranslate"><span class="pre">determined.keras.TFKerasTrialContext</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext.get_global_batch_size"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext.get_global_batch_size()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext.get_per_slot_batch_size"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext.get_per_slot_batch_size()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext.configure_fit"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext.configure_fit()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext.wrap_dataset"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext.wrap_dataset()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext.wrap_optimizer"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext.wrap_optimizer()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext.wrap_model"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext.wrap_model()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext.from_config"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext.from_config()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext.get_data_config"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext.get_data_config()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext.get_experiment_config"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext.get_experiment_config()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext.get_experiment_id"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext.get_experiment_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext.get_hparam"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext.get_hparam()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext.get_hparams"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext.get_hparams()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext.get_stop_requested"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext.get_stop_requested()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext.get_tensorboard_path"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext.get_tensorboard_path()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext.get_trial_id"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext.get_trial_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext.set_stop_requested"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext.set_stop_requested()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-keras-tfkerastrialcontext-distributed"><code class="docutils literal notranslate"><span class="pre">determined.keras.TFKerasTrialContext.distributed</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-keras-tfkerasexperimentalcontext"><code class="docutils literal notranslate"><span class="pre">determined.keras.TFKerasExperimentalContext</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasExperimentalContext"><code class="docutils literal notranslate"><span class="pre">TFKerasExperimentalContext</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-keras-callbacks"><code class="docutils literal notranslate"><span class="pre">determined.keras.callbacks</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.callbacks.Callback"><code class="docutils literal notranslate"><span class="pre">Callback</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.callbacks.Callback.get_state"><code class="docutils literal notranslate"><span class="pre">Callback.get_state()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.callbacks.Callback.load_state"><code class="docutils literal notranslate"><span class="pre">Callback.load_state()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.callbacks.Callback.on_checkpoint_end"><code class="docutils literal notranslate"><span class="pre">Callback.on_checkpoint_end()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.callbacks.Callback.on_train_workload_begin"><code class="docutils literal notranslate"><span class="pre">Callback.on_train_workload_begin()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.callbacks.Callback.on_train_workload_end"><code class="docutils literal notranslate"><span class="pre">Callback.on_train_workload_end()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.callbacks.EarlyStopping"><code class="docutils literal notranslate"><span class="pre">EarlyStopping</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.callbacks.ReduceLROnPlateau"><code class="docutils literal notranslate"><span class="pre">ReduceLROnPlateau</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.callbacks.TensorBoard"><code class="docutils literal notranslate"><span class="pre">TensorBoard</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-keras-load-model-from-checkpoint-path"><code class="docutils literal notranslate"><span class="pre">determined.keras.load_model_from_checkpoint_path</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.load_model_from_checkpoint_path"><code class="docutils literal notranslate"><span class="pre">load_model_from_checkpoint_path</span></code></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="det-keras-api-reference">
+<h1><code class="docutils literal notranslate"><span class="pre">det.keras</span></code> API Reference<a class="headerlink" href="#det-keras-api-reference" title="Permalink to this heading">#</a></h1>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>User Guide</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="xref std std-doc">/model-dev-guide/apis-howto/api-keras-ug</span></p></td>
+</tr>
+</tbody>
+</table>
+<section id="determined-keras-tfkerastrial">
+<h2><code class="docutils literal notranslate"><span class="pre">determined.keras.TFKerasTrial</span></code><a class="headerlink" href="#determined-keras-tfkerastrial" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="determined.keras.TFKerasTrial">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">determined.keras.</span></span><span class="sig-name descname"><span class="pre">TFKerasTrial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#determined.keras.TFKerasTrialContext" title="determined.keras._tf_keras_context.TFKerasTrialContext"><span class="pre">TFKerasTrialContext</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#determined.keras.TFKerasTrial" title="Permalink to this definition">#</a></dt>
+<dd><p>To implement a new <code class="docutils literal notranslate"><span class="pre">tf.keras</span></code> trial, subclass this class and
+implement the abstract methods described below (<a class="reference internal" href="#determined.keras.TFKerasTrial.build_model" title="determined.keras.TFKerasTrial.build_model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">build_model()</span></code></a>,
+<a class="reference internal" href="#determined.keras.TFKerasTrial.build_training_data_loader" title="determined.keras.TFKerasTrial.build_training_data_loader"><code class="xref py py-meth docutils literal notranslate"><span class="pre">build_training_data_loader()</span></code></a>, and <a class="reference internal" href="#determined.keras.TFKerasTrial.build_validation_data_loader" title="determined.keras.TFKerasTrial.build_validation_data_loader"><code class="xref py py-meth docutils literal notranslate"><span class="pre">build_validation_data_loader()</span></code></a>).
+In most cases you should provide a custom <a class="reference internal" href="#determined.keras.TFKerasTrial.__init__" title="determined.keras.TFKerasTrial.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__()</span></code></a> method as well.</p>
+<p>By default, experiments use TensorFlow 2.x. To configure your trial to use
+legacy TensorFlow 1.x, specify a TensorFlow 1.x image in the
+<a class="reference internal" href="experiment-config-reference.html#exp-environment-image"><span class="std std-ref">environment.image</span></a> field of the experiment
+configuration (e.g.,
+<code class="docutils literal notranslate"><span class="pre">determinedai/environments:cuda-10.2-pytorch-1.7-tf-1.15-gpu-0.21.2</span></code>).</p>
+<p>Trials default to using eager execution with TensorFlow 2.x but not with
+TensorFlow 1.x. To override the default behavior, call the appropriate
+function at the top of your code. For example, if you want to disable
+eager execution while using TensorFlow 2.x, call
+<code class="docutils literal notranslate"><span class="pre">tf.compat.v1.disable_eager_execution</span></code> after your import statements.
+If you are using TensorFlow 1.x in eager mode, please add
+<code class="docutils literal notranslate"><span class="pre">experimental_run_tf_function=False</span></code> to your model compile function.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.keras.TFKerasTrial.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#determined.keras.TFKerasTrialContext" title="determined.keras._tf_keras_context.TFKerasTrialContext"><span class="pre">TFKerasTrialContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#determined.keras.TFKerasTrial.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>Initializes a trial using the provided <code class="docutils literal notranslate"><span class="pre">context</span></code>.</p>
+<p>This method should typically be overridden by trial definitions: at minimum,
+it is important to store <code class="docutils literal notranslate"><span class="pre">context</span></code> as an instance variable so that
+it can be accessed by other methods of the trial class. This can also be a
+convenient place to initialize other state that is shared between methods.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.keras.TFKerasTrial.build_model">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Model</span></span></span><a class="headerlink" href="#determined.keras.TFKerasTrial.build_model" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the deep learning architecture associated with a trial.  The
+architecture might depend on the current values of the model’s
+hyperparameters, which can be accessed via <code class="xref py py-func docutils literal notranslate"><span class="pre">context.get_hparam()</span></code>.  This function returns a
+<code class="docutils literal notranslate"><span class="pre">tf.keras.Model</span></code> object.</p>
+<p>After constructing the <code class="docutils literal notranslate"><span class="pre">tf.keras.Model</span></code> object, users <strong>must</strong> do two
+things before returning it:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Wrap the model using <a class="reference internal" href="#determined.keras.TFKerasTrialContext.wrap_model" title="determined.keras.TFKerasTrialContext.wrap_model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">context.wrap_model()</span></code></a>.</p></li>
+<li><p>Compile the model using <code class="docutils literal notranslate"><span class="pre">model.compile()</span></code>.</p></li>
+</ol>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.keras.TFKerasTrial.build_training_data_loader">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build_training_data_loader</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Sequence</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DatasetV2</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SequenceAdapter</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></span><a class="headerlink" href="#determined.keras.TFKerasTrial.build_training_data_loader" title="Permalink to this definition">#</a></dt>
+<dd><p>Defines the data loader to use during training.</p>
+<dl>
+<dt>Should return one of the following:</dt><dd><p>1) A tuple <code class="docutils literal notranslate"><span class="pre">(x_train,</span> <span class="pre">y_train)</span></code>, where <code class="docutils literal notranslate"><span class="pre">x_train</span></code> is a NumPy array
+(or array-like), a list of arrays (in case the model has multiple inputs), or
+a dict mapping input names to the corresponding array, if the model has named inputs.
+<code class="docutils literal notranslate"><span class="pre">y_train</span></code> should be a NumPy array.</p>
+<p>2) A tuple <code class="docutils literal notranslate"><span class="pre">(x_train,</span> <span class="pre">y_train,</span> <span class="pre">sample_weights)</span></code>
+of NumPy arrays.</p>
+<p>3) A <a class="reference external" href="https://www.tensorflow.org/versions/r1.15/api_docs/python/tf/data/Dataset">tf.data.Dataset</a> returning
+a tuple of either <code class="docutils literal notranslate"><span class="pre">(inputs,</span> <span class="pre">targets)</span></code> or <code class="docutils literal notranslate"><span class="pre">(inputs,</span> <span class="pre">targets,</span> <span class="pre">sample_weights)</span></code>.</p>
+<p>4) A <a class="reference external" href="https://tensorflow.org/api_docs/python/tf/keras/utils/Sequence">keras.utils.Sequence</a> returning a tuple
+of either <code class="docutils literal notranslate"><span class="pre">(inputs,</span> <span class="pre">targets)</span></code> or <code class="docutils literal notranslate"><span class="pre">(inputs,</span> <span class="pre">targets,</span> <span class="pre">sample</span> <span class="pre">weights)</span></code>.</p>
+</dd>
+</dl>
+<p>When using <code class="docutils literal notranslate"><span class="pre">tf.data.Dataset</span></code>, you must wrap the dataset using
+<a class="reference internal" href="#determined.keras.TFKerasTrialContext.wrap_dataset" title="determined.keras.TFKerasTrialContext.wrap_dataset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">determined.keras.TFKerasTrialContext.wrap_dataset()</span></code></a>. This wrapper is used
+to shard the dataset for distributed training. For optimal performance, users
+should wrap a dataset immediately after creating it.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you are using <code class="docutils literal notranslate"><span class="pre">tf.data.Dataset</span></code>, Determined’s support for
+automatically checkpointing the dataset does not currently work correctly.
+This means that resuming workloads will start from the beginning of the dataset
+if using <code class="docutils literal notranslate"><span class="pre">tf.data.Dataset</span></code>.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.keras.TFKerasTrial.build_validation_data_loader">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build_validation_data_loader</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Sequence</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DatasetV2</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SequenceAdapter</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span></span><a class="headerlink" href="#determined.keras.TFKerasTrial.build_validation_data_loader" title="Permalink to this definition">#</a></dt>
+<dd><p>Defines the data loader to use during validation.</p>
+<dl>
+<dt>Should return one of the following:</dt><dd><p>1) A tuple <code class="docutils literal notranslate"><span class="pre">(x_val,</span> <span class="pre">y_val)</span></code>, where <code class="docutils literal notranslate"><span class="pre">x_val</span></code> is a NumPy array
+(or array-like), a list of arrays (in case the model has multiple inputs), or
+a dict mapping input names to the corresponding array, if the model has named inputs.
+<code class="docutils literal notranslate"><span class="pre">y_val</span></code> should be a NumPy array.</p>
+<p>2) A tuple <code class="docutils literal notranslate"><span class="pre">(x_val,</span> <span class="pre">y_val,</span> <span class="pre">sample_weights)</span></code>
+of NumPy arrays.</p>
+<p>3) A <a class="reference external" href="https://www.tensorflow.org/versions/r1.15/api_docs/python/tf/data/Dataset">tf.data.Dataset</a> returning
+a tuple of either <code class="docutils literal notranslate"><span class="pre">(inputs,</span> <span class="pre">targets)</span></code> or <code class="docutils literal notranslate"><span class="pre">(inputs,</span> <span class="pre">targets,</span> <span class="pre">sample_weights)</span></code>.</p>
+<p>4) A <a class="reference external" href="https://tensorflow.org/api_docs/python/tf/keras/utils/Sequence">keras.utils.Sequence</a> returning a tuple
+of either <code class="docutils literal notranslate"><span class="pre">(inputs,</span> <span class="pre">targets)</span></code> or <code class="docutils literal notranslate"><span class="pre">(inputs,</span> <span class="pre">targets,</span> <span class="pre">sample</span> <span class="pre">weights)</span></code>.</p>
+</dd>
+</dl>
+<p>When using <code class="docutils literal notranslate"><span class="pre">tf.data.Dataset</span></code>, you must wrap the dataset using
+<a class="reference internal" href="#determined.keras.TFKerasTrialContext.wrap_dataset" title="determined.keras.TFKerasTrialContext.wrap_dataset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">determined.keras.TFKerasTrialContext.wrap_dataset()</span></code></a>. This wrapper is used
+to shard the dataset for distributed training. For optimal performance, users
+should wrap a dataset immediately after creating it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.keras.TFKerasTrial.session_config">
+<span class="sig-name descname"><span class="pre">session_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ConfigProto</span></span></span><a class="headerlink" href="#determined.keras.TFKerasTrial.session_config" title="Permalink to this definition">#</a></dt>
+<dd><p>Specifies the <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/compat/v1/ConfigProto">tf.ConfigProto</a> to be
+used by the TensorFlow session. By default,
+<code class="docutils literal notranslate"><span class="pre">tf.ConfigProto(allow_soft_placement=True)</span></code> is used.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.keras.TFKerasTrial.keras_callbacks">
+<span class="sig-name descname"><span class="pre">keras_callbacks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#determined.keras.callbacks.Callback" title="determined.keras.callbacks.Callback"><span class="pre">Callback</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#determined.keras.TFKerasTrial.keras_callbacks" title="Permalink to this definition">#</a></dt>
+<dd><p>Specifies a list of <a class="reference internal" href="#determined.keras.callbacks.Callback" title="determined.keras.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">determined.keras.callbacks.Callback</span></code></a> objects to be used during
+training.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="determined-keras-tfkerastrialcontext">
+<h2><code class="docutils literal notranslate"><span class="pre">determined.keras.TFKerasTrialContext</span></code><a class="headerlink" href="#determined-keras-tfkerastrialcontext" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="determined.keras.TFKerasTrialContext">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">determined.keras.</span></span><span class="sig-name descname"><span class="pre">TFKerasTrialContext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">arg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#determined.keras.TFKerasTrialContext" title="Permalink to this definition">#</a></dt>
+<dd><p>Base context class that contains runtime information for any Determined
+workflow that uses the <code class="docutils literal notranslate"><span class="pre">tf.keras</span></code> API.</p>
+<p>TFKerasTrialContext always has a <a class="reference internal" href="api-core-reference.html#determined.core.DistributedContext" title="determined.core._distributed.DistributedContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">DistributedContext</span></code></a>
+accessible via <code class="docutils literal notranslate"><span class="pre">context.distributed</span></code> for information related to distributed training.</p>
+<p>TFKerasTrialContext always has a <a class="reference internal" href="#determined.keras.TFKerasExperimentalContext" title="determined.keras.TFKerasExperimentalContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">TFKerasExperimentalContext</span></code></a> accessible
+via <code class="docutils literal notranslate"><span class="pre">context.experimental</span></code> for information related to experimental features.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.keras.TFKerasTrialContext.get_global_batch_size">
+<span class="sig-name descname"><span class="pre">get_global_batch_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#determined.keras.TFKerasTrialContext.get_global_batch_size" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the global batch size.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.keras.TFKerasTrialContext.get_per_slot_batch_size">
+<span class="sig-name descname"><span class="pre">get_per_slot_batch_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#determined.keras.TFKerasTrialContext.get_per_slot_batch_size" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the per-slot batch size. When a model is trained with a single GPU, this is equal to
+the global batch size. When multi-GPU training is used, this is equal to the global batch
+size divided by the number of GPUs used to train the model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.keras.TFKerasTrialContext.configure_fit">
+<span class="sig-name descname"><span class="pre">configure_fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose:</span> <span class="pre">bool</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_weight:</span> <span class="pre">~typing.Any</span> <span class="pre">=</span> <span class="pre">&lt;determined.keras._tf_keras_context._ArgNotProvided</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workers:</span> <span class="pre">int</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_multiprocessing:</span> <span class="pre">bool</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_queue_size:</span> <span class="pre">bool</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle:</span> <span class="pre">bool</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validation_steps:</span> <span class="pre">~typing.Any</span> <span class="pre">=</span> <span class="pre">&lt;determined.keras._tf_keras_context._ArgNotProvided</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#determined.keras.TFKerasTrialContext.configure_fit" title="Permalink to this definition">#</a></dt>
+<dd><p>Configure parameters of <code class="docutils literal notranslate"><span class="pre">model.fit()</span></code>.  See the <a class="reference external" href="https://keras.io/api/">Keras documentation</a> for the meaning of each parameter.</p>
+<p>Note that the output of <code class="docutils literal notranslate"><span class="pre">verbose=True</span></code> will be visually different in Determined than with
+Keras, for better rendering in trial logs.</p>
+<p>Note that if <code class="docutils literal notranslate"><span class="pre">configure_fit()</span></code> is called multiple times, any keyword arguments which are
+not provided in the second call will not overwrite any settings configured by the first
+call.</p>
+<p><strong>Usage Example</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyTFKerasTrial</span><span class="p">(</span><span class="n">det</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">TFKerasTrial</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="o">...</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">configure_fit</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">workers</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+        <span class="c1"># It is safe to call configure_fit() multiple times.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">configure_fit</span><span class="p">(</span><span class="n">use_multiprocessing</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.keras.TFKerasTrialContext.wrap_dataset">
+<span class="sig-name descname"><span class="pre">wrap_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shard_dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#determined.keras.TFKerasTrialContext.wrap_dataset" title="Permalink to this definition">#</a></dt>
+<dd><p>This should be used to wrap <code class="docutils literal notranslate"><span class="pre">tf.data.Dataset</span></code> objects immediately after
+they have been created. Users should use the output of this wrapper as the
+new instance of their dataset. If users create multiple datasets (e.g.,
+one for training and one for validation), users should wrap each dataset
+independently.</p>
+<dl>
+<dt>Args:</dt><dd><p>dataset: tf.data.Dataset
+shard_dataset:</p>
+<blockquote>
+<div><p>When performing multi-slot (distributed) training, this
+controls whether the dataset is sharded so that each training process
+(one per slot) sees unique data. If set to False, users must manually
+configure each process to use unique data.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.keras.TFKerasTrialContext.wrap_optimizer">
+<span class="sig-name descname"><span class="pre">wrap_optimizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">optimizer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optimizer</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optimizer</span></span></span><a class="headerlink" href="#determined.keras.TFKerasTrialContext.wrap_optimizer" title="Permalink to this definition">#</a></dt>
+<dd><p>This should be user to wrap <code class="docutils literal notranslate"><span class="pre">tf.keras.optimizers.Optimizer</span></code> objects. Users
+should use the output use the output of this wrapper as the new instance of
+their optimizer. If users create multiple optimizers, users should wrap each
+optimizer independently.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>optimizer: tf.keras.optimizers.Optimizer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.keras.TFKerasTrialContext.wrap_model">
+<span class="sig-name descname"><span class="pre">wrap_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#determined.keras.TFKerasTrialContext.wrap_model" title="Permalink to this definition">#</a></dt>
+<dd><p>This should be used to wrap <code class="docutils literal notranslate"><span class="pre">tf.keras.Model</span></code> objects immediately after
+they have been created but before they have been compiled. This function
+takes a <code class="docutils literal notranslate"><span class="pre">tf.keras.Model</span></code> and returns a wrapped version of the model;
+the return value should be used in place of the original model.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>model: tf.keras.Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.keras.TFKerasTrialContext.from_config">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">TrialContext</span></span></span><a class="headerlink" href="#determined.keras.TFKerasTrialContext.from_config" title="Permalink to this definition">#</a></dt>
+<dd><p>Create a context object suitable for debugging outside of Determined.</p>
+<p>An example for a subclass of <a class="reference internal" href="api-pytorch-reference.html#determined.pytorch.PyTorchTrial" title="determined.pytorch._pytorch_trial.PyTorchTrial"><code class="xref py py-class docutils literal notranslate"><span class="pre">PyTorchTrial</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
+<span class="n">context</span> <span class="o">=</span> <span class="n">det</span><span class="o">.</span><span class="n">pytorch</span><span class="o">.</span><span class="n">PyTorchTrialContext</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+<span class="n">my_trial</span> <span class="o">=</span> <span class="n">MyPyTorchTrial</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+
+<span class="n">train_ds</span> <span class="o">=</span> <span class="n">my_trial</span><span class="o">.</span><span class="n">build_training_data_loader</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">epoch_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">batch_idx</span><span class="p">,</span> <span class="n">batch</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_ds</span><span class="p">):</span>
+        <span class="n">metrics</span> <span class="o">=</span> <span class="n">my_trial</span><span class="o">.</span><span class="n">train_batch</span><span class="p">(</span><span class="n">batch</span><span class="p">,</span> <span class="n">epoch_idx</span><span class="p">,</span> <span class="n">batch_idx</span><span class="p">)</span>
+        <span class="o">...</span>
+</pre></div>
+</div>
+<p>An example for a subclass of <a class="reference internal" href="#determined.keras.TFKerasTrial" title="determined.keras._tf_keras_trial.TFKerasTrial"><code class="xref py py-class docutils literal notranslate"><span class="pre">TFKerasTrial</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
+<span class="n">context</span> <span class="o">=</span> <span class="n">det</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">TFKerasTrialContext</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+<span class="n">my_trial</span> <span class="o">=</span> <span class="n">tf_keras_one_var_model</span><span class="o">.</span><span class="n">OneVarTrial</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">my_trial</span><span class="o">.</span><span class="n">build_model</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">my_trial</span><span class="o">.</span><span class="n">build_training_data_loader</span><span class="p">())</span>
+<span class="n">eval_metrics</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">my_trial</span><span class="o">.</span><span class="n">build_validation_data_loader</span><span class="p">())</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt>Arguments:</dt><dd><p>config: An experiment config file, in dictionary form.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.keras.TFKerasTrialContext.get_data_config">
+<span class="sig-name descname"><span class="pre">get_data_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#determined.keras.TFKerasTrialContext.get_data_config" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the data configuration.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.keras.TFKerasTrialContext.get_experiment_config">
+<span class="sig-name descname"><span class="pre">get_experiment_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#determined.keras.TFKerasTrialContext.get_experiment_config" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the experiment configuration.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.keras.TFKerasTrialContext.get_experiment_id">
+<span class="sig-name descname"><span class="pre">get_experiment_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#determined.keras.TFKerasTrialContext.get_experiment_id" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the experiment ID of the current trial.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.keras.TFKerasTrialContext.get_hparam">
+<span class="sig-name descname"><span class="pre">get_hparam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#determined.keras.TFKerasTrialContext.get_hparam" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the current value of the hyperparameter with the given name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.keras.TFKerasTrialContext.get_hparams">
+<span class="sig-name descname"><span class="pre">get_hparams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#determined.keras.TFKerasTrialContext.get_hparams" title="Permalink to this definition">#</a></dt>
+<dd><p>Return a dictionary of hyperparameter names to values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.keras.TFKerasTrialContext.get_stop_requested">
+<span class="sig-name descname"><span class="pre">get_stop_requested</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#determined.keras.TFKerasTrialContext.get_stop_requested" title="Permalink to this definition">#</a></dt>
+<dd><p>Return whether a trial stoppage has been requested.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.keras.TFKerasTrialContext.get_tensorboard_path">
+<span class="sig-name descname"><span class="pre">get_tensorboard_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span></span></span><a class="headerlink" href="#determined.keras.TFKerasTrialContext.get_tensorboard_path" title="Permalink to this definition">#</a></dt>
+<dd><p>Get the path where files for consumption by TensorBoard should be written</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.keras.TFKerasTrialContext.get_trial_id">
+<span class="sig-name descname"><span class="pre">get_trial_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#determined.keras.TFKerasTrialContext.get_trial_id" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the trial ID of the current trial.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.keras.TFKerasTrialContext.set_stop_requested">
+<span class="sig-name descname"><span class="pre">set_stop_requested</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stop_requested</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#determined.keras.TFKerasTrialContext.set_stop_requested" title="Permalink to this definition">#</a></dt>
+<dd><p>Set a flag to request a trial stoppage. When this flag is set to True,
+we finish the step, checkpoint, then exit.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="determined-keras-tfkerastrialcontext-distributed">
+<h2><code class="docutils literal notranslate"><span class="pre">determined.keras.TFKerasTrialContext.distributed</span></code><a class="headerlink" href="#determined-keras-tfkerastrialcontext-distributed" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">determined.core._distributed.</span></span><span class="sig-name descname"><span class="pre">DistributedContext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rank</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_rank</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cross_rank</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cross_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chief_ip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pub_port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">12360</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pull_port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">12376</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port_offset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_tcp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>DistributedContext provides useful methods for effective distributed training.</p>
+<dl class="simple">
+<dt>A DistributedContext has the following required args:</dt><dd><ul class="simple">
+<li><p>rank: the index of this worker in the entire job</p></li>
+<li><p>size: the number of workers in the entire job</p></li>
+<li><p>local_rank: the index of this worker on this machine</p></li>
+<li><p>local_size: the number of workers on this machine</p></li>
+<li><p>cross_rank: the index of this machine in the entire job</p></li>
+<li><p>cross_size: the number of machines in the entire job</p></li>
+</ul>
+</dd>
+<dt>Additionally, any time that cross_size &gt; 1, you must also provide:</dt><dd><ul class="simple">
+<li><p>chief_ip: the ip address to reach the chief worker (where rank==0)</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>DistributedContext has <code class="docutils literal notranslate"><span class="pre">.allgather()</span></code>, <code class="docutils literal notranslate"><span class="pre">.gather()</span></code>, and <code class="docutils literal notranslate"><span class="pre">.broadcast()</span></code> methods, which
+are easy to use and which can be useful for coordinating work across workers, but it is not a
+replacement for the allgather/gather/broadcast operations in your particular distributed
+training framework.</p>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_horovod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hvd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chief_ip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api-core-reference.html#determined.core.DistributedContext" title="determined.core._distributed.DistributedContext"><span class="pre">DistributedContext</span></a></span></span></dt>
+<dd><p>Create a <code class="docutils literal notranslate"><span class="pre">DistributedContext</span></code> using the provided <code class="docutils literal notranslate"><span class="pre">hvd</span></code> module to determine rank
+information.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">horovod.torch</span> <span class="k">as</span> <span class="nn">hvd</span>
+<span class="n">hvd</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<span class="n">distributed</span> <span class="o">=</span> <span class="n">DistributedContext</span><span class="o">.</span><span class="n">from_horovod</span><span class="p">(</span><span class="n">hvd</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The IP address for the chief worker is required whenever <code class="docutils literal notranslate"><span class="pre">hvd.cross_size()</span> <span class="pre">&gt;</span> <span class="pre">1</span></code>. The value
+may be provided using the <code class="docutils literal notranslate"><span class="pre">chief_ip</span></code> argument or the <code class="docutils literal notranslate"><span class="pre">DET_CHIEF_IP</span></code> environment
+variable.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_deepspeed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chief_ip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api-core-reference.html#determined.core.DistributedContext" title="determined.core._distributed.DistributedContext"><span class="pre">DistributedContext</span></a></span></span></dt>
+<dd><p>Create a <code class="docutils literal notranslate"><span class="pre">DistributedContext</span></code> using the standard deepspeed environment variables to
+determine rank information.</p>
+<p>The IP address for the chief worker is required whenever CROSS_SIZE &gt; 1.  The value may
+be provided using the chief_ip argument or the DET_CHIEF_IP environment variable.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_torch_distributed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chief_ip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api-core-reference.html#determined.core.DistributedContext" title="determined.core._distributed.DistributedContext"><span class="pre">DistributedContext</span></a></span></span></dt>
+<dd><p>Create a DistributedContext using the standard torch distributed environment variables to
+determine rank information.</p>
+<p>The IP address for the chief worker is required whenever CROSS_SIZE &gt; 1.  The value may
+be provided via the chief_ip argument or the DET_CHIEF_IP environment variable.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_rank</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span></dt>
+<dd><p>Return the rank of the process in the trial. The rank of a process is a
+unique ID within the trial.  That is, no two processes in the same trial
+are assigned the same rank.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_local_rank</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span></dt>
+<dd><p>Return the rank of the process on the agent. The local rank of a process
+is a unique ID within a given agent and trial; that is, no two processes
+in the same trial that are executing on the same agent are assigned the
+same rank.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span></dt>
+<dd><p>Return the number of slots this trial is running on.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">get_num_agents</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span></dt>
+<dd><p>Return the number of agents this trial is running on.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">gather</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stuff</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span></dt>
+<dd><p>Gather <code class="docutils literal notranslate"><span class="pre">stuff</span></code> to the chief.  The chief returns a list of all stuff, and workers return
+<code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">gather()</span></code> is not a replacement for the gather functionality of your distributed training
+framework.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">gather_local</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stuff</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span></dt>
+<dd><p>Gather <code class="docutils literal notranslate"><span class="pre">stuff</span></code> to the local chief.  The local chief returns a list of all stuff, and local
+workers return <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">gather_local()</span></code> is not a replacement for the gather functionality of your distributed
+training framework.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">allgather</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stuff</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span></span></span></dt>
+<dd><p>Gather <code class="docutils literal notranslate"><span class="pre">stuff</span></code> to the chief and broadcast all of it back to the workers.</p>
+<p><code class="docutils literal notranslate"><span class="pre">allgather()</span></code> is not a replacement for the allgather functionality of your distributed
+training framework.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">allgather_local</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stuff</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span></span></span></dt>
+<dd><p>Gather <code class="docutils literal notranslate"><span class="pre">stuff</span></code> to the local chief and broadcast all of it back to the local workers.</p>
+<p><code class="docutils literal notranslate"><span class="pre">allgather_local()</span></code> is not a replacement for the allgather functionality of your
+distributed training framework.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">broadcast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stuff</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span></dt>
+<dd><p>Every worker gets the <code class="docutils literal notranslate"><span class="pre">stuff</span></code> sent by the chief.</p>
+<p><code class="docutils literal notranslate"><span class="pre">broadcast()</span></code> is not a replacement for the broadcast functionality of your distributed
+training framework.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">broadcast_local</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stuff</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span></dt>
+<dd><p>Every worker gets the <code class="docutils literal notranslate"><span class="pre">stuff</span></code> sent by the local chief.</p>
+<p><code class="docutils literal notranslate"><span class="pre">broadcast_local()</span></code> is not a replacement for the broadcast functionality of your
+distributed training framework.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="determined-keras-tfkerasexperimentalcontext">
+<h2><code class="docutils literal notranslate"><span class="pre">determined.keras.TFKerasExperimentalContext</span></code><a class="headerlink" href="#determined-keras-tfkerasexperimentalcontext" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="determined.keras.TFKerasExperimentalContext">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">determined.keras.</span></span><span class="sig-name descname"><span class="pre">TFKerasExperimentalContext</span></span><a class="headerlink" href="#determined.keras.TFKerasExperimentalContext" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Context class that contains experimental runtime information and features
+for any Determined workflow that uses the <code class="docutils literal notranslate"><span class="pre">tf.keras</span></code> API.</p>
+<p><code class="docutils literal notranslate"><span class="pre">TFKerasExperimentalContext</span></code> extends <code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext</span></code> under
+the <code class="docutils literal notranslate"><span class="pre">context.experimental</span></code> namespace.</p>
+</dd></dl>
+
+</section>
+<section id="determined-keras-callbacks">
+<h2><code class="docutils literal notranslate"><span class="pre">determined.keras.callbacks</span></code><a class="headerlink" href="#determined-keras-callbacks" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="determined.keras.callbacks.Callback">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">determined.keras.callbacks.</span></span><span class="sig-name descname"><span class="pre">Callback</span></span><a class="headerlink" href="#determined.keras.callbacks.Callback" title="Permalink to this definition">#</a></dt>
+<dd><p>A Determined subclass of the <code class="docutils literal notranslate"><span class="pre">tf.keras.callbacks.Callback</span></code> interface which supports
+additional new callbacks.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The following behaviors differ between normal Keras operation and Keras
+operation within Determined:</p>
+<blockquote>
+<div><ul>
+<li><p>Keras calls on_epoch_end at the end of the training dataset, but Determined calls it
+based on the records_per_epoch setting in the experiment config.</p></li>
+<li><p>Keras calls on_epoch_end with training and validation logs, but Determined does not
+schedule training or validation around epochs in general, so Determined cannot
+guarantee that those values are available for on_epoch_end calls.  As a result,
+on_epoch_end will be called with an empty dictionary for its logs.</p></li>
+<li><p>Keras does not support stateful callbacks, but Determined does.  Therefore:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The tf.keras version of <code class="docutils literal notranslate"><span class="pre">EarlyStopping</span></code> will not work right in Determined.  You
+should use you should use <a class="reference internal" href="#determined.keras.callbacks.EarlyStopping" title="determined.keras.callbacks.EarlyStopping"><code class="xref py py-class docutils literal notranslate"><span class="pre">determined.keras.callbacks.EarlyStopping</span></code></a> instead.</p></li>
+<li><p>The tf.keras version of <code class="docutils literal notranslate"><span class="pre">ReduceLROnPlateau</span></code> will not work right in Determined.  You
+should use you should use <code class="xref py py-class docutils literal notranslate"><span class="pre">determined.keras.callbacks.ReduceLRScheduler</span></code>
+instead.</p></li>
+</ul>
+</div></blockquote>
+<p>The Determined versions are based around <code class="docutils literal notranslate"><span class="pre">on_test_end</span></code> rather than <code class="docutils literal notranslate"><span class="pre">on_epoch_end</span></code>,
+which can be influenced by setting <code class="docutils literal notranslate"><span class="pre">min_validation_period</span></code> in the experiment
+configuration.</p>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.keras.callbacks.Callback.get_state">
+<span class="sig-name descname"><span class="pre">get_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#determined.keras.callbacks.Callback.get_state" title="Permalink to this definition">#</a></dt>
+<dd><p>get_state should return a pickleable object that represents the state of this callback.</p>
+<p>When training is continued from a checkpoint, the value returned from get_state() will be
+passed back to the Callback object via load_state().</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.keras.callbacks.Callback.load_state">
+<span class="sig-name descname"><span class="pre">load_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#determined.keras.callbacks.Callback.load_state" title="Permalink to this definition">#</a></dt>
+<dd><p>load_state should accept the exact pickleable object returned by get_state to restore the
+internal state of a stateful Callback as it was when load_state was called.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.keras.callbacks.Callback.on_checkpoint_end">
+<span class="sig-name descname"><span class="pre">on_checkpoint_end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">checkpoint_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#determined.keras.callbacks.Callback.on_checkpoint_end" title="Permalink to this definition">#</a></dt>
+<dd><p>on_checkpoint_end is called after a checkpoint is finished, and allows users to save
+arbitrary files alongside the checkpoint.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>checkpoint_dir:  The path to the checkpoint_dir where new files may be added.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.keras.callbacks.Callback.on_train_workload_begin">
+<span class="sig-name descname"><span class="pre">on_train_workload_begin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">total_batches_trained</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batches_requested</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#determined.keras.callbacks.Callback.on_train_workload_begin" title="Permalink to this definition">#</a></dt>
+<dd><p>on_train_workload_begin is called before a chunk of model training.  The number of batches
+in the workload may vary, but will not exceed the scheduling_unit setting for the
+experiment.</p>
+<dl>
+<dt>Parameters:</dt><dd><p>total_batches_trained:  The number of batches trained at the start of the workload.</p>
+<p>batches_requested: The number of batches expected to train during the workload.</p>
+<p>logs: a dictionary (presently always an empty dictionary)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.keras.callbacks.Callback.on_train_workload_end">
+<span class="sig-name descname"><span class="pre">on_train_workload_end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">total_batches_trained</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#determined.keras.callbacks.Callback.on_train_workload_end" title="Permalink to this definition">#</a></dt>
+<dd><p>on_train_workload_end is called after a chunk of model training.</p>
+<dl>
+<dt>Parameters:</dt><dd><p>total_batches_trained:  The number of batches trained at the end of the workload.</p>
+<p>logs: a dictionary of training metrics aggregated during this workload.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="determined.keras.callbacks.EarlyStopping">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">determined.keras.callbacks.</span></span><span class="sig-name descname"><span class="pre">EarlyStopping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">arg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#determined.keras.callbacks.EarlyStopping" title="Permalink to this definition">#</a></dt>
+<dd><p>EarlyStopping behaves exactly like the <code class="docutils literal notranslate"><span class="pre">tf.keras.callbacks.EarlyStopping</span></code> except that it
+checks after every <code class="docutils literal notranslate"><span class="pre">on_test_end()</span></code> rather than every <code class="docutils literal notranslate"><span class="pre">on_epoch_end()</span></code> and it can save
+and restore its state after pauses in training.</p>
+<p>Therefore, part of configuring the Determined implementation of EarlyStopping is to
+configure <code class="docutils literal notranslate"><span class="pre">min_validation_period</span></code> for the experiment appropriately (likely it should be
+configured to validate every epoch).</p>
+<p>In Determined, <code class="docutils literal notranslate"><span class="pre">on_test_end</span></code> may be called slightly more often than <code class="docutils literal notranslate"><span class="pre">min_validation_period</span></code>
+during some types of hyperparameter searches, but it is unlikely for that to occur often enough
+have a meaningful impact on this callback’s operation.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="determined.keras.callbacks.ReduceLROnPlateau">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">determined.keras.callbacks.</span></span><span class="sig-name descname"><span class="pre">ReduceLROnPlateau</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">arg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#determined.keras.callbacks.ReduceLROnPlateau" title="Permalink to this definition">#</a></dt>
+<dd><p>ReduceLROnPlateau behaves exactly like the <code class="docutils literal notranslate"><span class="pre">tf.keras.callbacks.ReduceLROnPlateau</span></code> except that
+it checks after every <code class="docutils literal notranslate"><span class="pre">on_test_end()</span></code> rather than every <code class="docutils literal notranslate"><span class="pre">on_epoch_end()</span></code> and it can save and
+restore its state after pauses in training.</p>
+<p>Therefore, part of configuring the Determined implementation of ReduceLROnPlateau is to
+configure <code class="docutils literal notranslate"><span class="pre">min_validation_period</span></code> for the experiment appropriately (likely it should be
+configured to validate every epoch).</p>
+<p>In Determined, <code class="docutils literal notranslate"><span class="pre">on_test_end</span></code> may be called slightly more often than <code class="docutils literal notranslate"><span class="pre">min_validation_period</span></code>
+during some types of hyperparameter searches, but it is unlikely for that to occur often
+enough have a meaningful impact on this callback’s operation.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="determined.keras.callbacks.TensorBoard">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">determined.keras.callbacks.</span></span><span class="sig-name descname"><span class="pre">TensorBoard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#determined.keras.callbacks.TensorBoard" title="Permalink to this definition">#</a></dt>
+<dd><p>This is a thin wrapper over the TensorBoard callback that ships with <code class="docutils literal notranslate"><span class="pre">tf.keras</span></code>.  For more
+information, see the <span class="xref std std-ref">TensorBoard Guide</span> or the upstream docs for
+<a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/callbacks/TensorBoard">tf.keras.callbacks.TensorBoard</a>.</p>
+<p>Note that if a <code class="docutils literal notranslate"><span class="pre">log_dir</span></code> argument is passed to the constructor, it will be ignored.</p>
+</dd></dl>
+
+</section>
+<section id="determined-keras-load-model-from-checkpoint-path">
+<h2><code class="docutils literal notranslate"><span class="pre">determined.keras.load_model_from_checkpoint_path</span></code><a class="headerlink" href="#determined-keras-load-model-from-checkpoint-path" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="determined.keras.load_model_from_checkpoint_path">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">determined.keras.</span></span><span class="sig-name descname"><span class="pre">load_model_from_checkpoint_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#determined.keras.load_model_from_checkpoint_path" title="Permalink to this definition">#</a></dt>
+<dd><p>Loads a checkpoint written by a TFKerasTrial.</p>
+<p>You should have already downloaded the checkpoint files, likely with
+<a class="reference internal" href="../python-sdk.html#determined.experimental.client.Checkpoint.download" title="determined.experimental.client.Checkpoint.download"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Checkpoint.download()</span></code></a>.</p>
+<p>The return type is a TensorFlow AutoTrackable object.</p>
+<dl>
+<dt>Arguments:</dt><dd><p>path (string): Top level directory to load the checkpoint from.
+tags (list string, optional): Specifies which tags are loaded from</p>
+<blockquote>
+<div><p>the TensorFlow SavedModel. See documentation for <a class="reference external" href="https://www.tensorflow.org/versions/r1.15/api_docs/python/tf/saved_model/load_v2">tf.compat.v1.saved_model.load_v2</a>.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> {your-title}
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-keras-tfkerastrial"><code class="docutils literal notranslate"><span class="pre">determined.keras.TFKerasTrial</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrial"><code class="docutils literal notranslate"><span class="pre">TFKerasTrial</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrial.__init__"><code class="docutils literal notranslate"><span class="pre">TFKerasTrial.__init__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrial.build_model"><code class="docutils literal notranslate"><span class="pre">TFKerasTrial.build_model()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrial.build_training_data_loader"><code class="docutils literal notranslate"><span class="pre">TFKerasTrial.build_training_data_loader()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrial.build_validation_data_loader"><code class="docutils literal notranslate"><span class="pre">TFKerasTrial.build_validation_data_loader()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrial.session_config"><code class="docutils literal notranslate"><span class="pre">TFKerasTrial.session_config()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrial.keras_callbacks"><code class="docutils literal notranslate"><span class="pre">TFKerasTrial.keras_callbacks()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-keras-tfkerastrialcontext"><code class="docutils literal notranslate"><span class="pre">determined.keras.TFKerasTrialContext</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext.get_global_batch_size"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext.get_global_batch_size()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext.get_per_slot_batch_size"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext.get_per_slot_batch_size()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext.configure_fit"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext.configure_fit()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext.wrap_dataset"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext.wrap_dataset()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext.wrap_optimizer"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext.wrap_optimizer()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext.wrap_model"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext.wrap_model()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext.from_config"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext.from_config()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext.get_data_config"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext.get_data_config()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext.get_experiment_config"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext.get_experiment_config()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext.get_experiment_id"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext.get_experiment_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext.get_hparam"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext.get_hparam()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext.get_hparams"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext.get_hparams()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext.get_stop_requested"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext.get_stop_requested()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext.get_tensorboard_path"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext.get_tensorboard_path()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext.get_trial_id"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext.get_trial_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasTrialContext.set_stop_requested"><code class="docutils literal notranslate"><span class="pre">TFKerasTrialContext.set_stop_requested()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-keras-tfkerastrialcontext-distributed"><code class="docutils literal notranslate"><span class="pre">determined.keras.TFKerasTrialContext.distributed</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-keras-tfkerasexperimentalcontext"><code class="docutils literal notranslate"><span class="pre">determined.keras.TFKerasExperimentalContext</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.TFKerasExperimentalContext"><code class="docutils literal notranslate"><span class="pre">TFKerasExperimentalContext</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-keras-callbacks"><code class="docutils literal notranslate"><span class="pre">determined.keras.callbacks</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.callbacks.Callback"><code class="docutils literal notranslate"><span class="pre">Callback</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.callbacks.Callback.get_state"><code class="docutils literal notranslate"><span class="pre">Callback.get_state()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.callbacks.Callback.load_state"><code class="docutils literal notranslate"><span class="pre">Callback.load_state()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.callbacks.Callback.on_checkpoint_end"><code class="docutils literal notranslate"><span class="pre">Callback.on_checkpoint_end()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.callbacks.Callback.on_train_workload_begin"><code class="docutils literal notranslate"><span class="pre">Callback.on_train_workload_begin()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.callbacks.Callback.on_train_workload_end"><code class="docutils literal notranslate"><span class="pre">Callback.on_train_workload_end()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.callbacks.EarlyStopping"><code class="docutils literal notranslate"><span class="pre">EarlyStopping</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.callbacks.ReduceLROnPlateau"><code class="docutils literal notranslate"><span class="pre">ReduceLROnPlateau</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.callbacks.TensorBoard"><code class="docutils literal notranslate"><span class="pre">TensorBoard</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-keras-load-model-from-checkpoint-path"><code class="docutils literal notranslate"><span class="pre">determined.keras.load_model_from_checkpoint_path</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.keras.load_model_from_checkpoint_path"><code class="docutils literal notranslate"><span class="pre">load_model_from_checkpoint_path</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By lb
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, lb.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
