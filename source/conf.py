@@ -16,16 +16,21 @@ import os, sys
 if sys.platform == 'darwin':
     sys.path.insert(0, '/Users/*/Documents/github/determined')
 
-print("hiiiii!!!")
-
-conf_dir = os.path.abspath(os.path.dirname(__file__))
-determined_path = os.path.abspath(os.path.join(conf_dir, '../determined'))
-sys.path.insert(0, determined_path)
+print("~~~~~~~~~~~~")
 
 # print the directory above the conf.py file
 print(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+# output is /home/runner/work/x/x
+
 # list the files in the directory above the conf.py file
 print(os.listdir(os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))))
+# ouput is ['Makefile', '.gitignore', '.git', '.github', 'source', 'determined', 'requirements.txt', '.nojekyll', 'make.bat']
+
+# inspect the determined folder
+print(os.listdir(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'determined'))))
+
+sys.path.insert(0, '../determined')
+
 
 print("~~~~~~~~~~~~")
 # -- Project information -----------------------------------------------------
