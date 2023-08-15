@@ -16,7 +16,7 @@ import os, sys
 if sys.platform == 'darwin':
     sys.path.insert(0, '/Users/*/Documents/github/determined')
 
-sys.path.insert(0, '../../determined')
+sys.path.insert(0, '/home/runner/work/x/x/determined')
 
 # -- Project information -----------------------------------------------------
 
