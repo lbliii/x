@@ -1,3 +1,5 @@
 # local preview _build 
 
 _build/
+docs/
+build/
