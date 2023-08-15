@@ -16,7 +16,12 @@ import os, sys
 if sys.platform == 'darwin':
     sys.path.insert(0, '/Users/*/Documents/github/determined')
 
+print("hiiiii!!!")
 
+# print the directory that the conf.py file is in
+print(os.path.abspath(os.path.dirname(__file__)))
+
+print("~~~~~~~~~~~~")
 # -- Project information -----------------------------------------------------
 
 project = 'project-x'
