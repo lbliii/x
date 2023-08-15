@@ -28,10 +28,11 @@ Indices
 .. toctree::
    :glob:
    :hidden:
-   :maxdepth: 5
+   :maxdepth: 1
    
 
    ./latest/*/_index
+   ./latest/attributions
 
 
 

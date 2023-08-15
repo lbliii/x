@@ -20,8 +20,8 @@ if sys.platform == 'darwin':
 # -- Project information -----------------------------------------------------
 
 project = 'project-x'
-copyright = '2023, lb'
-author = 'lb'
+copyright = '2023, Determined AI'
+author = 'Tara & LB'
 
 # The full version, including alpha/beta/rc tags
 release = '0.0.1'
@@ -52,7 +52,7 @@ exclude_patterns = []
 html_theme = 'sphinx_book_theme'
 html_theme_options= {
     "home_page_in_toc": True,
-    "toc_title": "{your-title}",
+    "toc_title": "Contents",
     "show_toc_level": 4,
     "show_navbar_depth": 1,
 }
