@@ -10,7 +10,7 @@ jobs:
       - uses: actions/setup-python@v3
       - name: Install dependencies
         run: |
-          pip install sphinx sphinx-book-theme
+          pip install -r requirements.txt
       - name: Sphinx build
         run: |
             sphinx-build source docs
@@ -20,5 +20,5 @@ jobs:
         with:
           publish_branch: gh-pages
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: /public
+          publish_dir: /docs
           force_orphan: true
