@@ -10,10 +10,9 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-import os
-import sys
+import os, sys
 
-# if computer is mac
+# if computer is Mac, find the determined repo in the contributor's /Documents/github/determined folder
 if sys.platform == 'darwin':
     sys.path.insert(0, '/Users/*/Documents/github/determined')
 

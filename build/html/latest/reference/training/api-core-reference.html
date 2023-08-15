@@ -1,0 +1,1285 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<meta content="Familiarize yourself with the det.core API by visiting this reference page on the determined.core.init module, its configuration parameters, classes, methods, and practical examples." name="description" />
+
+    <title>det.core API Reference &#8212; project-x 0.0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=362ab14a" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=dc820ae5"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'latest/reference/training/api-core-reference';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">project-x 0.0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../index.html">
+                    Welcome to project-x’s documentation!
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../example-solutions/_index.html">Examples</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../integrations/_index.html">Integrations</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../integrations/ecosystem/_index.html">Ecosystem Integration</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../integrations/notification/_index.html">Monitoring Experiment Through Webhooks</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../integrations/notification/zapier.html">Through Zapier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../integrations/notification/slack.html">Through Slack</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../integrations/prometheus/_index.html">Configure Determined with Prometheus and Grafana</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../model-dev-guide/_index.html">Model Developer Guide</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../model-dev-guide/apis-howto/_index.html">Training APIs</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../model-dev-guide/apis-howto/api-core-ug.html">Core API User Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../model-dev-guide/apis-howto/api-pytorch-ug.html">PyTorch API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../model-dev-guide/apis-howto/api-keras-ug.html">Keras API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../model-dev-guide/apis-howto/api-estimator-ug.html">Estimator API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../model-dev-guide/batch-processing/_index.html">Torch Batch Processing API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../model-dev-guide/best-practices/_index.html">Best Practices</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../model-dev-guide/dtrain/_index.html">Distributed Training with Determined</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../model-dev-guide/dtrain/dtrain-introduction.html">Distributed Training Concepts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../model-dev-guide/dtrain/dtrain-implement.html">Implementing Distributed Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../model-dev-guide/dtrain/config-templates.html">Configuration Templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../model-dev-guide/dtrain/reproducibility.html">Reproducibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../model-dev-guide/dtrain/optimize-training.html">Optimizing Training</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../model-hub-library/_index.html">Model Hub Library</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../_index.html">Reference</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../release-notes/_index.html">Release Notes</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../setup-cluster/_index.html">Setup</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../setup-cluster/deploy-cluster/_index.html">Set Up Determined</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../setup-cluster/deploy-cluster/aws/_index.html">Deploy on AWS</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/aws/aws-spot.html">Use Spot Instances</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/aws/dynamic-agents-aws.html">Deploy Determined with Dynamic Agents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/aws/install-on-aws.html">Install Determined</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../setup-cluster/deploy-cluster/gcp/_index.html">Deploy on GCP</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/gcp/dynamic-agents-gcp.html">Deploy Determined with Dynamic Agents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/gcp/install-gcp.html">Install Determined</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../setup-cluster/deploy-cluster/k8s/_index.html">Deploy on Kubernetes</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/k8s/custom-pod-specs.html">Customize a Pod</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/k8s/helm-commands.html">Helm and Kubectl Command Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/k8s/install-on-kubernetes.html">Install Determined on Kubernetes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/k8s/k8s-dev-guide.html">Development Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/k8s/setup-aks-cluster.html">Set up and Manage an Azure Kubernetes Service (AKS) Cluster</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/k8s/setup-eks-cluster.html">Set up and Manage an AWS Kubernetes (EKS) Cluster</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/k8s/setup-gke-cluster.html">Set up and Manage a Google Kubernetes Engine (GKE) Cluster</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/k8s/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../setup-cluster/deploy-cluster/on-prem/_index.html">Deploy on Prem</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/on-prem/deploy.html">Install Determined Using <code class="docutils literal notranslate"><span class="pre">det</span> <span class="pre">deploy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/on-prem/docker.html">Install Determined Using Docker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/on-prem/homebrew.html">Install Determined Using Homebrew (macOS)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/on-prem/linux-packages.html">Install Determined Using Linux Packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/on-prem/requirements.html">Installation Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/on-prem/wsl.html">Install Determined Using Windows Subsystem for Linux (Windows)</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../setup-cluster/deploy-cluster/slurm/_index.html">Deploy on Slurm/PBS</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/slurm/hpc-launching-architecture.html">HPC Launching Architecture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/slurm/hpc-security-considerations.html">HPC Launcher Security Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/slurm/install-on-slurm.html">Install Determined on Slurm/PBS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/slurm/singularity.html">Provide a Container Image Cache</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/slurm/slurm-known-issues.html">Known Issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../setup-cluster/deploy-cluster/slurm/slurm-requirements.html">Installation Requirements</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../setup-cluster/security/_index.html">Security</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../setup-cluster/security/oauth.html">OAuth 2.0 Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../setup-cluster/security/oidc.html">OpenID Connect Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../setup-cluster/security/rbac.html">RBAC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../setup-cluster/security/saml.html">SAML Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../setup-cluster/security/scim.html">SCIM Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../setup-cluster/security/tls.html">Transport Layer Security</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../tutorials/_index.html">Tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/pytorch-mnist-local-qs.html">Run Your First Experiment in Determined</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/pytorch-mnist-tutorial.html">PyTorch MNIST Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/pytorch-porting-tutorial.html">PyTorch Porting Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/quickstart-mdldev.html">Quickstart for Model Developers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/tf-mnist-tutorial.html">TensorFlow Keras Fashion MNIST Tutorial</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/latest/reference/training/api-core-reference.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>det.core API Reference</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> {your-title} </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-determined.core"><code class="docutils literal notranslate"><span class="pre">determined.core.init</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.init"><code class="docutils literal notranslate"><span class="pre">init()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-core-context"><code class="docutils literal notranslate"><span class="pre">determined.core.Context</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.Context"><code class="docutils literal notranslate"><span class="pre">Context</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-core-distributedcontext"><code class="docutils literal notranslate"><span class="pre">determined.core.DistributedContext</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.DistributedContext"><code class="docutils literal notranslate"><span class="pre">DistributedContext</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.DistributedContext.from_horovod"><code class="docutils literal notranslate"><span class="pre">DistributedContext.from_horovod()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.DistributedContext.from_deepspeed"><code class="docutils literal notranslate"><span class="pre">DistributedContext.from_deepspeed()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.DistributedContext.from_torch_distributed"><code class="docutils literal notranslate"><span class="pre">DistributedContext.from_torch_distributed()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.DistributedContext.get_rank"><code class="docutils literal notranslate"><span class="pre">DistributedContext.get_rank()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.DistributedContext.get_local_rank"><code class="docutils literal notranslate"><span class="pre">DistributedContext.get_local_rank()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.DistributedContext.get_size"><code class="docutils literal notranslate"><span class="pre">DistributedContext.get_size()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.DistributedContext.get_num_agents"><code class="docutils literal notranslate"><span class="pre">DistributedContext.get_num_agents()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.DistributedContext.gather"><code class="docutils literal notranslate"><span class="pre">DistributedContext.gather()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.DistributedContext.gather_local"><code class="docutils literal notranslate"><span class="pre">DistributedContext.gather_local()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.DistributedContext.allgather"><code class="docutils literal notranslate"><span class="pre">DistributedContext.allgather()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.DistributedContext.allgather_local"><code class="docutils literal notranslate"><span class="pre">DistributedContext.allgather_local()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.DistributedContext.broadcast"><code class="docutils literal notranslate"><span class="pre">DistributedContext.broadcast()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.DistributedContext.broadcast_local"><code class="docutils literal notranslate"><span class="pre">DistributedContext.broadcast_local()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-core-checkpointcontext"><code class="docutils literal notranslate"><span class="pre">determined.core.CheckpointContext</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.CheckpointContext"><code class="docutils literal notranslate"><span class="pre">CheckpointContext</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.CheckpointContext.upload"><code class="docutils literal notranslate"><span class="pre">CheckpointContext.upload()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.CheckpointContext.download"><code class="docutils literal notranslate"><span class="pre">CheckpointContext.download()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.CheckpointContext.get_metadata"><code class="docutils literal notranslate"><span class="pre">CheckpointContext.get_metadata()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.CheckpointContext.store_path"><code class="docutils literal notranslate"><span class="pre">CheckpointContext.store_path()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.CheckpointContext.restore_path"><code class="docutils literal notranslate"><span class="pre">CheckpointContext.restore_path()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.CheckpointContext.delete"><code class="docutils literal notranslate"><span class="pre">CheckpointContext.delete()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-core-preemptcontext"><code class="docutils literal notranslate"><span class="pre">determined.core.PreemptContext</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.PreemptContext"><code class="docutils literal notranslate"><span class="pre">PreemptContext</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.PreemptContext.should_preempt"><code class="docutils literal notranslate"><span class="pre">PreemptContext.should_preempt()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.PreemptContext.acknowledge_preemption_signal"><code class="docutils literal notranslate"><span class="pre">PreemptContext.acknowledge_preemption_signal()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-core-traincontext"><code class="docutils literal notranslate"><span class="pre">determined.core.TrainContext</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.TrainContext"><code class="docutils literal notranslate"><span class="pre">TrainContext</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.TrainContext.set_status"><code class="docutils literal notranslate"><span class="pre">TrainContext.set_status()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.TrainContext.report_training_metrics"><code class="docutils literal notranslate"><span class="pre">TrainContext.report_training_metrics()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.TrainContext.get_tensorboard_path"><code class="docutils literal notranslate"><span class="pre">TrainContext.get_tensorboard_path()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.TrainContext.upload_tensorboard_files"><code class="docutils literal notranslate"><span class="pre">TrainContext.upload_tensorboard_files()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.TrainContext.report_validation_metrics"><code class="docutils literal notranslate"><span class="pre">TrainContext.report_validation_metrics()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.TrainContext.report_early_exit"><code class="docutils literal notranslate"><span class="pre">TrainContext.report_early_exit()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.TrainContext.get_experiment_best_validation"><code class="docutils literal notranslate"><span class="pre">TrainContext.get_experiment_best_validation()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-core-searchercontext"><code class="docutils literal notranslate"><span class="pre">determined.core.SearcherContext</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.SearcherContext"><code class="docutils literal notranslate"><span class="pre">SearcherContext</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.SearcherContext.operations"><code class="docutils literal notranslate"><span class="pre">SearcherContext.operations()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.SearcherContext.acknowledge_out_of_ops"><code class="docutils literal notranslate"><span class="pre">SearcherContext.acknowledge_out_of_ops()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.SearcherContext.get_configured_units"><code class="docutils literal notranslate"><span class="pre">SearcherContext.get_configured_units()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-core-searcheroperation"><code class="docutils literal notranslate"><span class="pre">determined.core.SearcherOperation</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.SearcherOperation"><code class="docutils literal notranslate"><span class="pre">SearcherOperation</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-core-preemptmode"><code class="docutils literal notranslate"><span class="pre">determined.core.PreemptMode</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.PreemptMode"><code class="docutils literal notranslate"><span class="pre">PreemptMode</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-core-searchermode"><code class="docutils literal notranslate"><span class="pre">determined.core.SearcherMode</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.SearcherMode"><code class="docutils literal notranslate"><span class="pre">SearcherMode</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-core-tensorboardmode"><code class="docutils literal notranslate"><span class="pre">determined.core.TensorboardMode</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.TensorboardMode"><code class="docutils literal notranslate"><span class="pre">TensorboardMode</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-trialinfo"><code class="docutils literal notranslate"><span class="pre">determined.TrialInfo</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.TrialInfo"><code class="docutils literal notranslate"><span class="pre">TrialInfo</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.TrialInfo.experiment_id"><code class="docutils literal notranslate"><span class="pre">TrialInfo.experiment_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.TrialInfo.hparams"><code class="docutils literal notranslate"><span class="pre">TrialInfo.hparams</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.TrialInfo.trial_id"><code class="docutils literal notranslate"><span class="pre">TrialInfo.trial_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.TrialInfo.trial_seed"><code class="docutils literal notranslate"><span class="pre">TrialInfo.trial_seed</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="det-core-api-reference">
+<span id="core-reference"></span><h1><code class="docutils literal notranslate"><span class="pre">det.core</span></code> API Reference<a class="headerlink" href="#det-core-api-reference" title="Permalink to this heading">#</a></h1>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>User Guide</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="xref std std-doc">/model-dev-guide/apis-howto/api-core-ug</span></p></td>
+</tr>
+</tbody>
+</table>
+<section id="module-determined.core">
+<span id="determined-core-init"></span><h2><code class="docutils literal notranslate"><span class="pre">determined.core.init</span></code><a class="headerlink" href="#module-determined.core" title="Permalink to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="determined.core.init">
+<span class="sig-prename descclassname"><span class="pre">determined.core.</span></span><span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distributed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#determined.core.DistributedContext" title="determined.core._distributed.DistributedContext"><span class="pre">DistributedContext</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint_storage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preempt_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#determined.core.PreemptMode" title="determined.core._preempt.PreemptMode"><span class="pre">PreemptMode</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">PreemptMode.WorkersAskChief</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tensorboard_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#determined.core.TensorboardMode" title="determined.core._tensorboard_mode.TensorboardMode"><span class="pre">TensorboardMode</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">TensorboardMode.AUTO</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#determined.core.Context" title="determined.core._context.Context"><span class="pre">Context</span></a></span></span><a class="headerlink" href="#determined.core.init" title="Permalink to this definition">#</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">core.init()</span></code> builds a <a class="reference internal" href="#determined.core.Context" title="determined.core.Context"><code class="xref py py-class docutils literal notranslate"><span class="pre">core.Context</span></code></a> for use with the Core
+API.</p>
+<p>Always use <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">core.init()</span> <span class="pre">as</span> <span class="pre">context</span></code> instead of instantiating a <code class="docutils literal notranslate"><span class="pre">core.Context</span></code> directly.
+Certain components of the Core API may be configured by passing arguments to <code class="docutils literal notranslate"><span class="pre">core.init()</span></code>.
+The only arg that is required is a <code class="docutils literal notranslate"><span class="pre">DistributedContext</span></code>, and even that is only required for
+multi-slot tasks.</p>
+<p>All of your training must occur within the scope of the <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">core.init()</span> <span class="pre">as</span> <span class="pre">core_context</span></code>, as
+there are resources necessary for training which start in the <code class="docutils literal notranslate"><span class="pre">core.Context</span></code>’s <code class="docutils literal notranslate"><span class="pre">__enter__</span></code>
+method and must be cleaned up in its <code class="docutils literal notranslate"><span class="pre">__exit__()</span></code> method.</p>
+<dl class="simple">
+<dt>Arguments:</dt><dd><dl class="simple">
+<dt>distributed (<code class="docutils literal notranslate"><span class="pre">core.DistributedContext</span></code>, optional): Passing a <code class="docutils literal notranslate"><span class="pre">DistributedContext</span></code> is</dt><dd><p>required for multi-slot training, but unnecessary for single-slot training.  Defaults to
+<code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt>preempt_mode (<code class="docutils literal notranslate"><span class="pre">core.PreemptMode</span></code>, optional): Configure the calling pattern for the</dt><dd><p><code class="docutils literal notranslate"><span class="pre">core_context.preempt.should_preempt()</span></code> method.  See
+<a class="reference internal" href="#determined.core.PreemptMode" title="determined.core.PreemptMode"><code class="xref py py-class docutils literal notranslate"><span class="pre">PreemptMode</span></code></a> for more detail.  Defaults to <code class="docutils literal notranslate"><span class="pre">WorkersAskChief</span></code>.</p>
+</dd>
+<dt>checkpoint_storage (<code class="docutils literal notranslate"><span class="pre">Union[str,</span> <span class="pre">dict]</span></code>, optional): A directory path or a cloud storage URI</dt><dd><p>of the form <code class="docutils literal notranslate"><span class="pre">s3://&lt;bucket&gt;[/&lt;prefix&gt;]</span></code> (AWS) or <code class="docutils literal notranslate"><span class="pre">gs://&lt;bucket&gt;[/&lt;prefix&gt;]</span></code> (GCP).
+This should only be used when IAM permissions can be assumed. You may also pass a
+dictionary matching the <code class="docutils literal notranslate"><span class="pre">checkpoint_storage</span></code> field of the experiment config, with the
+exception that <code class="docutils literal notranslate"><span class="pre">type:</span> <span class="pre">shared_fs</span></code> configs are not allowed.</p>
+</dd>
+<dt>tensorboard_mode (<code class="docutils literal notranslate"><span class="pre">core.TensorboardMode</span></code>, optional): Define how Tensorboard</dt><dd><p>metrics and profiling data are retained. See
+<code class="xref py py-class docutils literal notranslate"><span class="pre">TensorboardMode`</span></code> for more detail. Defaults to <code class="docutils literal notranslate"><span class="pre">AUTO</span></code>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="determined-core-context">
+<h2><code class="docutils literal notranslate"><span class="pre">determined.core.Context</span></code><a class="headerlink" href="#determined-core-context" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="determined.core.Context">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">determined.core.</span></span><span class="sig-name descname"><span class="pre">Context</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">checkpoint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#determined.core.CheckpointContext" title="determined.core._checkpoint.CheckpointContext"><span class="pre">CheckpointContext</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">distributed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#determined.core.DistributedContext" title="determined.core._distributed.DistributedContext"><span class="pre">DistributedContext</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preempt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#determined.core.PreemptContext" title="determined.core._preempt.PreemptContext"><span class="pre">PreemptContext</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#determined.core.TrainContext" title="determined.core._train.TrainContext"><span class="pre">TrainContext</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">searcher</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#determined.core.SearcherContext" title="determined.core._searcher.SearcherContext"><span class="pre">SearcherContext</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_tensorboard_manager</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TensorboardManager</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#determined.core.Context" title="Permalink to this definition">#</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">core.Context</span></code> is a simple composition of several component APIs, with the following public
+members:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.checkpoint</span></code>, a <a class="reference internal" href="#determined.core.CheckpointContext" title="determined.core.CheckpointContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">CheckpointContext</span></code></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.distributed</span></code>, a <a class="reference internal" href="#determined.core.DistributedContext" title="determined.core.DistributedContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">DistributedContext</span></code></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.preempt</span></code>, a <a class="reference internal" href="#determined.core.PreemptContext" title="determined.core.PreemptContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">PreemptContext</span></code></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.searcher</span></code>, a <a class="reference internal" href="#determined.core.SearcherContext" title="determined.core.SearcherContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">SearcherContext</span></code></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.train</span></code>, a <a class="reference internal" href="#determined.core.TrainContext" title="determined.core.TrainContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">TrainContext</span></code></a></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">core.Context</span></code> is a tool for integrating arbitrary distributed tasks into a Determined
+cluster.</p>
+<p>You should always use <a class="reference internal" href="#determined.core.init" title="determined.core.init"><code class="xref py py-meth docutils literal notranslate"><span class="pre">core.init()</span></code></a> instead of creating a
+core.Context manually.</p>
+</dd></dl>
+
+</section>
+<section id="determined-core-distributedcontext">
+<h2><code class="docutils literal notranslate"><span class="pre">determined.core.DistributedContext</span></code><a class="headerlink" href="#determined-core-distributedcontext" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="determined.core.DistributedContext">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">determined.core.</span></span><span class="sig-name descname"><span class="pre">DistributedContext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rank</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_rank</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cross_rank</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cross_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chief_ip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pub_port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">12360</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pull_port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">12376</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port_offset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_tcp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#determined.core.DistributedContext" title="Permalink to this definition">#</a></dt>
+<dd><p>DistributedContext provides useful methods for effective distributed training.</p>
+<dl class="simple">
+<dt>A DistributedContext has the following required args:</dt><dd><ul class="simple">
+<li><p>rank: the index of this worker in the entire job</p></li>
+<li><p>size: the number of workers in the entire job</p></li>
+<li><p>local_rank: the index of this worker on this machine</p></li>
+<li><p>local_size: the number of workers on this machine</p></li>
+<li><p>cross_rank: the index of this machine in the entire job</p></li>
+<li><p>cross_size: the number of machines in the entire job</p></li>
+</ul>
+</dd>
+<dt>Additionally, any time that cross_size &gt; 1, you must also provide:</dt><dd><ul class="simple">
+<li><p>chief_ip: the ip address to reach the chief worker (where rank==0)</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>DistributedContext has <code class="docutils literal notranslate"><span class="pre">.allgather()</span></code>, <code class="docutils literal notranslate"><span class="pre">.gather()</span></code>, and <code class="docutils literal notranslate"><span class="pre">.broadcast()</span></code> methods, which
+are easy to use and which can be useful for coordinating work across workers, but it is not a
+replacement for the allgather/gather/broadcast operations in your particular distributed
+training framework.</p>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.core.DistributedContext.from_horovod">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_horovod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hvd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chief_ip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#determined.core.DistributedContext" title="determined.core._distributed.DistributedContext"><span class="pre">DistributedContext</span></a></span></span><a class="headerlink" href="#determined.core.DistributedContext.from_horovod" title="Permalink to this definition">#</a></dt>
+<dd><p>Create a <code class="docutils literal notranslate"><span class="pre">DistributedContext</span></code> using the provided <code class="docutils literal notranslate"><span class="pre">hvd</span></code> module to determine rank
+information.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">horovod.torch</span> <span class="k">as</span> <span class="nn">hvd</span>
+<span class="n">hvd</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<span class="n">distributed</span> <span class="o">=</span> <span class="n">DistributedContext</span><span class="o">.</span><span class="n">from_horovod</span><span class="p">(</span><span class="n">hvd</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The IP address for the chief worker is required whenever <code class="docutils literal notranslate"><span class="pre">hvd.cross_size()</span> <span class="pre">&gt;</span> <span class="pre">1</span></code>. The value
+may be provided using the <code class="docutils literal notranslate"><span class="pre">chief_ip</span></code> argument or the <code class="docutils literal notranslate"><span class="pre">DET_CHIEF_IP</span></code> environment
+variable.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.core.DistributedContext.from_deepspeed">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_deepspeed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chief_ip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#determined.core.DistributedContext" title="determined.core._distributed.DistributedContext"><span class="pre">DistributedContext</span></a></span></span><a class="headerlink" href="#determined.core.DistributedContext.from_deepspeed" title="Permalink to this definition">#</a></dt>
+<dd><p>Create a <code class="docutils literal notranslate"><span class="pre">DistributedContext</span></code> using the standard deepspeed environment variables to
+determine rank information.</p>
+<p>The IP address for the chief worker is required whenever CROSS_SIZE &gt; 1.  The value may
+be provided using the chief_ip argument or the DET_CHIEF_IP environment variable.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.core.DistributedContext.from_torch_distributed">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_torch_distributed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chief_ip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#determined.core.DistributedContext" title="determined.core._distributed.DistributedContext"><span class="pre">DistributedContext</span></a></span></span><a class="headerlink" href="#determined.core.DistributedContext.from_torch_distributed" title="Permalink to this definition">#</a></dt>
+<dd><p>Create a DistributedContext using the standard torch distributed environment variables to
+determine rank information.</p>
+<p>The IP address for the chief worker is required whenever CROSS_SIZE &gt; 1.  The value may
+be provided via the chief_ip argument or the DET_CHIEF_IP environment variable.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.core.DistributedContext.get_rank">
+<span class="sig-name descname"><span class="pre">get_rank</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#determined.core.DistributedContext.get_rank" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the rank of the process in the trial. The rank of a process is a
+unique ID within the trial.  That is, no two processes in the same trial
+are assigned the same rank.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.core.DistributedContext.get_local_rank">
+<span class="sig-name descname"><span class="pre">get_local_rank</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#determined.core.DistributedContext.get_local_rank" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the rank of the process on the agent. The local rank of a process
+is a unique ID within a given agent and trial; that is, no two processes
+in the same trial that are executing on the same agent are assigned the
+same rank.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.core.DistributedContext.get_size">
+<span class="sig-name descname"><span class="pre">get_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#determined.core.DistributedContext.get_size" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the number of slots this trial is running on.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.core.DistributedContext.get_num_agents">
+<span class="sig-name descname"><span class="pre">get_num_agents</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#determined.core.DistributedContext.get_num_agents" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the number of agents this trial is running on.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.core.DistributedContext.gather">
+<span class="sig-name descname"><span class="pre">gather</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stuff</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#determined.core.DistributedContext.gather" title="Permalink to this definition">#</a></dt>
+<dd><p>Gather <code class="docutils literal notranslate"><span class="pre">stuff</span></code> to the chief.  The chief returns a list of all stuff, and workers return
+<code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">gather()</span></code> is not a replacement for the gather functionality of your distributed training
+framework.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.core.DistributedContext.gather_local">
+<span class="sig-name descname"><span class="pre">gather_local</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stuff</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#determined.core.DistributedContext.gather_local" title="Permalink to this definition">#</a></dt>
+<dd><p>Gather <code class="docutils literal notranslate"><span class="pre">stuff</span></code> to the local chief.  The local chief returns a list of all stuff, and local
+workers return <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">gather_local()</span></code> is not a replacement for the gather functionality of your distributed
+training framework.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.core.DistributedContext.allgather">
+<span class="sig-name descname"><span class="pre">allgather</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stuff</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span></span></span><a class="headerlink" href="#determined.core.DistributedContext.allgather" title="Permalink to this definition">#</a></dt>
+<dd><p>Gather <code class="docutils literal notranslate"><span class="pre">stuff</span></code> to the chief and broadcast all of it back to the workers.</p>
+<p><code class="docutils literal notranslate"><span class="pre">allgather()</span></code> is not a replacement for the allgather functionality of your distributed
+training framework.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.core.DistributedContext.allgather_local">
+<span class="sig-name descname"><span class="pre">allgather_local</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stuff</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span></span></span><a class="headerlink" href="#determined.core.DistributedContext.allgather_local" title="Permalink to this definition">#</a></dt>
+<dd><p>Gather <code class="docutils literal notranslate"><span class="pre">stuff</span></code> to the local chief and broadcast all of it back to the local workers.</p>
+<p><code class="docutils literal notranslate"><span class="pre">allgather_local()</span></code> is not a replacement for the allgather functionality of your
+distributed training framework.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.core.DistributedContext.broadcast">
+<span class="sig-name descname"><span class="pre">broadcast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stuff</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#determined.core.DistributedContext.broadcast" title="Permalink to this definition">#</a></dt>
+<dd><p>Every worker gets the <code class="docutils literal notranslate"><span class="pre">stuff</span></code> sent by the chief.</p>
+<p><code class="docutils literal notranslate"><span class="pre">broadcast()</span></code> is not a replacement for the broadcast functionality of your distributed
+training framework.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.core.DistributedContext.broadcast_local">
+<span class="sig-name descname"><span class="pre">broadcast_local</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stuff</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#determined.core.DistributedContext.broadcast_local" title="Permalink to this definition">#</a></dt>
+<dd><p>Every worker gets the <code class="docutils literal notranslate"><span class="pre">stuff</span></code> sent by the local chief.</p>
+<p><code class="docutils literal notranslate"><span class="pre">broadcast_local()</span></code> is not a replacement for the broadcast functionality of your
+distributed training framework.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="determined-core-checkpointcontext">
+<h2><code class="docutils literal notranslate"><span class="pre">determined.core.CheckpointContext</span></code><a class="headerlink" href="#determined-core-checkpointcontext" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="determined.core.CheckpointContext">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">determined.core.</span></span><span class="sig-name descname"><span class="pre">CheckpointContext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dist</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#determined.core.DistributedContext" title="determined.core._distributed.DistributedContext"><span class="pre">DistributedContext</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_manager</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StorageManager</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allocation_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tbd_sync_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#determined.core.TensorboardMode" title="determined.core._tensorboard_mode.TensorboardMode"><span class="pre">TensorboardMode</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">tensorboard_manager</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TensorboardManager</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#determined.core.CheckpointContext" title="Permalink to this definition">#</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">CheckpointContext</span></code> gives access to checkpoint-related features of a Determined cluster.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.core.CheckpointContext.upload">
+<span class="sig-name descname"><span class="pre">upload</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ckpt_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">PathLike</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shard</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#determined.core.CheckpointContext.upload" title="Permalink to this definition">#</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">upload()</span></code> chooses a random <code class="docutils literal notranslate"><span class="pre">storage_id</span></code>, then uploads the contents of <code class="docutils literal notranslate"><span class="pre">ckpt_dir</span></code> to
+checkpoint storage into a directory by the name of the <code class="docutils literal notranslate"><span class="pre">storage_id</span></code>.  The name of the
+<code class="docutils literal notranslate"><span class="pre">ckpt_dir</span></code> is not preserved.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">shard=False</span></code>, only the chief worker (<code class="docutils literal notranslate"><span class="pre">distributed.rank==0</span></code>) may call <code class="docutils literal notranslate"><span class="pre">upload()</span></code>.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">shard=True</span></code>, <code class="docutils literal notranslate"><span class="pre">upload()</span></code> becomes a synchronization point between workers, so all
+workers must call upload().  Those workers with nothing to upload may pass
+<code class="docutils literal notranslate"><span class="pre">ckpt_dir=None</span></code>. The final checkpoint stored in checkpoint storage will contain a union
+of the contents from each ckpt_dir.</p>
+<p>Each worker may optionally provide a <code class="docutils literal notranslate"><span class="pre">selector</span></code> that accepts a path
+relative to the checkpoint root, and returns True for paths that should be uploaded.</p>
+<p>Returns:  The <code class="docutils literal notranslate"><span class="pre">storage_id</span></code> for this checkpoint.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">core_context</span><span class="o">.</span><span class="n">distributed</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">storage_id</span> <span class="o">=</span> <span class="n">core_context</span><span class="o">.</span><span class="n">checkpoint</span><span class="o">.</span><span class="n">upload</span><span class="p">(</span><span class="n">ckpt_dir</span><span class="p">,</span> <span class="n">shard</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;done uploading checkpoint </span><span class="si">{</span><span class="n">storage_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.core.CheckpointContext.download">
+<span class="sig-name descname"><span class="pre">download</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">storage_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ckpt_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">PathLike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">download_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DownloadMode</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">DownloadMode.LocalWorkersShareDownload</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#determined.core.CheckpointContext.download" title="Permalink to this definition">#</a></dt>
+<dd><p>Download the contents of a checkpoint from checkpoint storage into a directory specified by
+<code class="docutils literal notranslate"><span class="pre">ckpt_dir</span></code>, which is created if it does not exist.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This <code class="docutils literal notranslate"><span class="pre">.download()</span></code> method is similar to but less flexible than the <code class="docutils literal notranslate"><span class="pre">.download()</span></code>
+method of the <code class="xref py py-class docutils literal notranslate"><span class="pre">Checkpoint</span></code> class in the Determined
+Python SDK.  This <code class="docutils literal notranslate"><span class="pre">.download()</span></code> is here as a convenience.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.core.CheckpointContext.get_metadata">
+<span class="sig-name descname"><span class="pre">get_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">storage_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#determined.core.CheckpointContext.get_metadata" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the current metadata associated with the checkpoint.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.core.CheckpointContext.store_path">
+<span class="sig-name descname"><span class="pre">store_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shard</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Path</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#determined.core.CheckpointContext.store_path" title="Permalink to this definition">#</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">store_path()</span></code> is a context manager which chooses a random path and prepares a directory
+you should save your model to.  When the context manager exits, the model is automatically
+uploaded (at least, for cloud-backed checkpoint storage backends).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>metadata must include a ‘steps_completed’ key in the current implementation.
+Raises ValueError if the ‘steps_completed’ key is not present in the metadata
+dictionary.</p>
+</div>
+<p>When <code class="docutils literal notranslate"><span class="pre">shard=False</span></code>, only the chief worker (<code class="docutils literal notranslate"><span class="pre">distributed.rank==0</span></code>) may call
+<code class="docutils literal notranslate"><span class="pre">store_path()</span></code>.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">shard=True</span></code>, <code class="docutils literal notranslate"><span class="pre">store_path()</span></code> becomes a synchronization point between workers, so
+all workers must call store_path(), even workers which will not write any checkpoint files.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">core_context</span><span class="o">.</span><span class="n">distributed</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">core_context</span><span class="o">.</span><span class="n">checkpoint</span><span class="o">.</span><span class="n">store_path</span><span class="p">(</span><span class="n">shard</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="k">as</span> <span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">storage_id</span><span class="p">):</span>
+        <span class="n">my_save_model</span><span class="p">(</span><span class="n">my_model</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;done saving checkpoint </span><span class="si">{</span><span class="n">storage_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;done uploading checkpoint </span><span class="si">{</span><span class="n">storage_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.core.CheckpointContext.restore_path">
+<span class="sig-name descname"><span class="pre">restore_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">storage_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">download_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DownloadMode</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">DownloadMode.LocalWorkersShareDownload</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">Path</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#determined.core.CheckpointContext.restore_path" title="Permalink to this definition">#</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">restore_path()</span></code> is a context manager which downloads a checkpoint (if required by the
+storage backend) and cleans up the temporary files afterwards (if applicable).</p>
+<p>In multi-worker scenarios, with the default <code class="docutils literal notranslate"><span class="pre">download_mode</span></code>
+(<code class="docutils literal notranslate"><span class="pre">LocalWorkersShareDownload</span></code>), all workers must call <code class="docutils literal notranslate"><span class="pre">restore_path()</span></code> but only the local
+chief worker on each node (<code class="docutils literal notranslate"><span class="pre">distributed.local_rank==0</span></code>) actually downloads data.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">core_context</span><span class="o">.</span><span class="n">checkpoint</span><span class="o">.</span><span class="n">restore_path</span><span class="p">(</span><span class="n">my_checkpoint_uuid</span><span class="p">)</span> <span class="k">as</span> <span class="n">path</span><span class="p">:</span>
+    <span class="n">my_model</span> <span class="o">=</span> <span class="n">my_load_model</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.core.CheckpointContext.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">storage_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#determined.core.CheckpointContext.delete" title="Permalink to this definition">#</a></dt>
+<dd><p>Delete a checkpoint from the storage backend.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="determined-core-preemptcontext">
+<h2><code class="docutils literal notranslate"><span class="pre">determined.core.PreemptContext</span></code><a class="headerlink" href="#determined-core-preemptcontext" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="determined.core.PreemptContext">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">determined.core.</span></span><span class="sig-name descname"><span class="pre">PreemptContext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allocation_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#determined.core.DistributedContext" title="determined.core._distributed.DistributedContext"><span class="pre">DistributedContext</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">preempt_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#determined.core.PreemptMode" title="determined.core._preempt.PreemptMode"><span class="pre">PreemptMode</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">PreemptMode.WorkersAskChief</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#determined.core.PreemptContext" title="Permalink to this definition">#</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">PreemptContext</span></code> gives access to preemption signals that originate from a user action, such as
+pausing an experiment using the WebUI or the CLI, from in the Determined scheduler.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.core.PreemptContext.should_preempt">
+<span class="sig-name descname"><span class="pre">should_preempt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">auto_ack</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#determined.core.PreemptContext.should_preempt" title="Permalink to this definition">#</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">should_preempt()</span></code> returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the task should shut itself down, or <code class="docutils literal notranslate"><span class="pre">False</span></code>
+otherwise.</p>
+<p>The requirements on the the caller and the synchronization between workers during a call
+to <code class="docutils literal notranslate"><span class="pre">should_preempt()</span></code> are defined by the <code class="docutils literal notranslate"><span class="pre">preempt_mode</span></code> argument passed to the
+<code class="docutils literal notranslate"><span class="pre">PreemptContext</span></code> constructor.</p>
+<dl class="simple">
+<dt>Arguments:</dt><dd><dl class="simple">
+<dt>auto_ack (<code class="docutils literal notranslate"><span class="pre">bool</span></code>, optional): In order for the task to be restarted by the</dt><dd><p>Determined master after shutting down due to preemption, the task must acknowledge
+the preemption signal to the Determined master.  When <code class="docutils literal notranslate"><span class="pre">auto_ack</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code> this
+acknowledgement is automatically sent the first time that <code class="docutils literal notranslate"><span class="pre">should_preempt()</span></code>
+returns <code class="docutils literal notranslate"><span class="pre">True</span></code>.  If you might choose not to exit after receiving the preemption
+signal (but you still want to check the signal for some purpose), then you should
+set <code class="docutils literal notranslate"><span class="pre">auto_ack</span></code> to <code class="docutils literal notranslate"><span class="pre">False</span></code>.  Then if you later do decide to comply with the
+preemption signal, it is your responsibility to call
+<code class="docutils literal notranslate"><span class="pre">acknowledge_preemption_signal()</span></code> manually any time before exiting.  Defaults to
+<code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Currently, only blocking behavior is supported when checking <code class="docutils literal notranslate"><span class="pre">should_preempt()</span></code>, so it
+is not performant enough to call every batch.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.core.PreemptContext.acknowledge_preemption_signal">
+<span class="sig-name descname"><span class="pre">acknowledge_preemption_signal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#determined.core.PreemptContext.acknowledge_preemption_signal" title="Permalink to this definition">#</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">acknowledge_preemption_signal()</span></code> tells the Determined master that you are shutting down,
+but you have not finished your work and you expect to be restarted later to complete it.</p>
+<p>This is important to tell the master explicitly because otherwise if the python process
+exits with a zero exit code, the master interprets that as a completed task, and the task
+does not get rescheduled.</p>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">acknowledge_preemption_signal()</span></code> is called automatically the first time that
+<code class="docutils literal notranslate"><span class="pre">should_preempt()</span></code> returns <code class="docutils literal notranslate"><span class="pre">True</span></code>, unless <code class="docutils literal notranslate"><span class="pre">should_preempt()</span></code> is called with
+<code class="docutils literal notranslate"><span class="pre">auto_ack=False</span></code>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="determined-core-traincontext">
+<h2><code class="docutils literal notranslate"><span class="pre">determined.core.TrainContext</span></code><a class="headerlink" href="#determined-core-traincontext" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="determined.core.TrainContext">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">determined.core.</span></span><span class="sig-name descname"><span class="pre">TrainContext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trial_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exp_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distributed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#determined.core.DistributedContext" title="determined.core._distributed.DistributedContext"><span class="pre">DistributedContext</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">tensorboard_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#determined.core.TensorboardMode" title="determined.core._tensorboard_mode.TensorboardMode"><span class="pre">TensorboardMode</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">tensorboard_manager</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TensorboardManager</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tbd_writer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BatchMetricWriter</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#determined.core.TrainContext" title="Permalink to this definition">#</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">TrainContext</span></code> gives access to report training and validation metrics to the Determined master
+during trial tasks.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.core.TrainContext.set_status">
+<span class="sig-name descname"><span class="pre">set_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#determined.core.TrainContext.set_status" title="Permalink to this definition">#</a></dt>
+<dd><p>Report a short user-facing string that the WebUI can render to indicate what a trial is
+working on.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.core.TrainContext.report_training_metrics">
+<span class="sig-name descname"><span class="pre">report_training_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">steps_completed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#determined.core.TrainContext.report_training_metrics" title="Permalink to this definition">#</a></dt>
+<dd><p>Report training metrics to the master.</p>
+<p>You can include a list of <code class="docutils literal notranslate"><span class="pre">batch_metrics</span></code>.  Batch metrics are not be shown in the WebUI
+but may be accessed from the master using the CLI for post-processing.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.core.TrainContext.get_tensorboard_path">
+<span class="sig-name descname"><span class="pre">get_tensorboard_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span></span></span><a class="headerlink" href="#determined.core.TrainContext.get_tensorboard_path" title="Permalink to this definition">#</a></dt>
+<dd><p>Get TensorBoard log directory path.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.core.TrainContext.upload_tensorboard_files">
+<span class="sig-name descname"><span class="pre">upload_tensorboard_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">selector:</span> <span class="pre">~typing.Callable[[~pathlib.Path],</span> <span class="pre">bool]</span> <span class="pre">=</span> <span class="pre">&lt;function</span> <span class="pre">TrainContext.&lt;lambda&gt;&gt;,</span> <span class="pre">mangler:</span> <span class="pre">~typing.Callable[[~pathlib.Path,</span> <span class="pre">int],</span> <span class="pre">~pathlib.Path]</span> <span class="pre">=</span> <span class="pre">&lt;function</span> <span class="pre">TrainContext.&lt;lambda&gt;&gt;</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#determined.core.TrainContext.upload_tensorboard_files" title="Permalink to this definition">#</a></dt>
+<dd><p>Upload files generated for consumption by Tensorboard to checkpoint storage.</p>
+<dl>
+<dt>Args:</dt><dd><dl class="simple">
+<dt>selector: optional function returning True for a file that should be included.</dt><dd><p>If not provided, all files are uploaded.</p>
+</dd>
+</dl>
+<p>mangler: optional function modifying the destination file names based on rank.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.core.TrainContext.report_validation_metrics">
+<span class="sig-name descname"><span class="pre">report_validation_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">steps_completed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#determined.core.TrainContext.report_validation_metrics" title="Permalink to this definition">#</a></dt>
+<dd><p>Report validation metrics to the master.</p>
+<p>Note that for hyperparameter search, this is independent of the need to report the searcher
+metric using <code class="docutils literal notranslate"><span class="pre">SearcherOperation.report_completed()</span></code> in the Searcher API.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.core.TrainContext.report_early_exit">
+<span class="sig-name descname"><span class="pre">report_early_exit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reason</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EarlyExitReason</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#determined.core.TrainContext.report_early_exit" title="Permalink to this definition">#</a></dt>
+<dd><p>Report an early exit reason to the Determined master.</p>
+<p>Currenlty, the only meaningful value to report is <code class="docutils literal notranslate"><span class="pre">EarlyExitReason.INVALID_HP</span></code>, which is
+reported automatically in <code class="docutils literal notranslate"><span class="pre">core.Context.__exit__()</span></code> detects an exception of type
+<code class="docutils literal notranslate"><span class="pre">det.InvalidHP</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.core.TrainContext.get_experiment_best_validation">
+<span class="sig-name descname"><span class="pre">get_experiment_best_validation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#determined.core.TrainContext.get_experiment_best_validation" title="Permalink to this definition">#</a></dt>
+<dd><p>Get the best reported validation metric reported so far, across the whole experiment.</p>
+<p>The returned value is the highest or lowest reported validation metric value, using the
+<code class="docutils literal notranslate"><span class="pre">searcher.metric</span></code> field of the experiment config as the key and
+<code class="docutils literal notranslate"><span class="pre">searcher.smaller_is_better</span></code> for the comparison.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="determined-core-searchercontext">
+<h2><code class="docutils literal notranslate"><span class="pre">determined.core.SearcherContext</span></code><a class="headerlink" href="#determined-core-searchercontext" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="determined.core.SearcherContext">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">determined.core.</span></span><span class="sig-name descname"><span class="pre">SearcherContext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#determined.core.DistributedContext" title="determined.core._distributed.DistributedContext"><span class="pre">DistributedContext</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">trial_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allocation_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Unit</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#determined.core.SearcherContext" title="Permalink to this definition">#</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">SearcherContext</span></code> gives direct access to operations emitted by the search algorithm in the
+master.  Each <code class="docutils literal notranslate"><span class="pre">SearcherOperation</span></code> emitted has a (unitless) length that you should train for,
+then you complete the op by reporting the validation metric you are searching over.</p>
+<p>It is the user’s responsibility to execute the required training.  Because the user configured
+the length of the searcher in the experiment configuration, the user should know if the unitless
+length represents epochs, batches, records, etc.</p>
+<p>It is also the user’s responsibility to evaluate the model after training and report the correct
+metric; if you intend to search over a metric called val_accuracy, you should report
+val_accuracy.</p>
+<p>Lastly, it is recommended (not required) to report progress periodically, so that the webui can
+accurately reflect current progress.  Progress is another unitless length.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assuming you configured the searcher in terms of batches,</span>
+<span class="c1"># the op.length is also interpeted as a batch count.</span>
+<span class="c1"># Note that you&#39;ll have to load your starting point from a</span>
+<span class="c1"># checkpoint if you want to support pausing/continuing training.</span>
+<span class="n">batches_trained</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">core_context</span><span class="o">.</span><span class="n">searcher</span><span class="o">.</span><span class="n">operations</span><span class="p">():</span>
+    <span class="c1"># Train for however long the op requires you to.</span>
+    <span class="c1"># Note that op.length is an absolute length, not an</span>
+    <span class="c1"># incremental length:</span>
+    <span class="k">while</span> <span class="n">batches_trained</span> <span class="o">&lt;</span> <span class="n">op</span><span class="o">.</span><span class="n">length</span><span class="p">:</span>
+        <span class="n">my_train_batch</span><span class="p">()</span>
+
+        <span class="n">batches_trained</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="c1"># Reporting progress every batch would be expensive:</span>
+        <span class="k">if</span> <span class="n">batches_trained</span> <span class="o">%</span> <span class="mi">1000</span><span class="p">:</span>
+            <span class="n">op</span><span class="o">.</span><span class="n">report_progress</span><span class="p">(</span><span class="n">batches_trained</span><span class="p">)</span>
+
+    <span class="c1"># After training the required amount, pass your searcher</span>
+    <span class="c1"># metric to op.report_completed():</span>
+    <span class="n">val_metrics</span> <span class="o">=</span> <span class="n">my_validate</span><span class="p">()</span>
+    <span class="n">op</span><span class="o">.</span><span class="n">report_completed</span><span class="p">(</span><span class="n">val_metrics</span><span class="p">[</span><span class="s2">&quot;my_searcher_metric&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Note that reporting metrics is completely independent of the SearcherContext API, using
+<code class="docutils literal notranslate"><span class="pre">core_context.train.report_training_metrics()</span></code> or
+<code class="docutils literal notranslate"><span class="pre">core_context.train.report_validation_metrics()</span></code>.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.core.SearcherContext.operations">
+<span class="sig-name descname"><span class="pre">operations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">searcher_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#determined.core.SearcherMode" title="determined.core._searcher.SearcherMode"><span class="pre">SearcherMode</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">SearcherMode.WorkersAskChief</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_ack</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#determined.core.SearcherOperation" title="determined.core._searcher.SearcherOperation"><span class="pre">SearcherOperation</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#determined.core.SearcherContext.operations" title="Permalink to this definition">#</a></dt>
+<dd><p>Iterate through all the operations this searcher has to offer.</p>
+<p>See <a class="reference internal" href="#determined.core.SearcherMode" title="determined.core.SearcherMode"><code class="xref py py-class docutils literal notranslate"><span class="pre">SearcherMode</span></code></a> for details about calling requirements in
+distributed training scenarios.</p>
+<p>After training to the point specified by each <code class="docutils literal notranslate"><span class="pre">SearcherOperation</span></code>, the chief, and only the
+chief, must call <code class="docutils literal notranslate"><span class="pre">op.report_completed(</span></code>) on each operation.  This is true regardless of
+the <code class="docutils literal notranslate"><span class="pre">searcher_mode</span></code> setting because the Determined master needs a clear, unambiguous
+report of when an operation is completed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.core.SearcherContext.acknowledge_out_of_ops">
+<span class="sig-name descname"><span class="pre">acknowledge_out_of_ops</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#determined.core.SearcherContext.acknowledge_out_of_ops" title="Permalink to this definition">#</a></dt>
+<dd><p>acknowledge_out_of_ops() tells the Determined master that you are shutting down because
+you have recognized the searcher has no more operations for you to complete at this time.</p>
+<p>This is important for the Determined master to know that it is safe to restart this process
+should new operations be assigned to this trial.</p>
+<p>acknowledge_out_of_ops() is normally called automatically just before operations() raises a
+StopIteration, unless operations() is called with auto_ack=False.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="determined.core.SearcherContext.get_configured_units">
+<span class="sig-name descname"><span class="pre">get_configured_units</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Unit</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#determined.core.SearcherContext.get_configured_units" title="Permalink to this definition">#</a></dt>
+<dd><p>get_configured_units() reports what units were used in the searcher field of the experiment
+config.  If no units were configured, None is returned.</p>
+<p>An experiment configured like this causes <code class="docutils literal notranslate"><span class="pre">get_configured_units()</span></code> to return EPOCHS:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">searcher</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">single</span>
+<span class="w">  </span><span class="nt">max_length</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">epochs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50</span>
+</pre></div>
+</div>
+<p>An experiment configured like this causes <code class="docutils literal notranslate"><span class="pre">get_configured_units()</span></code> to return None:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">searcher</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">single</span>
+<span class="w">  </span><span class="nt">max_length</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="determined-core-searcheroperation">
+<h2><code class="docutils literal notranslate"><span class="pre">determined.core.SearcherOperation</span></code><a class="headerlink" href="#determined-core-searcheroperation" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="determined.core.SearcherOperation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">determined.core.</span></span><span class="sig-name descname"><span class="pre">SearcherOperation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trial_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_chief</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#determined.core.SearcherOperation" title="Permalink to this definition">#</a></dt>
+<dd><p>A <code class="docutils literal notranslate"><span class="pre">SearcherOperation</span></code> is a request from the hyperparameter-search logic for the training
+script to execute one train-validate-report cycle.</p>
+<p>Some searchers, such as single, random, or grid, pass only a single <code class="docutils literal notranslate"><span class="pre">SearcherOperation</span></code> to
+each trial, while others may pass many <code class="docutils literal notranslate"><span class="pre">SearcherOperations</span></code>.</p>
+<p>Each <code class="docutils literal notranslate"><span class="pre">SearcherOperation</span></code> has a length attribute representing the cumulative training that
+should be completed before the validate-report steps of the cycle.  The length attribute is
+absolute, not incremental, meaning that if the searcher wants you to train for 10 units and
+validate, then train for 10 more units and validate, it emits one <code class="docutils literal notranslate"><span class="pre">SearcherOperation</span></code> with
+<code class="docutils literal notranslate"><span class="pre">.length=10</span></code> followed by a second <code class="docutils literal notranslate"><span class="pre">SearcherOperation</span></code> with <code class="docutils literal notranslate"><span class="pre">.length=20</span></code>.  Using absolute
+lengths instead of incremental lengths makes restarting after crashes simple and robust.</p>
+</dd></dl>
+
+</section>
+<section id="determined-core-preemptmode">
+<h2><code class="docutils literal notranslate"><span class="pre">determined.core.PreemptMode</span></code><a class="headerlink" href="#determined-core-preemptmode" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="determined.core.PreemptMode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">determined.core.</span></span><span class="sig-name descname"><span class="pre">PreemptMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#determined.core.PreemptMode" title="Permalink to this definition">#</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">PreemptMode</span></code> defines the calling behavior of the <code class="docutils literal notranslate"><span class="pre">PreemptContext.should_preempt()</span></code> call.</p>
+<p>When mode is <code class="docutils literal notranslate"><span class="pre">WorkersAskChief</span></code> (the default), all workers must call <code class="docutils literal notranslate"><span class="pre">should_preempt()</span></code>
+in step.  Only the chief actually communicates with the master, then the chief broadcasts its
+decision to all workers.  This guarantees that all workers decide to preempt at the exact same
+time.</p>
+<p>When mode is <code class="docutils literal notranslate"><span class="pre">ChiefOnly</span></code>, only the chief is allowed to call
+<code class="docutils literal notranslate"><span class="pre">PreemptContext.should_preempt()</span></code>.  Usually this implies you must manually inform the workers
+if they should preempt or not.</p>
+<p>When mode is <code class="docutils literal notranslate"><span class="pre">WorkersAskMaster</span></code>, each worker contacts the master independently in order to
+decide to preempt or not.  Each worker receives the preemption signal at roughly the same time,
+but it becomes your responsibility to tolerate situations where some workers have exited due to
+preemption and others have not.</p>
+</dd></dl>
+
+</section>
+<section id="determined-core-searchermode">
+<h2><code class="docutils literal notranslate"><span class="pre">determined.core.SearcherMode</span></code><a class="headerlink" href="#determined-core-searchermode" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="determined.core.SearcherMode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">determined.core.</span></span><span class="sig-name descname"><span class="pre">SearcherMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#determined.core.SearcherMode" title="Permalink to this definition">#</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">SearcherMode</span></code> defines the calling behavior of the <code class="docutils literal notranslate"><span class="pre">SearcherContext.operations()</span></code> call.</p>
+<p>When mode is <code class="docutils literal notranslate"><span class="pre">WorkersAskChief</span></code> (the default), all workers must call
+<code class="docutils literal notranslate"><span class="pre">SearcherContext.operations()</span></code> in step with each other.  The chief iterates through
+searcher operations from the master and then propagates the operations to each worker,
+introducing a synchronization point between workers.</p>
+<p>When mode is <code class="docutils literal notranslate"><span class="pre">ChiefOnly</span></code>, only the chief may call <code class="docutils literal notranslate"><span class="pre">SearcherContext.operations()</span></code>.  Usually
+this implies you must manually inform the workers of what work to do next.</p>
+</dd></dl>
+
+</section>
+<section id="determined-core-tensorboardmode">
+<h2><code class="docutils literal notranslate"><span class="pre">determined.core.TensorboardMode</span></code><a class="headerlink" href="#determined-core-tensorboardmode" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="determined.core.TensorboardMode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">determined.core.</span></span><span class="sig-name descname"><span class="pre">TensorboardMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#determined.core.TensorboardMode" title="Permalink to this definition">#</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">TensorboardMode</span></code> defines how Tensorboard artifacts are handled.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">AUTO</span></code> mode the chief automatically writes any reported training or validation
+metrics to the Tensorboard path (see <a class="reference internal" href="#determined.core.TrainContext.get_tensorboard_path" title="determined.core.TrainContext.get_tensorboard_path"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TrainContext.get_tensorboard_path()</span></code></a>), and automatically
+uploads all of its own tensorboard artifacts to checkpoint storage.  Tensorboard
+artifacts written by non-chief workers will not be uploaded at all. This is the
+same behavior that existed prior to 0.18.3.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">MANUAL</span></code> mode no Tensorboard artifacts are written or uploaded at all.
+It is entirely up to the user to write their desired metrics and upload
+them with calls to <a class="reference internal" href="#determined.core.TrainContext.upload_tensorboard_files" title="determined.core.TrainContext.upload_tensorboard_files"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TrainContext.upload_tensorboard_files()</span></code></a>.</p>
+</dd></dl>
+
+</section>
+<section id="determined-trialinfo">
+<h2><code class="docutils literal notranslate"><span class="pre">determined.TrialInfo</span></code><a class="headerlink" href="#determined-trialinfo" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="determined.TrialInfo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">determined.</span></span><span class="sig-name descname"><span class="pre">TrialInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trial_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">experiment_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trial_seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hparams</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps_completed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trial_run_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inter_node_network_interface</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#determined.TrialInfo" title="Permalink to this definition">#</a></dt>
+<dd><dl class="py attribute">
+<dt class="sig sig-object py" id="determined.TrialInfo.experiment_id">
+<span class="sig-name descname"><span class="pre">experiment_id</span></span><a class="headerlink" href="#determined.TrialInfo.experiment_id" title="Permalink to this definition">#</a></dt>
+<dd><p>The Experiment ID for the current task.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="determined.TrialInfo.hparams">
+<span class="sig-name descname"><span class="pre">hparams</span></span><a class="headerlink" href="#determined.TrialInfo.hparams" title="Permalink to this definition">#</a></dt>
+<dd><p>The hyperparameter values selected for the current Trial.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="determined.TrialInfo.trial_id">
+<span class="sig-name descname"><span class="pre">trial_id</span></span><a class="headerlink" href="#determined.TrialInfo.trial_id" title="Permalink to this definition">#</a></dt>
+<dd><p>The Trial ID for the current task.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="determined.TrialInfo.trial_seed">
+<span class="sig-name descname"><span class="pre">trial_seed</span></span><a class="headerlink" href="#determined.TrialInfo.trial_seed" title="Permalink to this definition">#</a></dt>
+<dd><p>The random seed for the current Trial.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> {your-title}
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-determined.core"><code class="docutils literal notranslate"><span class="pre">determined.core.init</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.init"><code class="docutils literal notranslate"><span class="pre">init()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-core-context"><code class="docutils literal notranslate"><span class="pre">determined.core.Context</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.Context"><code class="docutils literal notranslate"><span class="pre">Context</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-core-distributedcontext"><code class="docutils literal notranslate"><span class="pre">determined.core.DistributedContext</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.DistributedContext"><code class="docutils literal notranslate"><span class="pre">DistributedContext</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.DistributedContext.from_horovod"><code class="docutils literal notranslate"><span class="pre">DistributedContext.from_horovod()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.DistributedContext.from_deepspeed"><code class="docutils literal notranslate"><span class="pre">DistributedContext.from_deepspeed()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.DistributedContext.from_torch_distributed"><code class="docutils literal notranslate"><span class="pre">DistributedContext.from_torch_distributed()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.DistributedContext.get_rank"><code class="docutils literal notranslate"><span class="pre">DistributedContext.get_rank()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.DistributedContext.get_local_rank"><code class="docutils literal notranslate"><span class="pre">DistributedContext.get_local_rank()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.DistributedContext.get_size"><code class="docutils literal notranslate"><span class="pre">DistributedContext.get_size()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.DistributedContext.get_num_agents"><code class="docutils literal notranslate"><span class="pre">DistributedContext.get_num_agents()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.DistributedContext.gather"><code class="docutils literal notranslate"><span class="pre">DistributedContext.gather()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.DistributedContext.gather_local"><code class="docutils literal notranslate"><span class="pre">DistributedContext.gather_local()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.DistributedContext.allgather"><code class="docutils literal notranslate"><span class="pre">DistributedContext.allgather()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.DistributedContext.allgather_local"><code class="docutils literal notranslate"><span class="pre">DistributedContext.allgather_local()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.DistributedContext.broadcast"><code class="docutils literal notranslate"><span class="pre">DistributedContext.broadcast()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.DistributedContext.broadcast_local"><code class="docutils literal notranslate"><span class="pre">DistributedContext.broadcast_local()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-core-checkpointcontext"><code class="docutils literal notranslate"><span class="pre">determined.core.CheckpointContext</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.CheckpointContext"><code class="docutils literal notranslate"><span class="pre">CheckpointContext</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.CheckpointContext.upload"><code class="docutils literal notranslate"><span class="pre">CheckpointContext.upload()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.CheckpointContext.download"><code class="docutils literal notranslate"><span class="pre">CheckpointContext.download()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.CheckpointContext.get_metadata"><code class="docutils literal notranslate"><span class="pre">CheckpointContext.get_metadata()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.CheckpointContext.store_path"><code class="docutils literal notranslate"><span class="pre">CheckpointContext.store_path()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.CheckpointContext.restore_path"><code class="docutils literal notranslate"><span class="pre">CheckpointContext.restore_path()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.CheckpointContext.delete"><code class="docutils literal notranslate"><span class="pre">CheckpointContext.delete()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-core-preemptcontext"><code class="docutils literal notranslate"><span class="pre">determined.core.PreemptContext</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.PreemptContext"><code class="docutils literal notranslate"><span class="pre">PreemptContext</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.PreemptContext.should_preempt"><code class="docutils literal notranslate"><span class="pre">PreemptContext.should_preempt()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.PreemptContext.acknowledge_preemption_signal"><code class="docutils literal notranslate"><span class="pre">PreemptContext.acknowledge_preemption_signal()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-core-traincontext"><code class="docutils literal notranslate"><span class="pre">determined.core.TrainContext</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.TrainContext"><code class="docutils literal notranslate"><span class="pre">TrainContext</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.TrainContext.set_status"><code class="docutils literal notranslate"><span class="pre">TrainContext.set_status()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.TrainContext.report_training_metrics"><code class="docutils literal notranslate"><span class="pre">TrainContext.report_training_metrics()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.TrainContext.get_tensorboard_path"><code class="docutils literal notranslate"><span class="pre">TrainContext.get_tensorboard_path()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.TrainContext.upload_tensorboard_files"><code class="docutils literal notranslate"><span class="pre">TrainContext.upload_tensorboard_files()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.TrainContext.report_validation_metrics"><code class="docutils literal notranslate"><span class="pre">TrainContext.report_validation_metrics()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.TrainContext.report_early_exit"><code class="docutils literal notranslate"><span class="pre">TrainContext.report_early_exit()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.TrainContext.get_experiment_best_validation"><code class="docutils literal notranslate"><span class="pre">TrainContext.get_experiment_best_validation()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-core-searchercontext"><code class="docutils literal notranslate"><span class="pre">determined.core.SearcherContext</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.SearcherContext"><code class="docutils literal notranslate"><span class="pre">SearcherContext</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.SearcherContext.operations"><code class="docutils literal notranslate"><span class="pre">SearcherContext.operations()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.SearcherContext.acknowledge_out_of_ops"><code class="docutils literal notranslate"><span class="pre">SearcherContext.acknowledge_out_of_ops()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.SearcherContext.get_configured_units"><code class="docutils literal notranslate"><span class="pre">SearcherContext.get_configured_units()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-core-searcheroperation"><code class="docutils literal notranslate"><span class="pre">determined.core.SearcherOperation</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.SearcherOperation"><code class="docutils literal notranslate"><span class="pre">SearcherOperation</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-core-preemptmode"><code class="docutils literal notranslate"><span class="pre">determined.core.PreemptMode</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.PreemptMode"><code class="docutils literal notranslate"><span class="pre">PreemptMode</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-core-searchermode"><code class="docutils literal notranslate"><span class="pre">determined.core.SearcherMode</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.SearcherMode"><code class="docutils literal notranslate"><span class="pre">SearcherMode</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-core-tensorboardmode"><code class="docutils literal notranslate"><span class="pre">determined.core.TensorboardMode</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.core.TensorboardMode"><code class="docutils literal notranslate"><span class="pre">TensorboardMode</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-trialinfo"><code class="docutils literal notranslate"><span class="pre">determined.TrialInfo</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.TrialInfo"><code class="docutils literal notranslate"><span class="pre">TrialInfo</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.TrialInfo.experiment_id"><code class="docutils literal notranslate"><span class="pre">TrialInfo.experiment_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.TrialInfo.hparams"><code class="docutils literal notranslate"><span class="pre">TrialInfo.hparams</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.TrialInfo.trial_id"><code class="docutils literal notranslate"><span class="pre">TrialInfo.trial_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determined.TrialInfo.trial_seed"><code class="docutils literal notranslate"><span class="pre">TrialInfo.trial_seed</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By lb
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, lb.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

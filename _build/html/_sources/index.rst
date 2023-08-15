@@ -20,8 +20,8 @@ Indices
 * :ref:`search`
 
 
-.. automodule:: determined.core
-   :members: init
+.. .. automodule:: determined.core
+..    :members: init
 
 
 
