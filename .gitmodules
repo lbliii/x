@@ -1,0 +1,3 @@
+[submodule "source/determined"]
+	path = source/determined
+	url = https://github.com/determined-ai/determined.git
