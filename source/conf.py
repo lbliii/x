@@ -18,11 +18,14 @@ if sys.platform == 'darwin':
 
 print("hiiiii!!!")
 
-# print the directory that the conf.py file is in
-print(os.path.abspath(os.path.dirname(__file__)))
+conf_dir = os.path.abspath(os.path.dirname(__file__))
+determined_path = os.path.abspath(os.path.join(conf_dir, '../determined'))
+sys.path.insert(0, determined_path)
 
 # print the directory above the conf.py file
 print(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+# list the files in the directory above the conf.py file
+print(os.listdir(os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))))
 
 print("~~~~~~~~~~~~")
 # -- Project information -----------------------------------------------------
