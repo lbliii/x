@@ -1,0 +1,1092 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Known Issues &#8212; project-x 0.0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=362ab14a" />
+    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=dc820ae5"></script>
+    <script src="../../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'latest/setup-cluster/deploy-cluster/slurm/slurm-known-issues';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Installation Requirements" href="slurm-requirements.html" />
+    <link rel="prev" title="Provide a Container Image Cache" href="singularity.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">project-x 0.0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../index.html">
+                    Welcome to project-x’s documentation!
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../architecture/_index.html">How Determined Works</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../architecture/introduction.html">Introduction to Determined</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../architecture/system-architecture.html">System Architecture</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../example-solutions/_index.html">Examples</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../integrations/_index.html">Integrations</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../integrations/ecosystem/_index.html">Ecosystem Integration</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../integrations/notification/_index.html">Monitoring Experiment Through Webhooks</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../integrations/notification/zapier.html">Through Zapier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../integrations/notification/slack.html">Through Slack</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../integrations/prometheus/_index.html">Configure Determined with Prometheus and Grafana</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../interfaces/_index.html">Tools</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../interfaces/cli-ug.html">Determined CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../interfaces/commands-and-shells.html">Commands and Shells</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../interfaces/ide-integration.html">IDE Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../interfaces/notebooks.html">Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../interfaces/proxy-ports.html">Exposing Custom Ports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../interfaces/tensorboard.html">Using TensorBoard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../interfaces/webui-if.html">Web Interface (WebUI)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../model-dev-guide/_index.html">Model Developer Guide</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../model-dev-guide/apis-howto/_index.html">Training APIs</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-dev-guide/apis-howto/api-core-ug.html">Core API User Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-dev-guide/apis-howto/api-pytorch-ug.html">PyTorch API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-dev-guide/apis-howto/api-keras-ug.html">Keras API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-dev-guide/apis-howto/api-estimator-ug.html">Estimator API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-dev-guide/batch-processing/_index.html">Torch Batch Processing API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-dev-guide/best-practices/_index.html">Best Practices</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../model-dev-guide/dtrain/_index.html">Distributed Training with Determined</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-dev-guide/dtrain/dtrain-introduction.html">Distributed Training Concepts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-dev-guide/dtrain/dtrain-implement.html">Implementing Distributed Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-dev-guide/dtrain/config-templates.html">Configuration Templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-dev-guide/dtrain/reproducibility.html">Reproducibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-dev-guide/dtrain/optimize-training.html">Optimizing Training</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../model-hub-library/_index.html">Model Hub Library</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-hub-library/mmdetection/_index.html">MMDetection</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../model-hub-library/transformers/_index.html">Transformers</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-hub-library/transformers/tutorial.html">Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-hub-library/transformers/examples.html">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../reference/_index.html">Reference</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/cli-reference.html">Determined CLI Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/python-sdk.html">Python SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/rest-api.html">REST API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/batch-processing/_index.html">Batch Processing API Reference</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../reference/deploy/_index.html">Deployment Reference</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/deploy/config/_index.html">Config Reference</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/deploy/config/agent-config-reference.html">Agent Configuration Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/deploy/config/common-config-options.html">Common Configuration Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/deploy/config/helm-config-reference.html">Helm Chart Configuration Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/deploy/config/master-config-reference.html">Master Configuration Reference</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/interface/_index.html">Job Configuration Reference</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../reference/model-hub/_index.html">Model Hub APIs</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../reference/model-hub/mmdetection-api.html">MMDetection API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../reference/model-hub/transformers-api.html">Transformers API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/searcher/_index.html">Custom Searcher Reference</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../reference/training/_index.html">Training Reference</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../reference/training/api-core-reference.html"><code class="docutils literal notranslate"><span class="pre">det.core</span></code> API Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../reference/training/api-deepspeed-reference.html"><code class="docutils literal notranslate"><span class="pre">det.pytorch.deepspeed</span></code> API Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../reference/training/api-det-reference.html"><code class="docutils literal notranslate"><span class="pre">det</span></code> API Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../reference/training/api-estimator-reference.html"><code class="docutils literal notranslate"><span class="pre">det.estimator</span></code> API Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../reference/training/api-keras-reference.html"><code class="docutils literal notranslate"><span class="pre">det.keras</span></code> API Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../reference/training/api-pytorch-reference.html"><code class="docutils literal notranslate"><span class="pre">det.pytorch</span></code> API Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../reference/training/api-pytorch-samplers-reference.html"><code class="docutils literal notranslate"><span class="pre">det.pytorch.samplers</span></code> API Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../reference/training/experiment-config-reference.html">Experiment Configuration Reference</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release-notes/_index.html">Release Notes</a></li>
+
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../_index.html">Setup</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../_index.html">Set Up Determined</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 has-children"><a class="reference internal" href="../aws/_index.html">Deploy on AWS</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../aws/aws-spot.html">Use Spot Instances</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../aws/dynamic-agents-aws.html">Deploy Determined with Dynamic Agents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../aws/install-on-aws.html">Install Determined</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../gcp/_index.html">Deploy on GCP</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../gcp/dynamic-agents-gcp.html">Deploy Determined with Dynamic Agents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../gcp/install-gcp.html">Install Determined</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../k8s/_index.html">Deploy on Kubernetes</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../k8s/custom-pod-specs.html">Customize a Pod</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../k8s/helm-commands.html">Helm and Kubectl Command Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../k8s/install-on-kubernetes.html">Install Determined on Kubernetes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../k8s/k8s-dev-guide.html">Development Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../k8s/setup-aks-cluster.html">Set up and Manage an Azure Kubernetes Service (AKS) Cluster</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../k8s/setup-eks-cluster.html">Set up and Manage an AWS Kubernetes (EKS) Cluster</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../k8s/setup-gke-cluster.html">Set up and Manage a Google Kubernetes Engine (GKE) Cluster</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../k8s/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../on-prem/_index.html">Deploy on Prem</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../on-prem/deploy.html">Install Determined Using <code class="docutils literal notranslate"><span class="pre">det</span> <span class="pre">deploy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../on-prem/docker.html">Install Determined Using Docker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../on-prem/homebrew.html">Install Determined Using Homebrew (macOS)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../on-prem/linux-packages.html">Install Determined Using Linux Packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../on-prem/requirements.html">Installation Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../on-prem/wsl.html">Install Determined Using Windows Subsystem for Linux (Windows)</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="_index.html">Deploy on Slurm/PBS</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="hpc-launching-architecture.html">HPC Launching Architecture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="hpc-security-considerations.html">HPC Launcher Security Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="install-on-slurm.html">Install Determined on Slurm/PBS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="singularity.html">Provide a Container Image Cache</a></li>
+<li class="toctree-l4 current active"><a class="current reference internal" href="#">Known Issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="slurm-requirements.html">Installation Requirements</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../security/_index.html">Security</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../security/oauth.html">OAuth 2.0 Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../security/oidc.html">OpenID Connect Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../security/rbac.html">RBAC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../security/saml.html">SAML Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../security/scim.html">SCIM Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../security/tls.html">Transport Layer Security</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../tutorials/_index.html">Tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/pytorch-mnist-local-qs.html">Run Your First Experiment in Determined</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/pytorch-mnist-tutorial.html">PyTorch MNIST Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/pytorch-porting-tutorial.html">PyTorch Porting Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/quickstart-mdldev.html">Quickstart for Model Developers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/tf-mnist-tutorial.html">TensorFlow Keras Fashion MNIST Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../attributions.html">Open Source Licenses</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../_sources/latest/setup-cluster/deploy-cluster/slurm/slurm-known-issues.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Known Issues</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agent-specific-scheduling-options-are-ignored">Agent-Specific Scheduling Options are Ignored</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#singularity-and-docker-differences">Singularity and Docker Differences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#singularity-known-issues">Singularity Known Issues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apptainer-known-issues">Apptainer Known Issues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#podman-known-issues">Podman Known Issues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enroot-known-issues">Enroot Known Issues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slurm-known-issues">Slurm Known Issues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pbs-known-issues">PBS Known Issues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#amd-rocm-known-issues">AMD/ROCm Known Issues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-ai-experiment-requirements">Determined AI Experiment Requirements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-known-issues">Additional Known issues</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="known-issues">
+<span id="known-hpc-issues"></span><h1>Known Issues<a class="headerlink" href="#known-issues" title="Permalink to this heading">#</a></h1>
+<section id="agent-specific-scheduling-options-are-ignored">
+<h2>Agent-Specific Scheduling Options are Ignored<a class="headerlink" href="#agent-specific-scheduling-options-are-ignored" title="Permalink to this heading">#</a></h2>
+<p>When using the HPC Launcher, Determined delegates all job scheduling and prioritization to the HPC
+workload manager (either Slurm or PBS) and the following experiment configuration options are
+ignored.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">resources.agent_label</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">resources.max_slots</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">resources.priority</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">resources.weight</span></code></p></li>
+</ul>
+</section>
+<section id="singularity-and-docker-differences">
+<span id="slurm-and-docker-differences"></span><h2>Singularity and Docker Differences<a class="headerlink" href="#singularity-and-docker-differences" title="Permalink to this heading">#</a></h2>
+<p>Some constraints are due to differences in behavior between Docker and Singularity, summarized here:</p>
+<ul>
+<li><p>Singularity tends to explicitly share resources/devices from the host compute node on which it is
+running which results in more opportunities for conflicts with other programs running on the
+cluster, or between multiple determined experiments that are launched concurrently on the same
+compute node.</p>
+<ul class="simple">
+<li><p>By default <code class="docutils literal notranslate"><span class="pre">/tmp</span></code> and <code class="docutils literal notranslate"><span class="pre">/dev/shm</span></code> are mounted from the compute node instead of private to
+the container. If multiple containers are running on the same node there can be more sharing
+than they expect. The contents of <code class="docutils literal notranslate"><span class="pre">/tmp</span></code> persist beyond the container lifetime and are
+visible to other trials. The experiment configuration might need to be updated to accommodate
+these issues.</p></li>
+<li><p>Determined mitigates potential file name and disk space conflicts on <code class="docutils literal notranslate"><span class="pre">/tmp</span></code> content by
+automatically using space in <code class="docutils literal notranslate"><span class="pre">job_storage_root</span></code> for a per-job <code class="docutils literal notranslate"><span class="pre">/tmp</span></code> directory. You can
+override this behavior by providing an explicit bind mount of the <code class="docutils literal notranslate"><span class="pre">container_path</span></code> <code class="docutils literal notranslate"><span class="pre">/tmp</span></code>
+folder in the Singularity container.</p></li>
+</ul>
+<p>You can restore the default Singularity behavior of sharing <code class="docutils literal notranslate"><span class="pre">/tmp</span></code> on the compute node by
+including the following <a class="reference internal" href="../../../reference/training/experiment-config-reference.html#exp-bind-mounts"><span class="std std-ref">bind mount</span></a> in your experiment configuration or
+globally by using the <code class="docutils literal notranslate"><span class="pre">task_container_defaults</span></code> section in your master configuration:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">bind_mounts</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">host_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tmp</span>
+<span class="w">     </span><span class="nt">container_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tmp</span>
+</pre></div>
+</div>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">singularity.conf</span></code> options can also be used to change this behavior, or by using
+individual environment variables added to your experiment. Here are some configuration options
+that might be useful to tune sharing available in the <code class="docutils literal notranslate"><span class="pre">singularity.conf</span></code> file:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sessiondir</span> <span class="pre">max</span> <span class="pre">size</span></code></p></td>
+<td><p>Controls the disk space, in MB, allocated to support
+directories not shared from the host compute node, such as
+<code class="docutils literal notranslate"><span class="pre">/tmp</span></code> and <code class="docutils literal notranslate"><span class="pre">/usr/tmp</span></code>, depending upon your configuration.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">mount</span> <span class="pre">tmp</span></code></p></td>
+<td><p>Isolates <code class="docutils literal notranslate"><span class="pre">/tmp</span></code> from the host compute node. The size of this
+area is configured by sessiondir max size.</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+<li><p>Singularity attempts to automatically download and convert Docker images, however, the behavior
+is somewhat different than with Docker.</p>
+<ul class="simple">
+<li><p>By default converted Singularity images are stored per user in <code class="docutils literal notranslate"><span class="pre">~/.singularity</span></code>. Determined
+environment images are relatively large and this can result in excessive duplication.</p></li>
+<li><p>You likely want to predownload images under <code class="docutils literal notranslate"><span class="pre">singularity_image_root</span></code> as described in
+<a class="reference internal" href="singularity.html#slurm-image-config"><span class="std std-ref">Provide a Container Image Cache</span></a> or configure <code class="docutils literal notranslate"><span class="pre">SINGULARITY_CACHEDIR</span></code> to point to a shared
+directory.</p></li>
+</ul>
+</li>
+<li><p>Some Docker features do not have an exact replacement in Singularity, and therefore the
+associated Determined features are not supported.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">resources.devices</span></code></p></td>
+<td><p>By default <code class="docutils literal notranslate"><span class="pre">/dev</span></code> is mounted from the compute
+host, so all devices are available. This can be
+overridden by the <code class="docutils literal notranslate"><span class="pre">singularity.conf</span></code> <code class="docutils literal notranslate"><span class="pre">mount</span> <span class="pre">dev</span></code>
+option.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">resources.shm_size</span></code></p></td>
+<td><p>By default <code class="docutils literal notranslate"><span class="pre">/dev/shm</span></code> is mounted from the compute
+host. This can be overridden by the
+<code class="docutils literal notranslate"><span class="pre">singularity.conf</span></code> <code class="docutils literal notranslate"><span class="pre">mount</span> <span class="pre">tmp</span></code> option. When
+enabled, the size can be increased using compute
+node <code class="docutils literal notranslate"><span class="pre">/etc/fstab</span></code> settings.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">environment.registry_auth.server</span></code></p></td>
+<td><p>No equivalent setting in Singularity.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">environment.registry_auth.email</span></code></p></td>
+<td><p>No equivalent setting in Singularity.</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</section>
+<section id="singularity-known-issues">
+<h2>Singularity Known Issues<a class="headerlink" href="#singularity-known-issues" title="Permalink to this heading">#</a></h2>
+<p>Launching a PBS job with an experiment configuration that includes an embedded double quote
+character (”) may cause the job to fail unless you have Singularity 3.10 or greater or Apptainer 1.1
+or greater. For example, the error might be the json.decoder.JSONDecodeError or the experiment log
+may contain <code class="docutils literal notranslate"><span class="pre">source:</span> <span class="pre">/.inject-singularity-env.sh:224:1563:</span> <span class="pre">&quot;export&quot;</span> <span class="pre">must</span> <span class="pre">be</span> <span class="pre">followed</span> <span class="pre">by</span> <span class="pre">names</span> <span class="pre">or</span>
+<span class="pre">assignments</span></code> and <code class="docutils literal notranslate"><span class="pre">RuntimeError:</span> <span class="pre">missing</span> <span class="pre">environment</span> <span class="pre">keys</span> <span class="pre">[DET_MASTER,</span> <span class="pre">DET_CLUSTER_ID,</span>
+<span class="pre">DET_AGENT_ID,</span> <span class="pre">DET_SLOT_IDS,</span> <span class="pre">DET_TASK_ID,</span> <span class="pre">DET_ALLOCATION_ID,</span> <span class="pre">DET_SESSION_TOKEN,</span> <span class="pre">DET_TASK_TYPE],</span> <span class="pre">is</span>
+<span class="pre">this</span> <span class="pre">running</span> <span class="pre">on-cluster?</span></code></p>
+<p>The version of Singularity is detected by the HPC Launcher invoking the singularity command and
+checking for the <code class="docutils literal notranslate"><span class="pre">--no-eval</span></code> option. If the singularity command is not on the path for the HPC
+launcher or is of an inconsistent version with the compute nodes, embedded double quote characters
+may still not work.</p>
+</section>
+<section id="apptainer-known-issues">
+<h2>Apptainer Known Issues<a class="headerlink" href="#apptainer-known-issues" title="Permalink to this heading">#</a></h2>
+<p>Starting with Apptainer version 1.1.0 some changes may trigger permission problems inside of
+Determined containers for shells, tensorboards, and experiments. For example, a tensorboard log may
+contain <code class="docutils literal notranslate"><span class="pre">ERROR:</span> <span class="pre">Could</span> <span class="pre">not</span> <span class="pre">install</span> <span class="pre">packages</span> <span class="pre">due</span> <span class="pre">to</span> <span class="pre">an</span> <span class="pre">OSError:</span> <span class="pre">[Errno</span> <span class="pre">28]</span> <span class="pre">No</span> <span class="pre">space</span> <span class="pre">left</span> <span class="pre">on</span> <span class="pre">device</span></code>,
+or a shell may fail to function and the shell logs contain the message <code class="docutils literal notranslate"><span class="pre">chown(/dev/pts/1,</span> <span class="pre">63200,</span> <span class="pre">5)</span>
+<span class="pre">failed:</span> <span class="pre">Invalid</span> <span class="pre">argument</span></code>, or an experiment may fail to launch due to <code class="docutils literal notranslate"><span class="pre">FATAL:</span> <span class="pre">container</span> <span class="pre">creation</span>
+<span class="pre">failed:</span> <span class="pre">mount</span> <span class="pre">/var/tmp-&gt;/var/tmp</span> <span class="pre">error:</span> <span class="pre">while</span> <span class="pre">mounting</span> <span class="pre">/var/tmp:</span> <span class="pre">could</span> <span class="pre">not</span> <span class="pre">mount</span> <span class="pre">/var/tmp:</span> <span class="pre">operation</span>
+<span class="pre">not</span> <span class="pre">supported</span></code>. This likely indicates an installation or configuration error for unprivileged
+containers. Review the <a class="reference external" href="https://apptainer.org/docs/admin/main/installation.html">Installing Apptainer</a> documentation. These errors are
+sometimes resolved by additionally installing the <code class="docutils literal notranslate"><span class="pre">apptainer-setuid</span></code> package.</p>
+</section>
+<section id="podman-known-issues">
+<h2>Podman Known Issues<a class="headerlink" href="#podman-known-issues" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p>Determined uses Podman in <a class="reference external" href="https://docs.podman.io/en/latest/markdown/podman.1.html#rootless-mode">rootless mode</a>. There are several
+configuration errors that may be encountered:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">stat</span> <span class="pre">/run/user/NNN:</span> <span class="pre">no</span> <span class="pre">such</span> <span class="pre">file</span> <span class="pre">or</span> <span class="pre">directory</span></code> likely indicates that the environment
+variable <code class="docutils literal notranslate"><span class="pre">XDG_RUNTIME_DIR</span></code> is referencing a directory that does not exist.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stat</span> <span class="pre">/run/user/NNN:</span> <span class="pre">permission</span> <span class="pre">denied</span></code> may indicate a problem with default the <code class="docutils literal notranslate"><span class="pre">runroot</span></code>
+configuration.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Error:</span> <span class="pre">A</span> <span class="pre">network</span> <span class="pre">file</span> <span class="pre">system</span> <span class="pre">with</span> <span class="pre">user</span> <span class="pre">namespaces</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">supported.</span> <span class="pre">Please</span> <span class="pre">use</span> <span class="pre">a</span>
+<span class="pre">mount_program:</span> <span class="pre">backing</span> <span class="pre">file</span> <span class="pre">system</span> <span class="pre">is</span> <span class="pre">unsupported</span> <span class="pre">for</span> <span class="pre">this</span> <span class="pre">graph</span> <span class="pre">driver</span></code> indicates that the
+<code class="docutils literal notranslate"><span class="pre">graphroot</span></code> references a distributed file system.</p></li>
+</ul>
+<p>Refer to <a class="reference internal" href="slurm-requirements.html#podman-config-requirements"><span class="std std-ref">Podman Requirements</span></a> for recommendations.</p>
+</li>
+<li><p>On a Slurm cluster, it is common to rely upon <code class="docutils literal notranslate"><span class="pre">/etc/hosts</span></code> (instead of DNS) to resolve the
+addresses of the login node and other compute nodes in the cluster. If jobs are unable to resolve
+the address of the Determined master or other compute nodes in the job and you are relying on
+<code class="docutils literal notranslate"><span class="pre">/etc/hosts</span></code>, check the following:</p>
+<ol class="arabic">
+<li><p>Ensure that the <code class="docutils literal notranslate"><span class="pre">/etc/hosts</span></code> file is being mounted in the container by a <a class="reference internal" href="../../../reference/training/experiment-config-reference.html#exp-bind-mounts"><span class="std std-ref">bind mount</span></a> in the <code class="docutils literal notranslate"><span class="pre">task_container_defaults</span></code> section of your master configuration as
+shown below. Unlike Singularity, Podman V4.0+ no longer maps <code class="docutils literal notranslate"><span class="pre">/etc/hosts</span></code> from the host into
+the running container by default. On the initial startup, the Determined Slurm launcher
+automatically adds the <code class="docutils literal notranslate"><span class="pre">task_container_defaults</span></code> fragment below when adding the
+<code class="docutils literal notranslate"><span class="pre">resource_manager</span></code> section. If, however, you have since changed the file you may need to
+manually add the <a class="reference internal" href="../../../reference/training/experiment-config-reference.html#exp-bind-mounts"><span class="std std-ref">bind mount</span></a> to ensure that jobs can resolve all host
+addresses in the cluster:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">task_container_defaults</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">bind_mounts</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w">  </span><span class="nt">host_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/hosts</span>
+<span class="w">         </span><span class="nt">container_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/hosts</span>
+</pre></div>
+</div>
+</li>
+<li><p>Ensure that the names and addresses of the login node, admin node, and all compute nodes are
+consistently available in <code class="docutils literal notranslate"><span class="pre">/etc/hosts</span></code> on all nodes.</p></li>
+</ol>
+</li>
+<li><p>Podman containers only inherit environment variables that have been explicitly specified.
+Determined adds Podman arguments to provide any Determined-configured environment variables, and
+the launcher enables inheritance of the following variables: <code class="docutils literal notranslate"><span class="pre">SLURM_*</span></code>,
+<code class="docutils literal notranslate"><span class="pre">CUDA_VISIBLE_DEVICES</span></code>, <code class="docutils literal notranslate"><span class="pre">NVIDIA_VISIBLE_DEVICES</span></code>, <code class="docutils literal notranslate"><span class="pre">ROCR_VISIBLE_DEVICES</span></code>,
+<code class="docutils literal notranslate"><span class="pre">HIP_VISIBLE_DEVICES</span></code>. You may enable the inheritance of additional variables from the host
+environment by specifying the variable name with an empty value in the <code class="docutils literal notranslate"><span class="pre">environment_variables</span></code>
+of your experiment configuration or <a class="reference internal" href="../../../reference/deploy/config/master-config-reference.html#master-task-container-defaults"><span class="std std-ref">task container defaults</span></a>.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">environment_variables</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INHERITED_ENV_VAR=</span>
+</pre></div>
+</div>
+</li>
+<li><p>Terminating a Determined AI job may cause the following conditions to occur:</p>
+<ul class="simple">
+<li><p>Compute nodes go into drain state.</p></li>
+<li><p>Processes inside the container continue to run.</p></li>
+<li><p>An attempt to run another job results in <code class="docutils literal notranslate"><span class="pre">Running</span> <span class="pre">a</span> <span class="pre">job</span> <span class="pre">gets</span> <span class="pre">the</span> <span class="pre">error</span> <span class="pre">level=error</span>
+<span class="pre">msg=&quot;invalid</span> <span class="pre">internal</span> <span class="pre">status,</span> <span class="pre">try</span> <span class="pre">resetting</span> <span class="pre">the</span> <span class="pre">pause</span> <span class="pre">process</span> <span class="pre">with</span> <span class="pre">\&quot;/usr/local/bin/podman</span>
+<span class="pre">system</span> <span class="pre">migrate\&quot;:</span> <span class="pre">could</span> <span class="pre">not</span> <span class="pre">find</span> <span class="pre">any</span> <span class="pre">running</span> <span class="pre">process:</span> <span class="pre">no</span> <span class="pre">such</span> <span class="pre">process&quot;</span></code>.</p></li>
+</ul>
+<p>Podman creates several processes when running a container, such as podman, conmon, and catatonit.
+When a user terminates a Determined AI job, Slurm will send a SIGTERM to the podman processes.
+However, sometimes the container will continue running, even after the SIGTERM has been sent.</p>
+<p>On Slurm versions prior to version 22, Slurm will place the node in the <code class="docutils literal notranslate"><span class="pre">drain</span></code> state,
+requiring the use of the <code class="docutils literal notranslate"><span class="pre">scontrol</span></code> command to set the node back to the <code class="docutils literal notranslate"><span class="pre">idle</span></code> state. It may
+also require <code class="docutils literal notranslate"><span class="pre">podman</span> <span class="pre">system</span> <span class="pre">migrate</span></code> to be run to clean up the running containers.</p>
+<p>To ensure the container associated with the job is stopped when a Determined AI job is
+terminated, create a Slurm task epilog script to stop the container.</p>
+<p>Set the Task Epilog script in the <code class="docutils literal notranslate"><span class="pre">slurm.conf</span></code> file, as shown below, to point to a script that
+resides in a shared filesystem accessible from all compute nodes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TaskEpilog</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">task_epilog</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>Set the contents of the Task Epilog script as shown below.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
+
+<span class="nv">slurm_job_name_suffix</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">SLURM_JOB_NAME</span><span class="si">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/^\S\+-\([a-z0-9]\+-[a-z0-9]\+\)$/\1/&#39;</span><span class="k">)</span>
+
+<span class="k">if</span><span class="w"> </span>ps<span class="w"> </span>-fe<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;[p]odman run .*-name </span><span class="si">${</span><span class="nv">SLURM_JOB_USER</span><span class="si">}</span><span class="s2">-\S+-</span><span class="si">${</span><span class="nv">slurm_job_name_suffix</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null
+<span class="k">then</span>
+<span class="w">   </span>timeout<span class="w"> </span>-k<span class="w"> </span>15s<span class="w"> </span>15s<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;while ps -fe | grep -E \&quot;[c]onmon .*-n </span><span class="si">${</span><span class="nv">SLURM_JOB_USER</span><span class="si">}</span><span class="s2">-\S+-</span><span class="si">${</span><span class="nv">slurm_job_name_suffix</span><span class="si">}</span><span class="s2">\&quot; &gt; /dev/null 2&gt;&amp;1; do sleep 1; done&quot;</span>
+
+<span class="w">   </span><span class="nv">podman_container_stop_command</span><span class="o">=</span><span class="s2">&quot;podman container stop --filter name=&#39;.+-</span><span class="si">${</span><span class="nv">slurm_job_name_suffix</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+
+<span class="w">   </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>date<span class="k">)</span><span class="s2">:</span><span class="nv">$0</span><span class="s2">: Running \&quot;</span><span class="si">${</span><span class="nv">podman_container_stop_command</span><span class="si">}</span><span class="s2">\&quot;&quot;</span><span class="w"> </span><span class="m">1</span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+
+<span class="w">   </span><span class="nb">eval</span><span class="w"> </span><span class="si">${</span><span class="nv">podman_container_stop_command</span><span class="si">}</span>
+<span class="k">fi</span>
+
+<span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
+</pre></div>
+</div>
+<p>Restart the <code class="docutils literal notranslate"><span class="pre">slurmd</span></code> daemon on all compute nodes.</p>
+</li>
+</ul>
+</section>
+<section id="enroot-known-issues">
+<h2>Enroot Known Issues<a class="headerlink" href="#enroot-known-issues" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p>Enroot uses <code class="docutils literal notranslate"><span class="pre">XDG_RUNTIME_DIR</span></code> which is not provided to the compute jobs by Slurm/PBS by
+default. The error <code class="docutils literal notranslate"><span class="pre">mkdir:</span> <span class="pre">cannot</span> <span class="pre">create</span> <span class="pre">directory</span> <span class="pre">‘/run/enroot’:</span> <span class="pre">Permission</span> <span class="pre">denied</span></code> indicates
+that the environment variable <code class="docutils literal notranslate"><span class="pre">XDG_RUNTIME_DIR</span></code> is not defined on the compute nodes. See
+<a class="reference internal" href="slurm-requirements.html#podman-config-requirements"><span class="std std-ref">Podman Requirements</span></a> for recommendations.</p></li>
+<li><p>Enroot requires manual download and creation of containers. The error <code class="docutils literal notranslate"><span class="pre">[ERROR]</span> <span class="pre">No</span> <span class="pre">such</span> <span class="pre">file</span> <span class="pre">or</span>
+<span class="pre">directory:</span>
+<span class="pre">/home/users/test/.local/share/enroot/determinedai+environments+cuda-11.1-base-gpu-mpi-0.18.5</span></code>
+indicates the user <code class="docutils literal notranslate"><span class="pre">test</span></code> has not created an Enroot container for Docker image
+<code class="docutils literal notranslate"><span class="pre">determinedai/environments:cuda-11.1-base-gpu-mpi-0.18.5</span></code>. Check the available containers using
+the <code class="docutils literal notranslate"><span class="pre">enroot</span> <span class="pre">list</span></code> command. See <a class="reference internal" href="slurm-requirements.html#enroot-config-requirements"><span class="std std-ref">Enroot Requirements</span></a> for guidance on creating
+Enroot containers.</p></li>
+<li><p>Enroot does not provide a mechanism for sharing containers. Each user must create any containers
+needed by their Determined experiments prior to creating the experiment.</p></li>
+<li><p>Some Docker features do not have an exact replacement in Enroot, and therefore the associated
+Determined features are not supported.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">resources.devices</span></code></p></td>
+<td><p>Managed via Enroot configuration files.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">resources.shm_size</span></code></p></td>
+<td><p>Managed via Enroot configuration files.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">environment.registry_auth.server</span></code></p></td>
+<td><p>No equivalent setting in Enroot.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">environment.registry_auth.email</span></code></p></td>
+<td><p>No equivalent setting in Enroot.</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</section>
+<section id="slurm-known-issues">
+<span id="id1"></span><h2>Slurm Known Issues<a class="headerlink" href="#slurm-known-issues" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p>Jobs may fail to submit with Slurm version 22.05.5 through 22.05.8 with the message <code class="docutils literal notranslate"><span class="pre">error:</span>
+<span class="pre">Unable</span> <span class="pre">to</span> <span class="pre">allocate</span> <span class="pre">resources:</span> <span class="pre">Requested</span> <span class="pre">node</span> <span class="pre">configuration</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">available</span></code>.</p>
+<p>Slurm 22.05.5 through 22.05.8 are not supported due to <a class="reference external" href="https://bugs.schedmd.com/show_bug.cgi?id=15857">Slurm Bug 15857</a>. The bug was addressed in 22.05.09 or
+23.02.00.</p>
+</li>
+<li><p>A Determined experiment remains <code class="docutils literal notranslate"><span class="pre">QUEUEUED</span></code> for an extended period:</p>
+<p>If Slurm provides a reason code for the <code class="docutils literal notranslate"><span class="pre">QUEUEUED</span></code> state of the job, the reason description
+from <a class="reference external" href="https://slurm.schedmd.com/squeue.html#SECTION_JOB-REASON-CODES">JOB REASON CODES</a> will
+be added to the experiment/task log as an informational message such as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INFO</span><span class="p">:</span> <span class="n">HPC</span> <span class="n">job</span> <span class="n">waiting</span> <span class="n">to</span> <span class="n">be</span> <span class="n">scheduled</span><span class="p">:</span> <span class="n">Nodes</span> <span class="n">required</span> <span class="k">for</span> <span class="n">job</span> <span class="n">are</span> <span class="n">DOWN</span><span class="p">,</span> <span class="n">DRAINED</span> <span class="ow">or</span> <span class="n">reserved</span> <span class="k">for</span> <span class="n">jobs</span> <span class="ow">in</span> <span class="n">higher</span> <span class="n">priority</span> <span class="n">partitions</span>
+</pre></div>
+</div>
+<p>In some cases, it may be helpful to inspect the details of your queued jobs using the Slurm
+<code class="docutils literal notranslate"><span class="pre">scontrol</span> <span class="pre">show</span> <span class="pre">jobs</span></code> command using the <code class="docutils literal notranslate"><span class="pre">HPC</span> <span class="pre">Job</span> <span class="pre">ID</span></code> displayed in the experiment/task log. An
+example of the command output is shown below.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ scontrol show job 109084
+JobId=109084 JobName=det-ai_exp-2221-trial-15853-2221.33b6fcca-564d-47a7-ab2e-0d2a4a90a0f1.1
+UserId=user(1234) GroupId=users(100) MCS_label=N/A
+Priority=4294866349 Nice=0 Account=(null) QOS=normal
+JobState=PENDING Reason=Priority Dependency=(null)
+Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+RunTime=00:00:00 TimeLimit=1-00:00:00 TimeMin=N/A
+SubmitTime=2023-07-03T16:01:35 EligibleTime=2023-07-03T16:01:35
+AccrueTime=2023-07-03T16:01:35
+StartTime=Unknown EndTime=Unknown Deadline=N/A
+SuspendTime=None SecsPreSuspend=0 LastSchedEval=2023-07-03T16:06:15 Scheduler=Backfill:*
+Partition=mlde_rocm AllocNode:Sid=o184i054:755599
+ReqNodeList=o186i[122-123] ExcNodeList=(null)
+NodeList=
+NumNodes=1-1 NumCPUs=1 NumTasks=1 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
+ReqTRES=cpu=1,mem=256G,node=1,billing=1,gres/gpu=1
+AllocTRES=(null)
+Socks/Node=* NtasksPerN:B:S:C=1:0:*:* CoreSpec=*
+MinCPUsNode=1 MinMemoryNode=0 MinTmpDiskNode=0
+Features=(null) DelayBoot=00:00:00
+OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
+Command=/cstor/determined/o184i054-jobs/jobs/environments/vishnu/2221.33b6fcca-564d-47a7-ab2e-0d2a4a90a0f1.1/ai_exp-2221-trial-15853-job.sh
+WorkDir=/var/tmp
+StdErr=/cstor/determined/o184i054-jobs/jobs/environments/vishnu/2221.33b6fcca-564d-47a7-ab2e-0d2a4a90a0f1.1/ai_exp-2221-trial-15853-error.log
+StdIn=/dev/null
+StdOut=/cstor/determined/o184i054-jobs/jobs/environments/vishnu/2221.33b6fcca-564d-47a7-ab2e-0d2a4a90a0f1.1/ai_exp-2221-trial-15853-output.log
+Power=
+CpusPerTres=gres:gpu:64
+MemPerTres=gres:gpu:262144
+TresPerJob=gres:gpu:1
+</pre></div>
+</div>
+<p>The Slurm job state (See <a class="reference external" href="https://slurm.schedmd.com/squeue.html#SECTION_JOB-STATE-CODES">JOB STATE CODES</a>) may help identify the delay
+in scheduling. If the Slurm job state is <code class="docutils literal notranslate"><span class="pre">PENDING</span></code>, review the resources being requested and
+the <code class="docutils literal notranslate"><span class="pre">Reason</span></code> code to identify the cause. To better understand how resource requests are derived
+by Determined, see <a class="reference internal" href="hpc-launching-architecture.html#hpc-launching-architecture"><span class="std std-ref">HPC Launching Architecture</span></a>. Some common reason codes for <code class="docutils literal notranslate"><span class="pre">PENDING</span></code>
+are:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">PartitionNodeLimit</span></code>: Ensure that the job is not requesting more nodes than <code class="docutils literal notranslate"><span class="pre">MaxNodes</span></code> of
+the partition.</p>
+<p>Ensure that the <code class="docutils literal notranslate"><span class="pre">MaxNodes</span></code> setting for the partition is at least as high as the number of
+GPUs in the partition. The <code class="docutils literal notranslate"><span class="pre">MaxNodes</span></code> value for a partition can be viewed in the
+<code class="docutils literal notranslate"><span class="pre">JOBS_SIZE</span></code> column of the command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sinfo<span class="w"> </span>-O<span class="w"> </span>Partition,Size,Gres,OverSubscribe,NodeList,StateComplete,Reason
+PARTITION<span class="w">  </span>JOB_SIZE<span class="w">    </span>GRES<span class="w">         </span>OVERSUBSCRIBE<span class="w"> </span>NODELIST<span class="w"> </span>STATECOMPLETE<span class="w"> </span>REASON
+defq*<span class="w">      </span><span class="m">1</span>-infinite<span class="w">  </span>gpu:tesla:4<span class="w">  </span>NO<span class="w">            </span>node002<span class="w">  </span>idle<span class="w">          </span>none
+</pre></div>
+</div>
+<p>Until scheduled, the job’s <code class="docutils literal notranslate"><span class="pre">NumNodes</span></code> is shown as the range 1-<code class="docutils literal notranslate"><span class="pre">slots_per_trial</span></code>. Ensure
+the <code class="docutils literal notranslate"><span class="pre">slots_per_trial</span></code> shown is not larger than the value shown in the <code class="docutils literal notranslate"><span class="pre">JOB_SIZE</span></code> column
+for the partition.</p>
+<p>A second potential cause of <code class="docutils literal notranslate"><span class="pre">PartitionNodeLimit</span></code> is submitting CPU experiments (or when the
+Determined cluster is configured with <code class="docutils literal notranslate"><span class="pre">gres_supported:</span> <span class="pre">false</span></code> ), without specifying
+<code class="docutils literal notranslate"><span class="pre">slurm.slots_per_node</span></code> to enable multiple CPUs to be used on each node. Without
+<code class="docutils literal notranslate"><span class="pre">slurm.slots_per_node</span></code> the job will request <code class="docutils literal notranslate"><span class="pre">slots_per_trial</span></code> nodes.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Priority</span></code>: One or more higher priority jobs exist for this partition or advanced
+reservation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Resources</span></code>: Expected when resources are in use by other jobs. Otherwise, verify you have
+not requested more resources (GPUs, CPUs, nodes, memory) than are available in your cluster.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="pbs-known-issues">
+<span id="id2"></span><h2>PBS Known Issues<a class="headerlink" href="#pbs-known-issues" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Jobs are treated as successful even in the presence of a failure when PBS job history is not
+enabled. Without job history enabled, the launcher is unable to obtain the exit status of jobs
+and therefore they are all reported as successful. This will prevent failed jobs from
+automatically restarting, and in the case of a job that fails to start running at all, it may be
+reported as completed with no error message reported. Refer to <a class="reference internal" href="slurm-requirements.html#pbs-config-requirements"><span class="std std-ref">PBS Requirements</span></a>.</p></li>
+</ul>
+</section>
+<section id="amd-rocm-known-issues">
+<h2>AMD/ROCm Known Issues<a class="headerlink" href="#amd-rocm-known-issues" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p>AMD/ROCm support is available only with Singularity containers. While Determined does add the
+proper Podman arguments to enable ROCm GPU support, the capabilities have not yet been verified.</p></li>
+<li><p>Launching experiments with <code class="docutils literal notranslate"><span class="pre">slot_type:</span> <span class="pre">rocm</span></code>, may fail with the error <code class="docutils literal notranslate"><span class="pre">RuntimeError:</span> <span class="pre">No</span> <span class="pre">HIP</span>
+<span class="pre">GPUs</span> <span class="pre">are</span> <span class="pre">available</span></code>. Ensure that the compute nodes are providing ROCm drivers and libraries
+compatible with the environment image that you are using and that they are available in the
+default locations, or are added to the <code class="docutils literal notranslate"><span class="pre">path</span></code> and/or <code class="docutils literal notranslate"><span class="pre">ld_library_path</span></code> variables in the
+<a class="reference internal" href="../../../reference/deploy/config/master-config-reference.html#cluster-configuration-slurm"><span class="std std-ref">slurm configuration</span></a>. Depending upon your system
+configuration, you may need to select a different ROCm image. See
+<span class="xref std std-doc">/model-dev-guide/prepare-container/set-environment-images</span> for the images available.</p></li>
+<li><p>Launching experiments with <code class="docutils literal notranslate"><span class="pre">slot_type:</span> <span class="pre">rocm</span></code>, may fail in the AMD/ROCm libraries with with the
+error <code class="docutils literal notranslate"><span class="pre">terminate</span> <span class="pre">called</span> <span class="pre">after</span> <span class="pre">throwing</span> <span class="pre">an</span> <span class="pre">instance</span> <span class="pre">of</span> <span class="pre">'boost::filesystem::filesystem_error'</span>
+<span class="pre">what():</span> <span class="pre">boost::filesystem::remove:</span> <span class="pre">Directory</span> <span class="pre">not</span> <span class="pre">empty:</span> <span class="pre">&quot;/tmp/miopen-...</span></code>. A potential
+workaround is to disable the per-container <code class="docutils literal notranslate"><span class="pre">/tmp</span></code> by adding the following <a class="reference internal" href="../../../reference/training/experiment-config-reference.html#exp-bind-mounts"><span class="std std-ref">bind mount</span></a> in your experiment configuration or globally by using the
+<code class="docutils literal notranslate"><span class="pre">task_container_defaults</span></code> section in your master configuration:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">bind_mounts</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">host_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tmp</span>
+<span class="w">     </span><span class="nt">container_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tmp</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="determined-ai-experiment-requirements">
+<h2>Determined AI Experiment Requirements<a class="headerlink" href="#determined-ai-experiment-requirements" title="Permalink to this heading">#</a></h2>
+<p>Ensure that the following requirements are met in your experiment configuration.</p>
+<p>Distributed jobs <em>must</em> allocate the same number of resources on each compute node. Slurm/PBS will
+not enforce this constraint by default. It is, therefore, recommended that you include a
+<code class="docutils literal notranslate"><span class="pre">slots_per_node</span></code> in your experiment configuration to ensure that Slurm/PBS provides a consistent
+allocation on each node. Your <code class="docutils literal notranslate"><span class="pre">slots_per_trial</span></code> configuration should then be a multiple of
+<code class="docutils literal notranslate"><span class="pre">slots_per_node</span></code>.</p>
+</section>
+<section id="additional-known-issues">
+<h2>Additional Known issues<a class="headerlink" href="#additional-known-issues" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p>The Determined master may fail to show HPC cluster information and report <code class="docutils literal notranslate"><span class="pre">Failed</span> <span class="pre">to</span> <span class="pre">communicate</span>
+<span class="pre">with</span> <span class="pre">launcher</span> <span class="pre">due</span> <span class="pre">to</span> <span class="pre">error:</span></code> in the <code class="docutils literal notranslate"><span class="pre">Master</span> <span class="pre">Logs</span></code> tab of the Determined UI. If so, verify the
+following:</p>
+<ol class="arabic">
+<li><p>Ensure that the launcher service is up and running.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>launcher
+</pre></div>
+</div>
+</li>
+<li><p>If the full error is <code class="docutils literal notranslate"><span class="pre">Failed</span> <span class="pre">to</span> <span class="pre">communicate</span> <span class="pre">with</span> <span class="pre">launcher</span> <span class="pre">due</span> <span class="pre">to</span> <span class="pre">error:</span> <span class="pre">{401</span> <span class="pre">Unauthorized}</span></code>,
+the Determined master does not have an up-to-date authorization token to access the launcher.
+Restart the launcher, to ensure all configuration changes have been applied.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>launcher
+sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>launcher
+</pre></div>
+</div>
+<p>Once it has successfully started, you should see the message <code class="docutils literal notranslate"><span class="pre">INFO:</span> <span class="pre">launcher</span> <span class="pre">server</span> <span class="pre">ready</span>
+<span class="pre">...</span></code>, then restart the Determined master so it will likewise load the latest configuration:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>determined-master
+sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>determined-master
+</pre></div>
+</div>
+<p>Additional diagnostic messages may be present in the system log diagnostics, such as
+<code class="docutils literal notranslate"><span class="pre">/var/log/messages</span></code> or <code class="docutils literal notranslate"><span class="pre">journalctl</span> <span class="pre">--since=yesterday</span> <span class="pre">-u</span> <span class="pre">launcher</span></code>, and <code class="docutils literal notranslate"><span class="pre">journalctl</span>
+<span class="pre">--since=yesterday</span> <span class="pre">-u</span> <span class="pre">determined-master</span></code></p>
+</li>
+</ol>
+</li>
+<li><p>The SSH server process within Determined Environment images can fail with a <code class="docutils literal notranslate"><span class="pre">free():</span> <span class="pre">double</span> <span class="pre">free</span>
+<span class="pre">detected</span> <span class="pre">in</span> <span class="pre">tcache</span> <span class="pre">2</span></code> message, a <code class="docutils literal notranslate"><span class="pre">Fatal</span> <span class="pre">error:</span> <span class="pre">glibc</span> <span class="pre">detected</span> <span class="pre">an</span> <span class="pre">invalid</span> <span class="pre">stdio</span> <span class="pre">handle</span></code>
+message, or simply close the connection with no message. This problem has been observed when
+using the <code class="docutils literal notranslate"><span class="pre">det</span> <span class="pre">shell</span> <span class="pre">start</span></code> command and when running distributed, multi-node, training jobs. It
+is suspected to be triggered by passwd/group configurations that use NIS/YP/LDAP accounts on the
+compute host. By default these settings are propagated to the Singularity container and can
+result in <code class="docutils literal notranslate"><span class="pre">sshd</span></code> aborting the connection with or without an error message, depending on the
+exact configuration.</p>
+<p>A workaround is to specify a customized <code class="docutils literal notranslate"><span class="pre">nsswitch.conf</span></code> file to the Singularity container and
+enable only files for passwd/group elements. This can be accomplished using the following steps:</p>
+<ol class="arabic">
+<li><p>Create a file on a shared file system such as <code class="docutils literal notranslate"><span class="pre">/home/shared/determined/nsswitch.conf</span></code> file
+with the content, potentially further tuned for your environment:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">passwd</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">files determined</span>
+<span class="nt">shadow</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">files determined</span>
+<span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">files determined</span>
+<span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">files dns</span>
+</pre></div>
+</div>
+</li>
+<li><p>Update the Determined cluster configuration to supply a default bind mount to override the
+<code class="docutils literal notranslate"><span class="pre">/etc/nsswitch.conf</span></code> in the container.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">task_container_defaults</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">bind_mounts</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">host_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/shared/determined/nsswitch.conf</span>
+<span class="w">      </span><span class="nt">container_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/nsswitch.conf</span>
+</pre></div>
+</div>
+</li>
+<li><p>Reload the Determined master to allow it to pull in the updated configuration.</p></li>
+</ol>
+<p>The user/group configuration is typically injected in <code class="docutils literal notranslate"><span class="pre">/etc/passwd</span></code> within the Singularity
+container so disabling the NIS/YP/LDAP accounts within the container should not result in any
+lost capability.</p>
+</li>
+<li><p>Determined CLI can fail with a <code class="docutils literal notranslate"><span class="pre">Your</span> <span class="pre">requested</span> <span class="pre">host</span> <span class="pre">&quot;localhost&quot;</span> <span class="pre">could</span> <span class="pre">not</span> <span class="pre">be</span> <span class="pre">resolved</span> <span class="pre">by</span> <span class="pre">DNS.</span></code>
+message. This has been observed when the <code class="docutils literal notranslate"><span class="pre">http_proxy</span></code> or <code class="docutils literal notranslate"><span class="pre">https_proxy</span></code> environment variables
+are set but have not excluded sending <code class="docutils literal notranslate"><span class="pre">localhost</span></code>, or the Determined master hostname, to the
+proxy server.</p>
+<p>Update the environment settings configured for the proxy to also include:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">no_proxy</span><span class="o">=</span>localhost,127.0.0.1
+</pre></div>
+</div>
+</li>
+<li><p>The automated download of Docker containers by Singularity may fail with the error <code class="docutils literal notranslate"><span class="pre">loading</span>
+<span class="pre">registries</span> <span class="pre">configuration:</span> <span class="pre">reading</span> <span class="pre">registries.conf.d:</span> <span class="pre">lstat</span>
+<span class="pre">/root/.config/containers/registries.conf.d:</span> <span class="pre">permission</span> <span class="pre">denied</span></code> when Docker login information is
+not provided.</p>
+<p>This happens when access to an otherwise public container image is being blocked by the <a class="reference external" href="https://docs.docker.com/docker-hub/download-rate-limit">Docker
+Hub download rate limit</a>, or if the
+container is in a private registry.</p>
+<p>You can avoid this problem by either:</p>
+<ol class="arabic simple">
+<li><p>Manually downloading the container image as described in <a class="reference internal" href="singularity.html#slurm-image-config"><span class="std std-ref">Provide a Container Image Cache</span></a>.</p></li>
+<li><p>Providing a Docker login via the experiment configuration using the
+<code class="docutils literal notranslate"><span class="pre">environment.registry_auth.username</span></code> and <code class="docutils literal notranslate"><span class="pre">environment.registry_auth.password</span></code> options.</p></li>
+</ol>
+</li>
+<li><p>Use of <a class="reference external" href="https://docs.nvidia.com/deploy/mps">NVIDIA Multi-Process Service (MPS)</a> with
+Determined may trigger the error <code class="docutils literal notranslate"><span class="pre">RuntimeError:</span> <span class="pre">CUDA</span> <span class="pre">error:</span> <span class="pre">all</span> <span class="pre">CUDA-capable</span> <span class="pre">devices</span> <span class="pre">are</span> <span class="pre">busy</span> <span class="pre">or</span>
+<span class="pre">unavailable</span></code>.</p>
+<p>By default, MPS depends upon a shared <code class="docutils literal notranslate"><span class="pre">/tmp</span></code> directory between the compute node and the
+container to function properly. As noted in <a class="reference internal" href="#slurm-and-docker-differences"><span class="std std-ref">Singularity and Docker Differences</span></a>, sharing <code class="docutils literal notranslate"><span class="pre">/tmp</span></code>
+between the compute node and the container is not the default behavior for Determined Slurm
+integration. When using MPS, use one of the following workarounds:</p>
+<ol class="arabic simple">
+<li><p>If the capabilities of MPS are not required, disable or uninstall the MPS service. See
+<a class="reference external" href="https://docs.nvidia.com/deploy/mps/index.html#topic_5_1_1">nvidia-cuda-mps-control</a> or the
+relevant documentation associated with your installation package.</p></li>
+<li><p>Configure the MPS variable <code class="docutils literal notranslate"><span class="pre">CUDA_MPS_PIPE_DIRECTORY</span></code> to use a directory other than <code class="docutils literal notranslate"><span class="pre">/tmp</span></code>
+(e.g. <code class="docutils literal notranslate"><span class="pre">/dev/shm</span></code>).</p></li>
+<li><p>Restore the sharing of <code class="docutils literal notranslate"><span class="pre">/tmp</span></code> between the compute node and the container as described in
+<a class="reference internal" href="#slurm-and-docker-differences"><span class="std std-ref">Singularity and Docker Differences</span></a>.</p></li>
+</ol>
+<p>For more information on MPS, refer to the <a class="reference external" href="https://docs.nvidia.com/deploy/mps">NVIDIA Multi-Process Service (MPS) Documentation</a>.</p>
+</li>
+<li><p>Experiments on CPU-only clusters will fail when the requested slot count exceeds the maximum
+number of CPUs on any single node. This behavior is due to a limitation of the Slurm workload
+manager. Slurm does not provide an option to request a certain number of CPUs without specifying
+the number of nodes/tasks. To overcome this limitation of Slurm, Determined will set a default
+value of 1 for the number of nodes. With this workaround, when the users launch an experiment on
+a CPU-only cluster, Slurm tries to identify a single node that can completely satisfy the
+requested number of slots (CPUs). If such a node is available, Slurm will allocate the resources
+and continue the execution of the experiment. Otherwise, Slurm will error stating the resource
+request could not be satisfied, as shown in the below example.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ERROR:<span class="w"> </span>task<span class="w"> </span>failed<span class="w"> </span>without<span class="w"> </span>an<span class="w"> </span>associated<span class="w"> </span><span class="nb">exit</span><span class="w"> </span>code:<span class="w"> </span>sbatch:<span class="w"> </span>error:<span class="w"> </span>CPU<span class="w"> </span>count<span class="w"> </span>per<span class="w"> </span>node<span class="w"> </span>can<span class="w"> </span>not
+be<span class="w"> </span>satisfied<span class="w"> </span>sbatch:<span class="w"> </span>error:<span class="w"> </span>Batch<span class="w"> </span>job<span class="w"> </span>submission<span class="w"> </span>failed:<span class="w"> </span>Requested<span class="w"> </span>node<span class="w"> </span>configuration<span class="w"> </span>is<span class="w"> </span>not
+available.
+</pre></div>
+</div>
+</li>
+<li><p>A job may fail with the message <code class="docutils literal notranslate"><span class="pre">resources</span> <span class="pre">failed</span> <span class="pre">with</span> <span class="pre">non-zero</span> <span class="pre">exit</span> <span class="pre">code</span></code>, Determined reports
+the exit code in the experiment logs. For example, the experiment logs contain <code class="docutils literal notranslate"><span class="pre">srun:</span> <span class="pre">error:</span>
+<span class="pre">node002:</span> <span class="pre">task</span> <span class="pre">0:</span> <span class="pre">Exited</span> <span class="pre">with</span> <span class="pre">exit</span> <span class="pre">code</span> <span class="pre">7</span></code>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">det</span> <span class="pre">slot</span> <span class="pre">enable</span></code> and <code class="docutils literal notranslate"><span class="pre">det</span> <span class="pre">slot</span> <span class="pre">disable</span></code> commands are not supported. Use of these
+commands will print an error message.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">det</span> <span class="pre">slot</span> <span class="pre">list</span></code> will not display the name of any active Determined tasks.</p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="singularity.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Provide a Container Image Cache</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="slurm-requirements.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Installation Requirements</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agent-specific-scheduling-options-are-ignored">Agent-Specific Scheduling Options are Ignored</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#singularity-and-docker-differences">Singularity and Docker Differences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#singularity-known-issues">Singularity Known Issues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apptainer-known-issues">Apptainer Known Issues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#podman-known-issues">Podman Known Issues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enroot-known-issues">Enroot Known Issues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slurm-known-issues">Slurm Known Issues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pbs-known-issues">PBS Known Issues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#amd-rocm-known-issues">AMD/ROCm Known Issues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determined-ai-experiment-requirements">Determined AI Experiment Requirements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-known-issues">Additional Known issues</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tara & LB
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, Determined AI.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

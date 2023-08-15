@@ -1,0 +1,796 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<meta content="This user guide demonstrates how to optimize DeepSpeed parameters in order to take full advantage of the user's hardware and model." name="description" />
+
+    <title>DeepSpeed Autotune: User Guide &#8212; project-x 0.0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=362ab14a" />
+    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=dc820ae5"></script>
+    <script src="../../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'latest/model-dev-guide/apis-howto/deepspeed/autotuning';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">project-x 0.0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../index.html">
+                    Welcome to project-x’s documentation!
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../architecture/_index.html">How Determined Works</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../architecture/introduction.html">Introduction to Determined</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../architecture/system-architecture.html">System Architecture</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../example-solutions/_index.html">Examples</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../integrations/_index.html">Integrations</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../integrations/ecosystem/_index.html">Ecosystem Integration</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../integrations/notification/_index.html">Monitoring Experiment Through Webhooks</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../integrations/notification/zapier.html">Through Zapier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../integrations/notification/slack.html">Through Slack</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../integrations/prometheus/_index.html">Configure Determined with Prometheus and Grafana</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../interfaces/_index.html">Tools</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../interfaces/cli-ug.html">Determined CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../interfaces/commands-and-shells.html">Commands and Shells</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../interfaces/ide-integration.html">IDE Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../interfaces/notebooks.html">Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../interfaces/proxy-ports.html">Exposing Custom Ports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../interfaces/tensorboard.html">Using TensorBoard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../interfaces/webui-if.html">Web Interface (WebUI)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../_index.html">Model Developer Guide</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../_index.html">Training APIs</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api-core-ug.html">Core API User Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api-pytorch-ug.html">PyTorch API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api-keras-ug.html">Keras API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api-estimator-ug.html">Estimator API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../batch-processing/_index.html">Torch Batch Processing API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best-practices/_index.html">Best Practices</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../dtrain/_index.html">Distributed Training with Determined</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../dtrain/dtrain-introduction.html">Distributed Training Concepts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dtrain/dtrain-implement.html">Implementing Distributed Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dtrain/config-templates.html">Configuration Templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dtrain/reproducibility.html">Reproducibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dtrain/optimize-training.html">Optimizing Training</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../model-hub-library/_index.html">Model Hub Library</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../model-hub-library/mmdetection/_index.html">MMDetection</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../model-hub-library/transformers/_index.html">Transformers</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-hub-library/transformers/tutorial.html">Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../model-hub-library/transformers/examples.html">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../reference/_index.html">Reference</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/cli-reference.html">Determined CLI Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/python-sdk.html">Python SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/rest-api.html">REST API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/batch-processing/_index.html">Batch Processing API Reference</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../reference/deploy/_index.html">Deployment Reference</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../reference/deploy/config/_index.html">Config Reference</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/deploy/config/agent-config-reference.html">Agent Configuration Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/deploy/config/common-config-options.html">Common Configuration Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/deploy/config/helm-config-reference.html">Helm Chart Configuration Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../reference/deploy/config/master-config-reference.html">Master Configuration Reference</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/interface/_index.html">Job Configuration Reference</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../reference/model-hub/_index.html">Model Hub APIs</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../reference/model-hub/mmdetection-api.html">MMDetection API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../reference/model-hub/transformers-api.html">Transformers API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/searcher/_index.html">Custom Searcher Reference</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../reference/training/_index.html">Training Reference</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../reference/training/api-core-reference.html"><code class="docutils literal notranslate"><span class="pre">det.core</span></code> API Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../reference/training/api-deepspeed-reference.html"><code class="docutils literal notranslate"><span class="pre">det.pytorch.deepspeed</span></code> API Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../reference/training/api-det-reference.html"><code class="docutils literal notranslate"><span class="pre">det</span></code> API Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../reference/training/api-estimator-reference.html"><code class="docutils literal notranslate"><span class="pre">det.estimator</span></code> API Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../reference/training/api-keras-reference.html"><code class="docutils literal notranslate"><span class="pre">det.keras</span></code> API Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../reference/training/api-pytorch-reference.html"><code class="docutils literal notranslate"><span class="pre">det.pytorch</span></code> API Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../reference/training/api-pytorch-samplers-reference.html"><code class="docutils literal notranslate"><span class="pre">det.pytorch.samplers</span></code> API Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../reference/training/experiment-config-reference.html">Experiment Configuration Reference</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release-notes/_index.html">Release Notes</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../setup-cluster/_index.html">Setup</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/_index.html">Set Up Determined</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/aws/_index.html">Deploy on AWS</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/aws/aws-spot.html">Use Spot Instances</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/aws/dynamic-agents-aws.html">Deploy Determined with Dynamic Agents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/aws/install-on-aws.html">Install Determined</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/gcp/_index.html">Deploy on GCP</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/gcp/dynamic-agents-gcp.html">Deploy Determined with Dynamic Agents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/gcp/install-gcp.html">Install Determined</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/_index.html">Deploy on Kubernetes</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/custom-pod-specs.html">Customize a Pod</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/helm-commands.html">Helm and Kubectl Command Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/install-on-kubernetes.html">Install Determined on Kubernetes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/k8s-dev-guide.html">Development Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/setup-aks-cluster.html">Set up and Manage an Azure Kubernetes Service (AKS) Cluster</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/setup-eks-cluster.html">Set up and Manage an AWS Kubernetes (EKS) Cluster</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/setup-gke-cluster.html">Set up and Manage a Google Kubernetes Engine (GKE) Cluster</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/k8s/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/on-prem/_index.html">Deploy on Prem</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/on-prem/deploy.html">Install Determined Using <code class="docutils literal notranslate"><span class="pre">det</span> <span class="pre">deploy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/on-prem/docker.html">Install Determined Using Docker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/on-prem/homebrew.html">Install Determined Using Homebrew (macOS)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/on-prem/linux-packages.html">Install Determined Using Linux Packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/on-prem/requirements.html">Installation Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/on-prem/wsl.html">Install Determined Using Windows Subsystem for Linux (Windows)</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/slurm/_index.html">Deploy on Slurm/PBS</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/slurm/hpc-launching-architecture.html">HPC Launching Architecture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/slurm/hpc-security-considerations.html">HPC Launcher Security Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/slurm/install-on-slurm.html">Install Determined on Slurm/PBS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/slurm/singularity.html">Provide a Container Image Cache</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/slurm/slurm-known-issues.html">Known Issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../setup-cluster/deploy-cluster/slurm/slurm-requirements.html">Installation Requirements</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../setup-cluster/security/_index.html">Security</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup-cluster/security/oauth.html">OAuth 2.0 Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup-cluster/security/oidc.html">OpenID Connect Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup-cluster/security/rbac.html">RBAC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup-cluster/security/saml.html">SAML Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup-cluster/security/scim.html">SCIM Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../setup-cluster/security/tls.html">Transport Layer Security</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../tutorials/_index.html">Tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/pytorch-mnist-local-qs.html">Run Your First Experiment in Determined</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/pytorch-mnist-tutorial.html">PyTorch MNIST Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/pytorch-porting-tutorial.html">PyTorch Porting Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/quickstart-mdldev.html">Quickstart for Model Developers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/tf-mnist-tutorial.html">TensorFlow Keras Fashion MNIST Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../attributions.html">Open Source Licenses</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../_sources/latest/model-dev-guide/apis-howto/deepspeed/autotuning.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>DeepSpeed Autotune: User Guide</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works">How it Works</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-code-changes">User Code Changes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deepspeedtrial">DeepSpeedTrial</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core-api">Core API</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#huggingface-trainer">HuggingFace Trainer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-options">Advanced Options</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-options">General Options</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#asha-options"><code class="docutils literal notranslate"><span class="pre">asha</span></code> Options</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-options"><code class="docutils literal notranslate"><span class="pre">binary</span></code> Options</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-options"><code class="docutils literal notranslate"><span class="pre">random</span></code> Options</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="deepspeed-autotune-user-guide">
+<span id="deepspeed-autotuning"></span><h1>DeepSpeed Autotune: User Guide<a class="headerlink" href="#deepspeed-autotune-user-guide" title="Permalink to this heading">#</a></h1>
+<p>Getting the most out of DeepSpeed (DS) requires aligning the many DS parameters with the specific
+properties of your hardware and model. Determined AI’s DeepSpeed Autotune (<code class="docutils literal notranslate"><span class="pre">dsat</span></code>) helps to
+optimize these settings through an easy-to-use API with very few changes required in user-code, as
+we describe in the remainder of this user guide. <code class="docutils literal notranslate"><span class="pre">dsat</span></code> can be used with
+<code class="xref py py-class docutils literal notranslate"><span class="pre">DeepSpeedTrial</span></code>, <a class="reference internal" href="../api-core-ug.html#core-getting-started"><span class="std std-ref">Core API</span></a>, and
+<a class="reference external" href="https://huggingface.co/docs/transformers/main_classes/trainer">HuggingFace Trainer</a>.</p>
+<section id="how-it-works">
+<h2>How it Works<a class="headerlink" href="#how-it-works" title="Permalink to this heading">#</a></h2>
+<p>You do not need to create a special configuration file to use <code class="docutils literal notranslate"><span class="pre">dsat</span></code>. Assuming you have DeepSpeed
+code which already functions, autotuning is as easy as inserting one or two helper functions into
+your code and modifying the launch command.</p>
+<p>For instance, let’s say your directory contains DeepSpeed code and a corresponding <code class="docutils literal notranslate"><span class="pre">single</span></code> trial
+experiment configuration file <code class="docutils literal notranslate"><span class="pre">deepspeed.yaml</span></code>. Then, after inserting a line or two of
+<code class="docutils literal notranslate"><span class="pre">dsat</span></code>-specific code per the instructions in the following sections, launching the <code class="docutils literal notranslate"><span class="pre">dsat</span></code>
+experiments is as easy as replacing the usual experiment-launching command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">det</span> <span class="n">experiment</span> <span class="n">create</span> <span class="n">deepspeed</span><span class="o">.</span><span class="n">yaml</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">determined</span><span class="o">.</span><span class="n">pytorch</span><span class="o">.</span><span class="n">dsat</span> <span class="n">asha</span> <span class="n">deepspeed</span><span class="o">.</span><span class="n">yaml</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>The above uses Determined AI’s DeepSpeed Autotune with the <code class="docutils literal notranslate"><span class="pre">asha</span></code> algorithm, one of three
+available search methods:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">asha</span></code>: Adaptively searches over randomly selected DeepSpeed configurations, allocating more
+compute resources to well-performing configurations. See <a class="reference internal" href="../../hyperparameter/search-methods/hp-adaptive-asha.html#topic-guides-hp-tuning-det-adaptive-asha"><span class="std std-ref">this introduction to ASHA</span></a> for more details.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">binary</span></code>: Performs a simple binary search over the batch size for randomly-generated DS
+configurations.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">random</span></code>: Conducts a search over random DeepSpeed configurations with an aggressive
+early-stopping criteria based on domain-knowledge of DeepSpeed and the search history.</p></li>
+</ul>
+<p>DeepSpeed Autotune is built on top of Custom Searcher (see <a class="reference internal" href="../../hyperparameter/search-methods/hp-custom.html#topic-guides-hp-tuning-det-custom"><span class="std std-ref">Custom Search Methods</span></a>)
+which starts up two separate experiments:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">single</span></code> Search Runner Experiment: This experiment coordinates and schedules the trials that
+run the model code.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">custom</span></code> Experiment: This experiment contains the trials referenced above whose results are
+reported back to the search runner.</p></li>
+</ul>
+<p>Initially, a profiling trial is created to gather information regarding the model and computational
+resources. The search runner experiment takes this initial profiling information and creates a
+series of trials to search for the DS settings which optimize <code class="docutils literal notranslate"><span class="pre">FLOPS_per_gpu</span></code>, <code class="docutils literal notranslate"><span class="pre">throughput</span></code>
+(samples/second), or latency timing information. The results of all such trials can be viewed in the
+<code class="docutils literal notranslate"><span class="pre">custom</span></code> experiment above. The search is informed both by the initial profiling trial and the
+results of each subsequent trial, all of whose results are fed back to the search runner.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Determined’s DeepSpeed Autotune is not compatible with pipeline or model parallelism. The
+to-be-trained model must be a <code class="docutils literal notranslate"><span class="pre">DeepSpeedEngine</span></code> instance (not a <code class="docutils literal notranslate"><span class="pre">PipelineEngine</span></code> instance).</p>
+</div>
+</section>
+<section id="user-code-changes">
+<h2>User Code Changes<a class="headerlink" href="#user-code-changes" title="Permalink to this heading">#</a></h2>
+<p>To use <code class="docutils literal notranslate"><span class="pre">dsat</span></code> with <code class="xref py py-class docutils literal notranslate"><span class="pre">DeepSpeedTrial</span></code>, Core API, and
+HuggingFace Trainer, specific changes must be made to your user code. In the following sections, we
+will describe specific use cases and the changes needed for each.</p>
+<section id="deepspeedtrial">
+<span id="using-deepspeed-trial"></span><h3>DeepSpeedTrial<a class="headerlink" href="#deepspeedtrial" title="Permalink to this heading">#</a></h3>
+<p>To use Determined’s DeepSpeed Autotune with <code class="docutils literal notranslate"><span class="pre">DeepSpeedTrial</span></code>, you must meet the following
+requirements.</p>
+<p>First, it is assumed that a base DeepSpeed configuration exists in a file (written following the
+<a class="reference external" href="https://www.deepspeed.ai/docs/config-json/">DeepSpeed documentation here</a>). We then require that
+your Determined <code class="docutils literal notranslate"><span class="pre">yaml</span></code> configuration points to the location of that file through a
+<code class="docutils literal notranslate"><span class="pre">deepspeed_config</span></code> key in its <code class="docutils literal notranslate"><span class="pre">hyperparameters</span></code> section. For example, if your default DeepSpeed
+configuration is stored in <code class="docutils literal notranslate"><span class="pre">ds_config.json</span></code> at the top-level of your model directory, your
+<code class="docutils literal notranslate"><span class="pre">hyperparameters</span></code> section should include:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">hyperparameters</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">deepspeed_config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ds_config.json</span>
+</pre></div>
+</div>
+<p>Second, your <code class="docutils literal notranslate"><span class="pre">DeepSpeedTrial</span></code> code must use our
+<code class="xref py py-func docutils literal notranslate"><span class="pre">get_ds_config_from_hparams()</span></code> helper function to get the DeepSpeed
+configuration dictionary which is generated by DeepSpeed Autotune for each trial. These dictionaries
+are generated by overwriting certain fields in the base DeepSpeed configuration referenced in the
+step above. The returned dictionary can then be passed to <code class="docutils literal notranslate"><span class="pre">deepspeed.initialize</span></code> as usual:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">determined.pytorch.deepspeed</span> <span class="kn">import</span> <span class="n">DeepSpeedTrial</span><span class="p">,</span> <span class="n">DeepSpeedTrialContext</span>
+<span class="kn">from</span> <span class="nn">determined.pytorch</span> <span class="kn">import</span> <span class="n">dsat</span>
+
+
+<span class="k">class</span> <span class="nc">MyDeepSpeedTrial</span><span class="p">(</span><span class="n">DeepSpeedTrial</span><span class="p">):</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">DeepSpeedTrialContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">hparams</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">get_hparams</span><span class="p">()</span>
+      <span class="n">config</span> <span class="o">=</span> <span class="n">dsat</span><span class="o">.</span><span class="n">get_ds_config_from_hparams</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hparams</span><span class="p">)</span>
+      <span class="n">model</span> <span class="o">=</span> <span class="o">...</span>
+      <span class="n">model_parameters</span><span class="o">=</span> <span class="o">...</span>
+
+      <span class="n">model_engine</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">lr_scheduler</span> <span class="o">=</span> <span class="n">deepspeed</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span>
+          <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">model_parameters</span><span class="o">=</span><span class="n">model_parameters</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span>
+      <span class="p">)</span>
+</pre></div>
+</div>
+<p>Using Determined’s DeepSpeed Autotune with a <code class="xref py py-class docutils literal notranslate"><span class="pre">DeepSpeedTrial</span></code>
+instance requires no further changes to your code.</p>
+<p>For a complete example of how to use DeepSpeed Autotune with <code class="docutils literal notranslate"><span class="pre">DeepSpeedTrial</span></code>, visit the
+<a class="reference external" href="https://github.com/determined-ai/determined/tree/master/examples/deepspeed_autotune/torchvision/deepspeed_trial">Determined GitHub Repo</a>
+and navigate to <code class="docutils literal notranslate"><span class="pre">examples/deepspeed_autotune/torchvision/deepspeed_trial</span></code> .</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To find out more about <code class="docutils literal notranslate"><span class="pre">DeepSpeedTrial</span></code>, visit <a class="reference internal" href="deepspeed.html#deepspeed-api"><span class="std std-ref">Usage Guide</span></a>.</p>
+</div>
+</section>
+<section id="core-api">
+<h3>Core API<a class="headerlink" href="#core-api" title="Permalink to this heading">#</a></h3>
+<p>When using DeepSpeed Autotune with a Core API experiment, there is one additional change to be made
+following the steps in the <a class="reference internal" href="#using-deepspeed-trial"><span class="std std-ref">DeepSpeedTrial</span></a> section above.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">forward</span></code>, <code class="docutils literal notranslate"><span class="pre">backward</span></code>, and <code class="docutils literal notranslate"><span class="pre">step</span></code> methods of the <code class="docutils literal notranslate"><span class="pre">DeepSpeedEngine</span></code> class need to be
+wrapped in the <code class="xref py py-func docutils literal notranslate"><span class="pre">dsat_reporting_context()</span></code> context manager. This
+addition ensures that the autotuning metrics from each trial are captured and reported back to the
+Determined master.</p>
+<p>Here is an example sketch of <code class="docutils literal notranslate"><span class="pre">dsat</span></code> code with Core API:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">core_context</span><span class="o">.</span><span class="n">searcher</span><span class="o">.</span><span class="n">operations</span><span class="p">():</span>
+   <span class="k">for</span> <span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span> <span class="ow">in</span> <span class="n">trainloader</span><span class="p">:</span>
+       <span class="k">with</span> <span class="n">dsat</span><span class="o">.</span><span class="n">dsat_reporting_context</span><span class="p">(</span><span class="n">core_context</span><span class="p">,</span> <span class="n">op</span><span class="p">):</span> <span class="c1"># &lt;-- The new code</span>
+           <span class="n">outputs</span> <span class="o">=</span> <span class="n">model_engine</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+           <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+           <span class="n">model_engine</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+           <span class="n">model_engine</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>In this code snippet, <code class="docutils literal notranslate"><span class="pre">core_context</span></code> is the <a class="reference internal" href="../../../reference/training/api-core-reference.html#determined.core.Context" title="determined.core.Context"><code class="xref py py-class docutils literal notranslate"><span class="pre">Context</span></code></a> instance which was
+initialized with <a class="reference internal" href="../../../reference/training/api-core-reference.html#determined.core.init" title="determined.core.init"><code class="xref py py-func docutils literal notranslate"><span class="pre">determined.core.init()</span></code></a>. The context manager requires access to both
+<code class="docutils literal notranslate"><span class="pre">core_context</span></code> and the current <a class="reference internal" href="../../../reference/training/api-core-reference.html#determined.core.SearcherOperation" title="determined.core.SearcherOperation"><code class="xref py py-class docutils literal notranslate"><span class="pre">SearcherOperation</span></code></a> instance (<code class="docutils literal notranslate"><span class="pre">op</span></code>) to
+appropriately report results. Outside of a <code class="docutils literal notranslate"><span class="pre">dsat</span></code> context, <code class="docutils literal notranslate"><span class="pre">dsat_reporting_context</span></code> is a no-op,
+so there is no need to remove the context manager after the <code class="docutils literal notranslate"><span class="pre">dsat</span></code> trials have completed.</p>
+<p>For a complete example of how to use DeepSpeed Autotune with Core API, visit the <a class="reference external" href="https://github.com/determined-ai/determined/tree/master/examples/deepspeed_autotune/torchvision/core_api">Determined GitHub
+Repo</a>
+and navigate to <code class="docutils literal notranslate"><span class="pre">examples/deepspeed_autotune/torchvision/core_api</span></code> .</p>
+</section>
+<section id="huggingface-trainer">
+<h3>HuggingFace Trainer<a class="headerlink" href="#huggingface-trainer" title="Permalink to this heading">#</a></h3>
+<p>You can also use Determined’s DeepSpeed Autotune with the HuggingFace (HF) Trainer and Determined’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">DetCallback</span></code> callback object to optimize your DeepSpeed parameters.</p>
+<p>Similar to the previous case (Core API), you need to add a <code class="docutils literal notranslate"><span class="pre">deepspeed_config</span></code> field to the
+<code class="docutils literal notranslate"><span class="pre">hyperparameters</span></code> section of your experiment configuration file, specifying the relative path to
+the DS <code class="docutils literal notranslate"><span class="pre">json</span></code> config file.</p>
+<p>Reporting results back to the Determined master requires both the <code class="docutils literal notranslate"><span class="pre">dsat.dsat_reporting_context</span></code>
+context manager and <code class="docutils literal notranslate"><span class="pre">DetCallback</span></code>.</p>
+<p>Furthermore, since <code class="docutils literal notranslate"><span class="pre">dsat</span></code> performs a search over different batch sizes and HuggingFace expects
+parameters to be specified as command-line arguments, an additional helper function,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">get_hf_args_with_overwrites()</span></code>, is needed to create consistent
+HuggingFace arguments.</p>
+<p>Here is an example code snippet from a HuggingFace Trainer script that contains key pieces of
+relevant code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">determined.transformers</span> <span class="kn">import</span> <span class="n">DetCallback</span>
+<span class="kn">from</span> <span class="nn">determined.pytorch</span> <span class="kn">import</span> <span class="n">dsat</span>
+<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">HfArgumentParser</span><span class="p">,</span><span class="n">Trainer</span><span class="p">,</span> <span class="n">TrainingArguments</span><span class="p">,</span>
+
+<span class="n">hparams</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">get_hparams</span><span class="p">()</span>
+<span class="n">parser</span> <span class="o">=</span> <span class="n">HfArgumentParser</span><span class="p">(</span><span class="n">TrainingArguments</span><span class="p">)</span>
+<span class="n">args</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="n">args</span> <span class="o">=</span> <span class="n">dsat</span><span class="o">.</span><span class="n">get_hf_args_with_overwrites</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">hparams</span><span class="p">)</span>
+<span class="n">training_args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args_into_dataclasses</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">look_for_args_file</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">det_callback</span> <span class="o">=</span> <span class="n">DetCallback</span><span class="p">(</span><span class="n">core_context</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+<span class="n">trainer</span> <span class="o">=</span> <span class="n">Trainer</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">training_args</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">dsat</span><span class="o">.</span><span class="n">dsat_reporting_context</span><span class="p">(</span><span class="n">core_context</span><span class="p">,</span> <span class="n">op</span><span class="o">=</span><span class="n">det_callback</span><span class="o">.</span><span class="n">current_op</span><span class="p">):</span>
+    <span class="n">train_result</span> <span class="o">=</span> <span class="n">trainer</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">resume_from_checkpoint</span><span class="o">=</span><span class="n">checkpoint</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">dsat_reporting_context</span></code> context manager shares the same initial
+<a class="reference internal" href="../../../reference/training/api-core-reference.html#determined.core.SearcherOperation" title="determined.core.SearcherOperation"><code class="xref py py-class docutils literal notranslate"><span class="pre">SearcherOperation</span></code></a> as the <code class="docutils literal notranslate"><span class="pre">DetCallback</span></code> instance through its
+<code class="docutils literal notranslate"><span class="pre">op=det_callback.current_op</span></code> argument.</p></li>
+<li><p>The entire <code class="docutils literal notranslate"><span class="pre">train</span></code> method of the HuggingFace trainer is wrapped in the
+<code class="docutils literal notranslate"><span class="pre">dsat_reporting_context</span></code> context manager.</p></li>
+</ul>
+</div>
+<p>To find examples that use DeepSpeed Autotune with HuggingFace Trainer, visit the <a class="reference external" href="https://github.com/determined-ai/determined/tree/master/examples/hf_trainer_api">Determined GitHub
+Repo</a> and
+navigate to <code class="docutils literal notranslate"><span class="pre">examples/hf_trainer_api</span></code>.</p>
+</section>
+</section>
+<section id="advanced-options">
+<h2>Advanced Options<a class="headerlink" href="#advanced-options" title="Permalink to this heading">#</a></h2>
+<p>The command-line entrypoint to <code class="docutils literal notranslate"><span class="pre">dsat</span></code> has various available options, some of them
+search-algorithm-specific. All available options for any given search method can be found through
+the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">determined</span><span class="o">.</span><span class="n">pytorch</span><span class="o">.</span><span class="n">dsat</span> <span class="n">asha</span> <span class="o">--</span><span class="n">help</span>
+</pre></div>
+</div>
+<p>and similar for the <code class="docutils literal notranslate"><span class="pre">binary</span></code> and <code class="docutils literal notranslate"><span class="pre">random</span></code> search methods.</p>
+<p>Flags that are particularly important are detailed below.</p>
+<section id="general-options">
+<h3>General Options<a class="headerlink" href="#general-options" title="Permalink to this heading">#</a></h3>
+<p>The following options are available for every search method.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--max-trials</span></code>: The maximum number of trials to run. Default: <code class="docutils literal notranslate"><span class="pre">64</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--max-concurrent-trials</span></code>: The maximum number of trials that can run concurrently. Default:
+<code class="docutils literal notranslate"><span class="pre">16</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--max-slots</span></code>: The maximum number of slots that can be used concurrently. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>,
+i.e., there is no limit by default.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--metric</span></code>: The metric to be optimized. Defaults to <code class="docutils literal notranslate"><span class="pre">FLOPS-per-gpu</span></code>. Other available options
+are <code class="docutils literal notranslate"><span class="pre">throughput</span></code>, <code class="docutils literal notranslate"><span class="pre">forward</span></code>, <code class="docutils literal notranslate"><span class="pre">backward</span></code>, and <code class="docutils literal notranslate"><span class="pre">latency</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--run-full-experiment</span></code>: If specified, after the <code class="docutils literal notranslate"><span class="pre">dsat</span></code> experiment has completed, a
+<code class="docutils literal notranslate"><span class="pre">single</span></code> experiment will be launched using the specifications in the <code class="docutils literal notranslate"><span class="pre">deepspeed.yaml</span></code>
+overwritten with the best-found DS configuration parameters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--zero-stages</span></code>: This flag allows the user to limit the search to a subset of the stages by
+providing a space-separated list, as in <code class="docutils literal notranslate"><span class="pre">--zero-stages</span> <span class="pre">2</span> <span class="pre">3</span></code>. Default: <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">2</span> <span class="pre">3</span></code>.</p></li>
+</ul>
+</section>
+<section id="asha-options">
+<span id="id1"></span><h3><code class="docutils literal notranslate"><span class="pre">asha</span></code> Options<a class="headerlink" href="#asha-options" title="Permalink to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">asha</span></code> search algorithm randomly generates various DeepSpeed configurations and attempts to
+tune the batch size for each configuration through a binary search. <code class="docutils literal notranslate"><span class="pre">asha</span></code> adaptively allocates
+resources to explore each configuration (providing more resources to promising lineages) where the
+resource is the number of steps taken in each binary search (i.e., the number of trials).</p>
+<p><code class="docutils literal notranslate"><span class="pre">asha</span></code> can be configured with the following flags:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--max-rungs</span></code>: The maximum total number of rungs to use in the ASHA algorithm. Larger values
+allow for longer binary searches. Default: <code class="docutils literal notranslate"><span class="pre">5</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--min-binary-search-trials</span></code>: The minimum number of trials to use for each binary search. The
+<code class="docutils literal notranslate"><span class="pre">r</span></code> parameter in <a class="reference external" href="https://arxiv.org/abs/1810.05934">the ASHA paper</a>. Default: <code class="docutils literal notranslate"><span class="pre">3</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--divisor</span></code>: Factor controlling the increased computational allotment across rungs, and the
+decrease in their population size. The <code class="docutils literal notranslate"><span class="pre">eta</span></code> parameter in <a class="reference external" href="https://arxiv.org/abs/1810.05934">the ASHA paper</a>. Default: <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--search-range-factor</span></code>: The inclusive, initial <code class="docutils literal notranslate"><span class="pre">hi</span></code> bound on the binary search is set by an
+approximate computation (the <code class="docutils literal notranslate"><span class="pre">lo</span></code> bound is always initialized to <code class="docutils literal notranslate"><span class="pre">1</span></code>). This parameter adjusts
+the <code class="docutils literal notranslate"><span class="pre">hi</span></code> bound by a factor of <code class="docutils literal notranslate"><span class="pre">search-range-factor</span></code>. Default: <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p></li>
+</ul>
+</section>
+<section id="binary-options">
+<h3><code class="docutils literal notranslate"><span class="pre">binary</span></code> Options<a class="headerlink" href="#binary-options" title="Permalink to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">binary</span></code> search algorithm performs a straightforward search over the batch size for a
+collection of randomly-drawn DS configurations. A single option is available for this search:
+<code class="docutils literal notranslate"><span class="pre">--search-range-factor</span></code>, which plays precisely the same role as in the <a class="reference internal" href="#asha-options"><span class="std std-ref">asha Options</span></a> section
+above.</p>
+</section>
+<section id="random-options">
+<h3><code class="docutils literal notranslate"><span class="pre">random</span></code> Options<a class="headerlink" href="#random-options" title="Permalink to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">random</span></code> search algorithm performs a search over randomly drawn DS configurations and uses a
+semi-random search over the batch size.</p>
+<p><code class="docutils literal notranslate"><span class="pre">random</span></code> can be configured with the following flags:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--trials-per-random-config</span></code>: The maximum batch size configuration which will tested for a
+given DS configuration. Default: <code class="docutils literal notranslate"><span class="pre">5</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--early-stopping</span></code>: If provided, the experiment will terminate if a new best-configuration has
+not been found in the last <code class="docutils literal notranslate"><span class="pre">early-stopping</span></code> trials. Default: <code class="docutils literal notranslate"><span class="pre">None</span></code>, corresponding to no such
+early stopping.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works">How it Works</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-code-changes">User Code Changes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deepspeedtrial">DeepSpeedTrial</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core-api">Core API</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#huggingface-trainer">HuggingFace Trainer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-options">Advanced Options</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-options">General Options</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#asha-options"><code class="docutils literal notranslate"><span class="pre">asha</span></code> Options</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-options"><code class="docutils literal notranslate"><span class="pre">binary</span></code> Options</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-options"><code class="docutils literal notranslate"><span class="pre">random</span></code> Options</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tara & LB
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, Determined AI.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

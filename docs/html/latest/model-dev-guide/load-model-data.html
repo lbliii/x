@@ -1,0 +1,710 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Prepare Data &#8212; project-x 0.0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=362ab14a" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=dc820ae5"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'latest/model-dev-guide/load-model-data';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">project-x 0.0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    Welcome to project-x’s documentation!
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../architecture/_index.html">How Determined Works</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../architecture/introduction.html">Introduction to Determined</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture/system-architecture.html">System Architecture</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../example-solutions/_index.html">Examples</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../integrations/_index.html">Integrations</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../integrations/ecosystem/_index.html">Ecosystem Integration</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../integrations/notification/_index.html">Monitoring Experiment Through Webhooks</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../integrations/notification/zapier.html">Through Zapier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../integrations/notification/slack.html">Through Slack</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../integrations/prometheus/_index.html">Configure Determined with Prometheus and Grafana</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../interfaces/_index.html">Tools</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../interfaces/cli-ug.html">Determined CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interfaces/commands-and-shells.html">Commands and Shells</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interfaces/ide-integration.html">IDE Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interfaces/notebooks.html">Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interfaces/proxy-ports.html">Exposing Custom Ports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interfaces/tensorboard.html">Using TensorBoard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interfaces/webui-if.html">Web Interface (WebUI)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="_index.html">Model Developer Guide</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="apis-howto/_index.html">Training APIs</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="apis-howto/api-core-ug.html">Core API User Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apis-howto/api-pytorch-ug.html">PyTorch API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apis-howto/api-keras-ug.html">Keras API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apis-howto/api-estimator-ug.html">Estimator API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="batch-processing/_index.html">Torch Batch Processing API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="best-practices/_index.html">Best Practices</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="dtrain/_index.html">Distributed Training with Determined</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="dtrain/dtrain-introduction.html">Distributed Training Concepts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dtrain/dtrain-implement.html">Implementing Distributed Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dtrain/config-templates.html">Configuration Templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dtrain/reproducibility.html">Reproducibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dtrain/optimize-training.html">Optimizing Training</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../model-hub-library/_index.html">Model Hub Library</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../model-hub-library/mmdetection/_index.html">MMDetection</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../model-hub-library/transformers/_index.html">Transformers</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../model-hub-library/transformers/tutorial.html">Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../model-hub-library/transformers/examples.html">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reference/_index.html">Reference</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/cli-reference.html">Determined CLI Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python-sdk.html">Python SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/rest-api.html">REST API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/batch-processing/_index.html">Batch Processing API Reference</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../reference/deploy/_index.html">Deployment Reference</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../reference/deploy/config/_index.html">Config Reference</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reference/deploy/config/agent-config-reference.html">Agent Configuration Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/deploy/config/common-config-options.html">Common Configuration Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/deploy/config/helm-config-reference.html">Helm Chart Configuration Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/deploy/config/master-config-reference.html">Master Configuration Reference</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/interface/_index.html">Job Configuration Reference</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../reference/model-hub/_index.html">Model Hub APIs</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reference/model-hub/mmdetection-api.html">MMDetection API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/model-hub/transformers-api.html">Transformers API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/searcher/_index.html">Custom Searcher Reference</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../reference/training/_index.html">Training Reference</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reference/training/api-core-reference.html"><code class="docutils literal notranslate"><span class="pre">det.core</span></code> API Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/training/api-deepspeed-reference.html"><code class="docutils literal notranslate"><span class="pre">det.pytorch.deepspeed</span></code> API Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/training/api-det-reference.html"><code class="docutils literal notranslate"><span class="pre">det</span></code> API Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/training/api-estimator-reference.html"><code class="docutils literal notranslate"><span class="pre">det.estimator</span></code> API Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/training/api-keras-reference.html"><code class="docutils literal notranslate"><span class="pre">det.keras</span></code> API Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/training/api-pytorch-reference.html"><code class="docutils literal notranslate"><span class="pre">det.pytorch</span></code> API Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/training/api-pytorch-samplers-reference.html"><code class="docutils literal notranslate"><span class="pre">det.pytorch.samplers</span></code> API Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/training/experiment-config-reference.html">Experiment Configuration Reference</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes/_index.html">Release Notes</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../setup-cluster/_index.html">Setup</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../setup-cluster/deploy-cluster/_index.html">Set Up Determined</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../setup-cluster/deploy-cluster/aws/_index.html">Deploy on AWS</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/aws/aws-spot.html">Use Spot Instances</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/aws/dynamic-agents-aws.html">Deploy Determined with Dynamic Agents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/aws/install-on-aws.html">Install Determined</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../setup-cluster/deploy-cluster/gcp/_index.html">Deploy on GCP</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/gcp/dynamic-agents-gcp.html">Deploy Determined with Dynamic Agents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/gcp/install-gcp.html">Install Determined</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../setup-cluster/deploy-cluster/k8s/_index.html">Deploy on Kubernetes</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/k8s/custom-pod-specs.html">Customize a Pod</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/k8s/helm-commands.html">Helm and Kubectl Command Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/k8s/install-on-kubernetes.html">Install Determined on Kubernetes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/k8s/k8s-dev-guide.html">Development Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/k8s/setup-aks-cluster.html">Set up and Manage an Azure Kubernetes Service (AKS) Cluster</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/k8s/setup-eks-cluster.html">Set up and Manage an AWS Kubernetes (EKS) Cluster</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/k8s/setup-gke-cluster.html">Set up and Manage a Google Kubernetes Engine (GKE) Cluster</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/k8s/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../setup-cluster/deploy-cluster/on-prem/_index.html">Deploy on Prem</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/on-prem/deploy.html">Install Determined Using <code class="docutils literal notranslate"><span class="pre">det</span> <span class="pre">deploy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/on-prem/docker.html">Install Determined Using Docker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/on-prem/homebrew.html">Install Determined Using Homebrew (macOS)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/on-prem/linux-packages.html">Install Determined Using Linux Packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/on-prem/requirements.html">Installation Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/on-prem/wsl.html">Install Determined Using Windows Subsystem for Linux (Windows)</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../setup-cluster/deploy-cluster/slurm/_index.html">Deploy on Slurm/PBS</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/slurm/hpc-launching-architecture.html">HPC Launching Architecture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/slurm/hpc-security-considerations.html">HPC Launcher Security Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/slurm/install-on-slurm.html">Install Determined on Slurm/PBS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/slurm/singularity.html">Provide a Container Image Cache</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/slurm/slurm-known-issues.html">Known Issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/slurm/slurm-requirements.html">Installation Requirements</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../setup-cluster/security/_index.html">Security</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup-cluster/security/oauth.html">OAuth 2.0 Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup-cluster/security/oidc.html">OpenID Connect Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup-cluster/security/rbac.html">RBAC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup-cluster/security/saml.html">SAML Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup-cluster/security/scim.html">SCIM Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup-cluster/security/tls.html">Transport Layer Security</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials/_index.html">Tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/pytorch-mnist-local-qs.html">Run Your First Experiment in Determined</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/pytorch-mnist-tutorial.html">PyTorch MNIST Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/pytorch-porting-tutorial.html">PyTorch Porting Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/quickstart-mdldev.html">Quickstart for Model Developers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/tf-mnist-tutorial.html">TensorFlow Keras Fashion MNIST Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../attributions.html">Open Source Licenses</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/latest/model-dev-guide/load-model-data.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Prepare Data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#including-data-with-your-code">Including Data With Your Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-file-system">Distributed File System</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-storage">Object Storage</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-from-object-storage">Downloading from Object Storage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#streaming-from-object-storage">Streaming from Object Storage</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="prepare-data">
+<span id="id1"></span><h1>Prepare Data<a class="headerlink" href="#prepare-data" title="Permalink to this heading">#</a></h1>
+<p>Data plays a fundamental role in machine learning model development. The best way to load data into
+your ML models depends on several factors, including whether you are running on-premise or in the
+cloud, the size of your data sets, and your security requirements. Accordingly, Determined supports
+a variety of methods for accessing data.</p>
+<p>The easiest way to include data in your experiment is to add the data to the same directory as your
+model code. When you create a new experiment, all files in your model code directory will be
+packaged and uploaded to the Determined cluster, assuming the package is smaller than 96MB.</p>
+<p>If your dataset is larger than 96MB, you can use a <a class="reference internal" href="prepare-container/custom-env.html#startup-hooks"><span class="std std-ref">Startup Hook</span></a> shell script
+to download the dataset prior to training.</p>
+<p>This document also introduces production data source options, such as Object Store ( <a class="reference external" href="https://aws.amazon.com/s3/">Amazon S3</a>, <a class="reference external" href="https://cloud.google.com/storage">Google Cloud Storage</a>) or
+Distributed File Systems (<a class="reference external" href="https://en.wikipedia.org/wiki/Network_File_System">NFS</a>, <a class="reference external" href="https://ceph.io/">Ceph</a>) if the above approaches do not apply to you.</p>
+<section id="including-data-with-your-code">
+<h2>Including Data With Your Code<a class="headerlink" href="#including-data-with-your-code" title="Permalink to this heading">#</a></h2>
+<p>The data set can be uploaded as part of the <a class="reference internal" href="submit-experiment.html#experiments"><span class="std std-ref">experiment</span></a> directory, which usually
+include your training API implementation. The size of this directory must not exceed 96MB, so this
+method is only appropriate when the size of the data set is small.</p>
+<p>For example, the experiment directory below contains the model definition, an experiment
+configuration file, and a CSV data file. All three files are small and hence the total size of the
+directory is much smaller than the 96MB limit:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.
+├── const.yaml (0.3 KB)
+├── data.csv (5 KB)
+└── model_def.py (4.1 KB)
+</pre></div>
+</div>
+<p>The data can be submitted along with the model definition using the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">det</span> <span class="n">create</span> <span class="n">experiment</span> <span class="n">const</span><span class="o">.</span><span class="n">yaml</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>Determined injects the contents of the experiment directory into each trial container that is
+launched for the experiment. Any file in that directory can then be accessed by your model code,
+e.g., by relative path (the model definition directory is the initial working directory for each
+trial container).</p>
+<p>For example, the code below uses <a class="reference external" href="https://pandas.pydata.org/">Pandas</a> to load <code class="docutils literal notranslate"><span class="pre">data.csv</span></code> into a
+<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html">DataFrame</a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="distributed-file-system">
+<h2>Distributed File System<a class="headerlink" href="#distributed-file-system" title="Permalink to this heading">#</a></h2>
+<p>Another way to store data is to use a distributed file system, which enables a cluster of machines
+to access a shared data set via the familiar POSIX file system interface. Amazon’s <a class="reference external" href="https://aws.amazon.com/efs/">Elastic File
+System</a> and Google’s <a class="reference external" href="https://cloud.google.com/filestore">Cloud Filestore</a> are examples of distributed file systems that are available
+in cloud environments. For on-premise deployments, popular distributed file systems include <a class="reference external" href="https://ceph.io/">Ceph</a>, <a class="reference external" href="https://www.gluster.org/">GlusterFS</a>, and <a class="reference external" href="https://en.wikipedia.org/wiki/Network_File_System">NFS</a>.</p>
+<p>To access data on a distributed file system, you should first ensure that the file system is mounted
+at the same mount point on every Determined agent. For cloud deployments, this can be done by
+configuring <code class="docutils literal notranslate"><span class="pre">provisioner.startup_script</span></code> in <code class="docutils literal notranslate"><span class="pre">master.yaml</span></code> to point to a script that mounts the
+distributed file system. An example of how to do this on GCP can be <a class="reference internal" href="../setup-cluster/deploy-cluster/gcp/dynamic-agents-gcp.html#gcp-attach-disk"><span class="std std-ref">found here</span></a>.</p>
+<p>Next, you will need to ensure the file system is accessible to each trial container. This can be
+done by configuring a bind mount in the <a class="reference internal" href="../reference/training/experiment-config-reference.html#experiment-config-reference"><span class="std std-ref">experiment configuration file</span></a>. Each bind mount consists of a <code class="docutils literal notranslate"><span class="pre">host_path</span></code> and a
+<code class="docutils literal notranslate"><span class="pre">container_path</span></code>; the host path specifies the absolute path where the distributed file system has
+been mounted on the agent, while the container path specifies the path within the container’s file
+system where the distributed file system will be accessible.</p>
+<p>To avoid confusion, you may wish to set the <code class="docutils literal notranslate"><span class="pre">container_path</span></code> to be equal to the <code class="docutils literal notranslate"><span class="pre">host_path</span></code>. You
+may also want to set <code class="docutils literal notranslate"><span class="pre">read_only</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code> for each bind mount, to ensure that data sets are not
+modified by training code.</p>
+<p>The following example assumes a Determined cluster is configured with a distributed file system
+mounted at <code class="docutils literal notranslate"><span class="pre">/mnt/data</span></code> on each agent. To access data on this file system, we use an experiment
+configuration file as follows:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">bind_mounts</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">host_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mnt/data</span>
+<span class="w">    </span><span class="nt">container_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mnt/data</span>
+<span class="w">    </span><span class="nt">read_only</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+<p>Our model definition code can then access data in the <code class="docutils literal notranslate"><span class="pre">/mnt/data</span></code> directory as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">build_training_data_loader</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">make_data_loader</span><span class="p">(</span><span class="n">data_path</span><span class="o">=</span><span class="s2">&quot;/mnt/data/training&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">build_validation_data_loader</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">make_data_loader</span><span class="p">(</span><span class="n">data_path</span><span class="o">=</span><span class="s2">&quot;/mnt/data/validation&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="object-storage">
+<h2>Object Storage<a class="headerlink" href="#object-storage" title="Permalink to this heading">#</a></h2>
+<p>Object stores manage data as a collection of key-value pairs. Object storage is particularly popular
+in cloud environments – for example, Amazon’s <a class="reference external" href="https://aws.amazon.com/s3/">Simple Storage Service</a> (S3) and <a class="reference external" href="https://cloud.google.com/storage">Google Cloud Storage</a>
+(GCS) are both object stores. When running Determined in the cloud, it is highly recommended that
+you store your data using the same cloud provider being used for the Determined cluster itself.</p>
+<p>Unless you are accessing a publicly available data set, you will need to ensure that Determined
+trial containers can access data in the object storage service you are using. This can be done by
+configuring a <a class="reference internal" href="prepare-container/custom-env.html#custom-env"><span class="std std-ref">custom environment</span></a> with the appropriate credentials. When using
+<a class="reference internal" href="../setup-cluster/deploy-cluster/gcp/dynamic-agents-gcp.html#dynamic-agents-gcp"><span class="std std-ref">Dynamic Agents on GCP</span></a>, a system administrator will need to configure a
+valid <a class="reference internal" href="../setup-cluster/_index.html#cluster-configuration"><span class="std std-ref">service account</span></a> with read credentials. When using <a class="reference internal" href="../setup-cluster/deploy-cluster/aws/dynamic-agents-aws.html#dynamic-agents-aws"><span class="std std-ref">Dynamic
+Agents on AWS</span></a>, the system administrator will need to configure an
+<a class="reference internal" href="../setup-cluster/_index.html#cluster-configuration"><span class="std std-ref">iam_instance_profile_arn</span></a> with read credentials.</p>
+<p>Once security access has been configured, we can use open-source libraries such as <a class="reference external" href="https://aws.amazon.com/sdk-for-python/">boto3</a> or <a class="reference external" href="https://gcsfs.readthedocs.io/en/latest/">gcsfs</a>
+to access data from object storage. The simplest way to do this is for your model definition code to
+download the entire data set whenever a trial container starts up.</p>
+<section id="downloading-from-object-storage">
+<h3>Downloading from Object Storage<a class="headerlink" href="#downloading-from-object-storage" title="Permalink to this heading">#</a></h3>
+<p>The example below demonstrates how to download data from S3 using <code class="docutils literal notranslate"><span class="pre">boto</span></code>. The S3 bucket name is
+specified in the experiment config file (using a field named <code class="docutils literal notranslate"><span class="pre">data.bucket</span></code>). The
+<code class="docutils literal notranslate"><span class="pre">download_directory</span></code> variable defines where data that is downloaded from S3 will be stored. Note
+that we include <code class="xref py py-func docutils literal notranslate"><span class="pre">self.context.distributed.get_rank()</span></code> in the name of this directory: when
+doing distributed training, multiple processes might be downloading data concurrently (one process
+per GPU), so embedding the rank in the directory name ensures that these processes do not conflict
+with one another.</p>
+<p>Once the download directory has been created, <code class="docutils literal notranslate"><span class="pre">s3.download_file(s3_bucket,</span> <span class="pre">data_file,</span> <span class="pre">filepath)</span></code>
+fetches the file from S3 and stores it at the specified location. The data can then be accessed in
+the <code class="docutils literal notranslate"><span class="pre">download_directory</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">boto3</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+
+<span class="k">def</span> <span class="nf">download_data_from_s3</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">s3_bucket</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">get_data_config</span><span class="p">()[</span><span class="s2">&quot;bucket&quot;</span><span class="p">]</span>
+    <span class="n">download_directory</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/tmp/data-rank</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">distributed</span><span class="o">.</span><span class="n">get_rank</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">data_file</span> <span class="o">=</span> <span class="s2">&quot;data.csv&quot;</span>
+
+    <span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s2">&quot;s3&quot;</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">download_directory</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">download_directory</span><span class="p">,</span> <span class="n">data_file</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">filepath</span><span class="p">):</span>
+        <span class="n">s3</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="n">s3_bucket</span><span class="p">,</span> <span class="n">data_file</span><span class="p">,</span> <span class="n">filepath</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">download_directory</span>
+</pre></div>
+</div>
+<p>To use this in your trial class, start by calling <code class="docutils literal notranslate"><span class="pre">download_data_from_s3</span></code> in the trial’s
+<code class="docutils literal notranslate"><span class="pre">__init__</span></code> function. Next, implement the <code class="docutils literal notranslate"><span class="pre">build_training_data_loader</span></code> and
+<code class="docutils literal notranslate"><span class="pre">build_validation_data_loader</span></code> functions to load the training and validation data sets,
+respectively, from the downloaded data.</p>
+</section>
+<section id="streaming-from-object-storage">
+<h3>Streaming from Object Storage<a class="headerlink" href="#streaming-from-object-storage" title="Permalink to this heading">#</a></h3>
+<p>Rather than downloading the entire training data set from object storage during trial startup,
+another way to load data is to <em>stream</em> batches of data from the training and validation sets as
+needed. This has several advantages:</p>
+<ul class="simple">
+<li><p>It avoids downloading the entire data set during trial startup, allowing training tasks to start
+more quickly.</p></li>
+<li><p>If a container doesn’t need to access the entire data set, streaming can result in downloading
+less data. For example, when doing hyperparameter searches, many trials can often be terminated
+after having been trained for less than a full epoch.</p></li>
+<li><p>If the data set is extremely large, streaming can avoid the need to store the entire data set on
+disk.</p></li>
+<li><p>Streaming can allow model training and data downloading to happen in parallel, improving
+performance.</p></li>
+</ul>
+<p>To perform streaming data loading, the data must be stored in a format that allows efficient random
+access, so that the model code can fetch a specific batch of training or validation data. One way to
+do this is to store each batch of data as a separate object in the object store. Alternatively, if
+the data set consists of fixed-size records, you can use a single object and then read the
+appropriate byte range from it.</p>
+<p>To stream data, a custom <code class="docutils literal notranslate"><span class="pre">torch.utils.data.Dataset</span></code> or <code class="docutils literal notranslate"><span class="pre">tf.keras.utils.Sequence</span></code> object is
+required, depending on whether you are using PyTorch or TensorFlow Keras, respectively. These
+classes require a <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> method that is passed an index and returns the associated batch or
+record of data. When streaming data, the implementation of <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> should fetch the required
+data from the object store.</p>
+<p>The code below demonstrates a custom <code class="docutils literal notranslate"><span class="pre">tf.keras.utils.Sequence</span></code> class that streams data from Amazon
+S3. In the <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> method, <code class="docutils literal notranslate"><span class="pre">boto3</span></code> is used to fetch the data based on the provided bucket
+and key.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">boto3</span>
+
+
+<span class="k">class</span> <span class="nc">ObjectStorageSequence</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">Sequence</span><span class="p">):</span>
+    <span class="o">...</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">s3_client</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s2">&quot;s3&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="n">bucket</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="n">get_s3_loc_for_batch</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+        <span class="n">blob_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">s3_client</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="n">bucket</span><span class="p">,</span> <span class="n">Key</span><span class="o">=</span><span class="n">key</span><span class="p">)[</span><span class="s2">&quot;Body&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">data_to_batch</span><span class="p">(</span><span class="n">blob_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#including-data-with-your-code">Including Data With Your Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-file-system">Distributed File System</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-storage">Object Storage</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-from-object-storage">Downloading from Object Storage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#streaming-from-object-storage">Streaming from Object Storage</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tara & LB
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, Determined AI.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
