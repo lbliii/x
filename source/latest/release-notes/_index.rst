@@ -5,6 +5,6 @@ Release Notes
 
 .. toctree::
    :glob:
-   :maxdepth: 5
+   :maxdepth: 1
 
-   ./*/_index
+   ./*
