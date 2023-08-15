@@ -29,7 +29,13 @@ print(os.listdir(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 # inspect the determined folder
 print(os.listdir(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'determined'))))
 
+# print the sys path 
+print(sys.path)
+
 sys.path.insert(0, '../determined')
+
+# print the sys path 
+print(sys.path)
 
 
 print("~~~~~~~~~~~~")
