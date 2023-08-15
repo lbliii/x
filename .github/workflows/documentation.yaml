@@ -23,6 +23,10 @@ jobs:
             ${{ runner.os }}-pip-
       - name: Install dependencies from another repository
         run: git clone https://github.com/determined-ai/determined.git
+      - name: Print current directory
+        run: |
+          pwd
+          ls -R
       - name: Install dependencies
         run: |
           pip install sphinx sphinx-book-theme
