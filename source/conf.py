@@ -13,15 +13,10 @@
 import os, sys
 
 # if computer is Mac, find the determined repo in the contributor's /Documents/github/determined folder
-if sys.platform == 'darwin':
-    sys.path.insert(0, '/Users/*/Documents/github/determined')
+# if sys.platform == 'darwin':
+#     sys.path.insert(0, '/Users/*/Documents/github/determined')
 
-print("~~~~~~~~~~~~")
 
-# add the determined folder to the sys path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'determined')))
-
-print("~~~~~~~~~~~~")
 # -- Project information -----------------------------------------------------
 
 project = 'project-x'
