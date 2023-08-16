@@ -18,25 +18,14 @@ if sys.platform == 'darwin':
 
 print("~~~~~~~~~~~~")
 
-# print current working directory
-print(os.getcwd())
-
-# print the directory above the conf.py file
-print(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-# output is /home/runner/work/x/x
-
-# list the files in the directory above the conf.py file
-print(os.listdir(os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))))
-# ouput is ['Makefile', '.gitignore', '.git', '.github', 'source', 'determined', 'requirements.txt', '.nojekyll', 'make.bat']
-
 # inspect the determined folder
 print(os.listdir(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'determined'))))
 
-# print the sys path 
-print(sys.path)
+# add the determined folder to the sys path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'determined')))
 
-sys.path.insert(0, '/home/runner/work/x/x/determined')
-os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'determined'))
+# print the sys path
+print(sys.path)
 
 # print the sys path 
 print(sys.path)
