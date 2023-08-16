@@ -16,22 +16,7 @@ import os, sys
 if sys.platform == 'darwin':
     sys.path.insert(0, '/Users/*/Documents/github/determined')
 
-print("~~~~~~~~~~~~")
 
-# inspect the determined folder
-print(os.listdir(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'determined'))))
-
-# add the determined folder to the sys path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'determined')))
-
-# print the sys path
-print(sys.path)
-
-# print the sys path 
-print(sys.path)
-
-
-print("~~~~~~~~~~~~")
 # -- Project information -----------------------------------------------------
 
 project = 'project-x'
