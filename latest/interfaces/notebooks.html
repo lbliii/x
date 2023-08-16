@@ -1,0 +1,751 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Jupyter Notebooks &#8212; project-x 0.0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'latest/interfaces/notebooks';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Exposing Custom Ports" href="proxy-ports.html" />
+    <link rel="prev" title="IDE Integration" href="ide-integration.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">project-x 0.0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    Welcome to project-x’s documentation!
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../architecture/_index.html">How Determined Works</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../architecture/introduction.html">Introduction to Determined</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture/system-architecture.html">System Architecture</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../example-solutions/_index.html">Examples</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../integrations/_index.html">Integrations</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../integrations/ecosystem/_index.html">Ecosystem Integration</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../integrations/notification/_index.html">Monitoring Experiment Through Webhooks</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../integrations/notification/zapier.html">Through Zapier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../integrations/notification/slack.html">Through Slack</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../integrations/prometheus/_index.html">Configure Determined with Prometheus and Grafana</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="_index.html">Tools</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cli-ug.html">Determined CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands-and-shells.html">Commands and Shells</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ide-integration.html">IDE Integration</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proxy-ports.html">Exposing Custom Ports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tensorboard.html">Using TensorBoard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webui-if.html">Web Interface (WebUI)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../model-dev-guide/_index.html">Model Developer Guide</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../model-dev-guide/apis-howto/_index.html">Training APIs</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../model-dev-guide/apis-howto/api-core-ug.html">Core API User Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../model-dev-guide/apis-howto/api-pytorch-ug.html">PyTorch API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../model-dev-guide/apis-howto/api-keras-ug.html">Keras API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../model-dev-guide/apis-howto/api-estimator-ug.html">Estimator API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../model-dev-guide/batch-processing/_index.html">Torch Batch Processing API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model-dev-guide/best-practices/_index.html">Best Practices</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../model-dev-guide/dtrain/_index.html">Distributed Training with Determined</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../model-dev-guide/dtrain/dtrain-introduction.html">Distributed Training Concepts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../model-dev-guide/dtrain/dtrain-implement.html">Implementing Distributed Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../model-dev-guide/dtrain/config-templates.html">Configuration Templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../model-dev-guide/dtrain/reproducibility.html">Reproducibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../model-dev-guide/dtrain/optimize-training.html">Optimizing Training</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../model-hub-library/_index.html">Model Hub Library</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../model-hub-library/mmdetection/_index.html">MMDetection</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../model-hub-library/transformers/_index.html">Transformers</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../model-hub-library/transformers/tutorial.html">Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../model-hub-library/transformers/examples.html">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reference/_index.html">Reference</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/cli-reference.html">Determined CLI Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python-sdk.html">Python SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/rest-api.html">REST API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/batch-processing/_index.html">Batch Processing API Reference</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../reference/deploy/_index.html">Deployment Reference</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../reference/deploy/config/_index.html">Config Reference</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reference/deploy/config/agent-config-reference.html">Agent Configuration Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/deploy/config/common-config-options.html">Common Configuration Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/deploy/config/helm-config-reference.html">Helm Chart Configuration Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reference/deploy/config/master-config-reference.html">Master Configuration Reference</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/interface/_index.html">Job Configuration Reference</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../reference/model-hub/_index.html">Model Hub APIs</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reference/model-hub/mmdetection-api.html">MMDetection API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/model-hub/transformers-api.html">Transformers API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/searcher/_index.html">Custom Searcher Reference</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../reference/training/_index.html">Training Reference</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reference/training/api-core-reference.html"><code class="docutils literal notranslate"><span class="pre">det.core</span></code> API Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/training/api-deepspeed-reference.html"><code class="docutils literal notranslate"><span class="pre">det.pytorch.deepspeed</span></code> API Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/training/api-det-reference.html"><code class="docutils literal notranslate"><span class="pre">det</span></code> API Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/training/api-estimator-reference.html"><code class="docutils literal notranslate"><span class="pre">det.estimator</span></code> API Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/training/api-keras-reference.html"><code class="docutils literal notranslate"><span class="pre">det.keras</span></code> API Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/training/api-pytorch-reference.html"><code class="docutils literal notranslate"><span class="pre">det.pytorch</span></code> API Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/training/api-pytorch-samplers-reference.html"><code class="docutils literal notranslate"><span class="pre">det.pytorch.samplers</span></code> API Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/training/experiment-config-reference.html">Experiment Configuration Reference</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes/_index.html">Release Notes</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../setup-cluster/_index.html">Setup</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../setup-cluster/deploy-cluster/_index.html">Set Up Determined</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../setup-cluster/deploy-cluster/aws/_index.html">Deploy on AWS</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/aws/aws-spot.html">Use Spot Instances</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/aws/dynamic-agents-aws.html">Deploy Determined with Dynamic Agents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/aws/install-on-aws.html">Install Determined</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../setup-cluster/deploy-cluster/gcp/_index.html">Deploy on GCP</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/gcp/dynamic-agents-gcp.html">Deploy Determined with Dynamic Agents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/gcp/install-gcp.html">Install Determined</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../setup-cluster/deploy-cluster/k8s/_index.html">Deploy on Kubernetes</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/k8s/custom-pod-specs.html">Customize a Pod</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/k8s/helm-commands.html">Helm and Kubectl Command Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/k8s/install-on-kubernetes.html">Install Determined on Kubernetes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/k8s/k8s-dev-guide.html">Development Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/k8s/setup-aks-cluster.html">Set up and Manage an Azure Kubernetes Service (AKS) Cluster</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/k8s/setup-eks-cluster.html">Set up and Manage an AWS Kubernetes (EKS) Cluster</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/k8s/setup-gke-cluster.html">Set up and Manage a Google Kubernetes Engine (GKE) Cluster</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/k8s/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../setup-cluster/deploy-cluster/on-prem/_index.html">Deploy on Prem</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/on-prem/deploy.html">Install Determined Using <code class="docutils literal notranslate"><span class="pre">det</span> <span class="pre">deploy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/on-prem/docker.html">Install Determined Using Docker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/on-prem/homebrew.html">Install Determined Using Homebrew (macOS)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/on-prem/linux-packages.html">Install Determined Using Linux Packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/on-prem/requirements.html">Installation Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/on-prem/wsl.html">Install Determined Using Windows Subsystem for Linux (Windows)</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../setup-cluster/deploy-cluster/slurm/_index.html">Deploy on Slurm/PBS</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/slurm/hpc-launching-architecture.html">HPC Launching Architecture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/slurm/hpc-security-considerations.html">HPC Launcher Security Considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/slurm/install-on-slurm.html">Install Determined on Slurm/PBS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/slurm/singularity.html">Provide a Container Image Cache</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/slurm/slurm-known-issues.html">Known Issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../setup-cluster/deploy-cluster/slurm/slurm-requirements.html">Installation Requirements</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../setup-cluster/security/_index.html">Security</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setup-cluster/security/oauth.html">OAuth 2.0 Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup-cluster/security/oidc.html">OpenID Connect Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup-cluster/security/rbac.html">RBAC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup-cluster/security/saml.html">SAML Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup-cluster/security/scim.html">SCIM Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setup-cluster/security/tls.html">Transport Layer Security</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials/_index.html">Tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/pytorch-mnist-local-qs.html">Run Your First Experiment in Determined</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/pytorch-mnist-tutorial.html">PyTorch MNIST Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/pytorch-porting-tutorial.html">PyTorch Porting Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/quickstart-mdldev.html">Quickstart for Model Developers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/tf-mnist-tutorial.html">TensorFlow Keras Fashion MNIST Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../attributions.html">Open Source Licenses</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/latest/interfaces/notebooks.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Jupyter Notebooks</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#command-line">Command Line</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-cli-commands">Useful CLI Commands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#webui">WebUI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-configuration">Notebook Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-and-restore-notebook-state">Save and Restore Notebook State</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-the-determined-cli-in-notebooks">Use the Determined CLI in Notebooks</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="jupyter-notebooks">
+<span id="notebooks"></span><h1>Jupyter Notebooks<a class="headerlink" href="#jupyter-notebooks" title="Permalink to this heading">#</a></h1>
+<p>You can use <a class="reference external" href="https://jupyter.org/">Jupyter Notebooks</a> to conveniently develop and debug machine
+learning models, visualize the behavior of trained models, and manage the training lifecycle of a
+model manually. Determined makes launching and managing notebooks easy.</p>
+<p>Determined Notebooks provide the following benefits:</p>
+<ul class="simple">
+<li><p>Jupyter Notebooks run in containerized environments on the cluster. This makes it easy to manage
+dependencies using images and virtual environments. The HTTP requests are passed through the
+master proxy from and to the container.</p></li>
+<li><p>Jupyter Notebooks can be automatically terminated if they are idle for a configurable duration to
+release resources. A notebook instance is considered to be idle if it is not receiving any HTTP
+traffic and it is not otherwise active (as defined by the <code class="docutils literal notranslate"><span class="pre">notebook_idle_type</span></code> option in the
+<a class="reference internal" href="../reference/interface/_index.html#command-notebook-configuration"><span class="std std-ref">task configuration</span></a>). To enable this behavior by default,
+set <code class="docutils literal notranslate"><span class="pre">notebook_timeout</span></code> <a class="reference internal" href="../reference/deploy/config/master-config-reference.html#master-config-notebook-timeout"><span class="std std-ref">option in your master config</span></a>. To
+enable it for a particular notebook, set <code class="docutils literal notranslate"><span class="pre">idle_timeout</span></code> option in the notebook config.</p></li>
+</ul>
+<p>After a Notebook is terminated, it is not possible to restore the files that are not stored in the
+persistent directories. <strong>It is important to configure the cluster to mount persistent directories
+into the container and save files in the persistent directories in the container.</strong> See
+<a class="reference internal" href="#notebook-state"><span class="std std-ref">Save and Restore Notebook State</span></a> for more information.</p>
+<p>If you open a Notebook tab in JupyterLab, a kernel is automatically opened. This kernel will not be
+shut down automatically, so you’ll need to manually terminate it.</p>
+<p>There are two ways to access notebooks in Determined: the <a class="reference internal" href="cli-ug.html#cli-ug"><span class="std std-ref">CLI</span></a> and the <a class="reference internal" href="webui-if.html#web-ui-if"><span class="std std-ref">WebUI</span></a>. To install the CLI, see <a class="reference internal" href="cli-ug.html#install-cli"><span class="std std-ref">Installation</span></a>.</p>
+<section id="command-line">
+<h2>Command Line<a class="headerlink" href="#command-line" title="Permalink to this heading">#</a></h2>
+<p>The following command will automatically start a notebook with a single GPU and open it in your
+browser.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ det notebook start
+Scheduling notebook unique-oyster (id: 5b2a9ea4-a6bb-4d2b-b42b-25e4064a3220)...
+[DOCKER BUILD 🔨] Step 1/11 : FROM nvidia/cuda:9.0-cudnn7-runtime-ubuntu16.04
+[DOCKER BUILD 🔨]
+[DOCKER BUILD 🔨]  ---&gt; 9918ba890dca
+[DOCKER BUILD 🔨] Step 2/11 : RUN rm /etc/apt/sources.list.d/*
+...
+[DOCKER BUILD 🔨] Successfully tagged nvidia/cuda:9.0-cudnn7-runtime-ubuntu16.04-73bf63cc864088137a477ce62f39ffe8
+[Determined] 2019-04-04T17:53:22.076591700Z [I 17:53:22.075 NotebookApp] Writing notebook server cookie secret to /root/.local/share/jupyter/runtime/notebook_cookie_secret
+[Determined] 2019-04-04T17:53:23.067911400Z [W 17:53:23.067 NotebookApp] All authentication is disabled.  Anyone who can connect to this server will be able to run code.
+[Determined] 2019-04-04T17:53:23.073644300Z [I 17:53:23.073 NotebookApp] Serving notebooks from local directory: /
+disconnecting websocket
+Jupyter Notebook is running at: http://localhost:8080/proxy/5b2a9ea4-a6bb-4d2b-b42b-25e4064a3220-notebook-0/lab/tree/Notebook.ipynb?reset
+</pre></div>
+</div>
+<p>After the notebook has been scheduled onto the cluster, the Determined CLI will open a web browser
+window pointed to that notebook’s URL. Back in the terminal, you can use the <code class="docutils literal notranslate"><span class="pre">det</span> <span class="pre">notebook</span> <span class="pre">list</span></code>
+command to see that this notebook is one of those currently <code class="docutils literal notranslate"><span class="pre">RUNNING</span></code> on the Determined cluster:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ det notebook list
+ Id                                   | Entry Point                                            | Registered Time              | State
+--------------------------------------+--------------------------------------------------------+------------------------------+---------
+ 0f519413-2411-4b3c-adbc-9b1b60c96156 | [&#39;jupyter&#39;, &#39;notebook&#39;, &#39;--config&#39;, &#39;/etc/jupyter.py&#39;] | 2019-04-04T17:52:48.1961129Z | RUNNING
+ 5b2a9ea4-a6bb-4d2b-b42b-25e4064a3220 | [&#39;jupyter&#39;, &#39;notebook&#39;, &#39;--config&#39;, &#39;/etc/jupyter.py&#39;] | 2019-04-04T17:53:20.387903Z  | RUNNING
+ 66da599e-62d2-4c2d-91c4-01a04045e4ab | [&#39;jupyter&#39;, &#39;notebook&#39;, &#39;--config&#39;, &#39;/etc/jupyter.py&#39;] | 2019-04-04T17:52:58.4573214Z | RUNNING
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">--context</span></code> option adds a folder or file to the notebook environment, allowing its contents to
+be accessed from within the notebook.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">det</span> <span class="n">notebook</span> <span class="n">start</span> <span class="o">--</span><span class="n">context</span> <span class="n">folder</span><span class="o">/</span><span class="n">file</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">--config-file</span></code> option can be used to create a notebook with an environment specified by a
+configuration file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">det</span> <span class="n">notebook</span> <span class="n">start</span> <span class="o">--</span><span class="n">config</span><span class="o">-</span><span class="n">file</span> <span class="n">config</span><span class="o">.</span><span class="n">yaml</span>
+</pre></div>
+</div>
+<p>For more information on how to write the notebook configuration file, see
+<a class="reference internal" href="#notebook-configuration"><span class="std std-ref">Notebook Configuration</span></a>.</p>
+</section>
+<section id="useful-cli-commands">
+<h2>Useful CLI Commands<a class="headerlink" href="#useful-cli-commands" title="Permalink to this heading">#</a></h2>
+<p>A full list of notebook-related commands can be found by running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">det</span> <span class="n">notebook</span> <span class="o">--</span><span class="n">help</span>
+</pre></div>
+</div>
+<p>To view all running notebooks:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">det</span> <span class="n">notebook</span> <span class="nb">list</span>
+</pre></div>
+</div>
+<p>To kill a notebook, you need its ID, which can be found using the <code class="docutils literal notranslate"><span class="pre">list</span></code> command.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">det</span> <span class="n">notebook</span> <span class="n">kill</span> <span class="o">&lt;</span><span class="nb">id</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="webui">
+<h2>WebUI<a class="headerlink" href="#webui" title="Permalink to this heading">#</a></h2>
+<p>You can also start a Notebook from the WebUI. To do this, navigate to the <strong>Tasks</strong> pane and then
+select <strong>Launch JupyterLab</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Depending on your particular setup, you can select the appropriate resource pool when creating a
+new notebook.</p>
+</div>
+<a class="reference internal image-reference" href="assets/images/launch-cpu-notebook&#64;2x.jpg"><img alt="Determined AI model training interactive WebUI where you can launch a new Jupyter Notebook." src="assets/images/launch-cpu-notebook&#64;2x.jpg" style="width: 100%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The WebUI displays a list of tasks running on the cluster including running notebooks. You can
+reopen, kill, or view logs for each notebook.</p>
+<p>You can customize the keyboard shortcut you use to launch a JupyterLab Notebook. To do this, visit
+the Shorcuts settings by selecting your profile name in the upper left corner and choosing
+<strong>Settings</strong>.</p>
+</section>
+<section id="notebook-configuration">
+<span id="id1"></span><h2>Notebook Configuration<a class="headerlink" href="#notebook-configuration" title="Permalink to this heading">#</a></h2>
+<p>Notebooks can be passed a notebook configuration option to control the notebook environment. For
+example, to launch a notebook that uses two GPUs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ det notebook start --config resources.slots=2
+</pre></div>
+</div>
+<p>Alternatively, a YAML file can also be used to configure the notebook, using the <code class="docutils literal notranslate"><span class="pre">--config-file</span></code>
+option:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat &gt; config.yaml &lt;&lt;EOL
+description: test-notebook
+resources:
+  slots: 2
+bind_mounts:
+  - host_path: /data/notebook_scratch
+    container_path: /scratch
+idle_timeout: 30m
+EOL
+$ det notebook start --config-file config.yaml
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="../reference/interface/_index.html#command-notebook-configuration"><span class="std std-ref">Job Configuration Reference</span></a> for details on the supported configuration options.</p>
+<p>Finally, to configure notebooks to run a predefined set of commands at startup, you can include a
+<a class="reference internal" href="../model-dev-guide/prepare-container/custom-env.html#startup-hooks"><span class="std std-ref">startup hook</span></a> in a directory specified with the <code class="docutils literal notranslate"><span class="pre">--context</span></code> option:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir my_context_dir
+$ echo &quot;pip3 install pandas&quot; &gt; my_context_dir/startup-hook.sh
+$ det notebook start --context my_context_dir
+</pre></div>
+</div>
+<p id="cpu-only-notebooks">Example: CPU-Only Notebooks</p>
+<p>By default, each notebook is assigned a single GPU. This is appropriate for some uses of notebooks
+(e.g., training a deep learning model) but unnecessary for other tasks (e.g., analyzing the training
+metrics of a previously trained model). To launch a notebook that does not use any GPUs, set
+<code class="docutils literal notranslate"><span class="pre">resources.slots</span></code> to <code class="docutils literal notranslate"><span class="pre">0</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ det notebook start --config resources.slots=0
+</pre></div>
+</div>
+</section>
+<section id="save-and-restore-notebook-state">
+<span id="notebook-state"></span><h2>Save and Restore Notebook State<a class="headerlink" href="#save-and-restore-notebook-state" title="Permalink to this heading">#</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>It is only possible to save and restore notebook state on Determined clusters that are configured
+with a shared filesystem available to all agents.</p>
+</div>
+<p>To ensure that your work is saved even if your notebook gets terminated, it is recommended to launch
+all notebooks with a shared filesystem directory <em>bind-mounted</em> into the notebook container and work
+on files inside of the bind mounted directory.</p>
+<p>For example, a user <code class="docutils literal notranslate"><span class="pre">jimmy</span></code> with a shared filesystem home directory at <code class="docutils literal notranslate"><span class="pre">/shared/home/jimmy</span></code>
+could use the following configuration to launch a notebook:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat &gt; config.yaml &lt;&lt; EOL
+bind_mounts:
+  - host_path: /shared/home/jimmy
+    container_path: /shared/home/jimmy
+EOL
+$ det notebook start --config-file config.yaml
+</pre></div>
+</div>
+<p>By default, launching a cluster by <code class="docutils literal notranslate"><span class="pre">det</span> <span class="pre">deploy</span> <span class="pre">gcp</span> <span class="pre">up</span></code>, <code class="docutils literal notranslate"><span class="pre">det</span> <span class="pre">deploy</span> <span class="pre">aws</span> <span class="pre">--deployment-type</span> <span class="pre">efs</span></code>,
+or <code class="docutils literal notranslate"><span class="pre">det</span> <span class="pre">deploy</span> <span class="pre">aws</span> <span class="pre">--deployment-type</span> <span class="pre">fsx</span></code> creates a Network file system that is shared by all the
+agents and is automatically mounted into Notebook containers at
+<code class="docutils literal notranslate"><span class="pre">/run/determined/workdir/shared_fs/</span></code>.</p>
+<p>To launch a notebook with <code class="docutils literal notranslate"><span class="pre">det</span> <span class="pre">deploy</span> <span class="pre">local</span> <span class="pre">cluster-up</span></code>, a user can add the <code class="docutils literal notranslate"><span class="pre">--auto-bind-mount</span></code>
+flag, which mounts the user’s home directory into the task containers by default:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ det deploy local cluster-up --auto-bind-mount=&quot;/shared/home/jimmy&quot;
+$ det notebook start
+</pre></div>
+</div>
+<p>Working on a notebook file within the shared bind mounted directory will ensure that your code and
+Jupyter checkpoints are saved on the shared filesystem rather than an ephemeral container
+filesystem. If your notebook gets terminated, launching another notebook and loading the previous
+notebook file will effectively restore the session of your previous notebook. To restore the <em>full</em>
+notebook state (in addition to code), you can use Jupyter’s <code class="docutils literal notranslate"><span class="pre">File</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Revert</span> <span class="pre">to</span> <span class="pre">Checkpoint</span></code>
+functionality.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default, JupyterLab will take a checkpoint every 120 seconds in an <code class="docutils literal notranslate"><span class="pre">.ipynb_checkpoints</span></code>
+folder in the same directory as the notebook file. To modify this setting, click on <code class="docutils literal notranslate"><span class="pre">Settings</span></code>
+&gt; <code class="docutils literal notranslate"><span class="pre">Advanced</span> <span class="pre">Settings</span> <span class="pre">Editor</span></code> and change the value of <code class="docutils literal notranslate"><span class="pre">&quot;autosaveInternal&quot;</span></code> under <code class="docutils literal notranslate"><span class="pre">Document</span>
+<span class="pre">Manager</span></code>.</p>
+</div>
+</section>
+<section id="use-the-determined-cli-in-notebooks">
+<h2>Use the Determined CLI in Notebooks<a class="headerlink" href="#use-the-determined-cli-in-notebooks" title="Permalink to this heading">#</a></h2>
+<p>The <a class="reference internal" href="cli-ug.html#cli-ug"><span class="std std-ref">Determined CLI</span></a> is installed into notebook containers by default. This allows you
+to interact with Determined from inside a notebook—e.g., launch new deep learning workloads or
+examine the metrics from an active or historical Determined experiment. For example, to list
+Determined experiments from inside a notebook, run the notebook command <code class="docutils literal notranslate"><span class="pre">!det</span> <span class="pre">experiment</span> <span class="pre">list</span></code>.</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ide-integration.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">IDE Integration</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="proxy-ports.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Exposing Custom Ports</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#command-line">Command Line</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-cli-commands">Useful CLI Commands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#webui">WebUI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-configuration">Notebook Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-and-restore-notebook-state">Save and Restore Notebook State</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-the-determined-cli-in-notebooks">Use the Determined CLI in Notebooks</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tara & LB
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, Determined AI.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
