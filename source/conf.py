@@ -32,8 +32,7 @@ print(os.listdir(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '
 # print the sys path 
 print(sys.path)
 
-sys.path.insert(0, '../determined')
-sys.path.insert(0, '../../determined')
+sys.path.insert(0, '/home/runner/work/x/x/determined')
 os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'determined'))
 
 # print the sys path 
