@@ -14,8 +14,8 @@ import os, sys
 
 # if computer is Mac, find the determined repo in the contributor's /Documents/github/determined folder
 # if sys.platform == 'darwin':
-sys.path.insert(0, './determined-stuff/')
 
+# 
 
 # -- Project information -----------------------------------------------------
 
