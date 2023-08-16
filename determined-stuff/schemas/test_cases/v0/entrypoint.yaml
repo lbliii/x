@@ -1,0 +1,11 @@
+- name: entrypoint check (command string, valid)
+  sane_as:
+    - http://determined.ai/schemas/expconf/v0/experiment.json
+  case:
+    entrypoint: python3 train.py
+
+- name: entrypoint check (array, valid)
+  sane_as:
+    - http://determined.ai/schemas/expconf/v0/experiment.json
+  case:
+    entrypoint: ["python3", "-m", "determined.launch.autohorovod", "model_def:Trial"]

@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../agent"
+		},
+		{
+			"path": "../proto"
+		},
+		{
+			"path": "../tools"
+		},
+		{
+			"path": "../harness"
+		},
+		{
+			"path": "../.circleci"
+		},
+		{
+			"path": "../examples"
+		}
+	]
+}

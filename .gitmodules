@@ -1,3 +1,3 @@
 [submodule "source/determined-stuff"]
-	path = source/determined-stuff
+	path = determined-stuff
 	url = https://github.com/determined-ai/determined.git
