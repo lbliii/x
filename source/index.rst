@@ -20,9 +20,8 @@ Indices
 * :ref:`search`
 
 
-.. .. automodule:: determined.core
-..    :members: init
-
+.. automodule:: determined.core
+   :members: init
 
 
 .. toctree::
@@ -60,4 +59,5 @@ Indices
 .. Migration Challenges
 .. ----
 .. 1. There isn't a direct replacement for **crosslinking** or **autodocs**. 
+
 
