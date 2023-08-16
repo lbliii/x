@@ -18,6 +18,9 @@ if sys.platform == 'darwin':
 
 print("~~~~~~~~~~~~")
 
+# print current working directory
+print(os.getcwd())
+
 # print the directory above the conf.py file
 print(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 # output is /home/runner/work/x/x
