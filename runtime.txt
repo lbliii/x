@@ -1,0 +1,8 @@
+echo "3.7" > runtime.txt    # This declares that you're going to use python 3.7, not the default of python 2.7
+
+# These commands are aiming at creating the requirements.txt file using a virtual environment
+python -m venv venv
+echo "venv/" >> .gitignore
+source venv/bin/activate
+pip install sphinx
+pip freeze > requirements.txt
