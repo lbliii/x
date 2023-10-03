@@ -57,7 +57,7 @@ The following HuggingFace **transformers** features are currently not supported:
 -  Running on TPUs
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :hidden:
 
    tutorial
