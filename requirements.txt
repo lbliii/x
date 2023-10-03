@@ -53,3 +53,5 @@ userpath==1.9.1 ; python_version == "3.8"
 virtualenv==20.24.5 ; python_version == "3.8"
 xattr==0.10.1 ; sys_platform == "darwin" and python_version == "3.8"
 zipp==3.17.0 ; python_version == "3.8"
+sphinx
+
